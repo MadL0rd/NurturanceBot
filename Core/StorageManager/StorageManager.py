@@ -5,7 +5,6 @@ import json
 from pathlib import Path
 import string
 import pytz
-from sqlalchemy import false
 import xlsxwriter
 
 from aiogram.types import User
@@ -29,6 +28,8 @@ class PathConfig:
     usersDir = baseDir / "Users"
 
     botContentDir = baseDir / "BotContent"
+    botContentOnboarding = botContentDir/ "Onboarding.json"
+    botContentUniqueMessages = botContentDir/ "UniqueTextMessages.json"
     botContentPrivateConfig = botContentDir / "PrivateConfig.json"
 
     totalHistoryTableFile = baseDir / "TotalHistory.xlsx"
@@ -68,8 +69,9 @@ def getUserInfo(user: User):
         log.info(f"User {user.id} dir does not exist")
         generateUserStorage(user)
 
+    userInfoFile = path.userInfoFile(user)
+
     return getJsonData(userInfoFile)
-    
 
 def generateUserStorage(user: User):
 
@@ -102,10 +104,9 @@ def updateUserData(user: User, userData):
     userData["updateTime"] = getTimestamp()
     writeJsonData(userInfoFile, userData)
 
-
 def logToUserHistory(user: User, event: UserHistoryEvent, content: string):
 
-    log.info(f"{user.id} {event.name}: {content}")
+    log.info(f"{user.id} {event.value}: {content}")
 
     historyFile = path.userHistoryFile(user)
 
@@ -115,7 +116,7 @@ def logToUserHistory(user: User, event: UserHistoryEvent, content: string):
     
     history.append({
         "timestamp": getTimestamp(),
-        "event": event.name,
+        "event": event.value,
         "content": content
     })
 
@@ -140,7 +141,7 @@ def generateStatisticTable():
     workbook = xlsxwriter.Workbook(path.statisticHistoryTableFile)
 
     for event in statisticEvents:
-        generateStatisticPageForEvent(workbook, event.name, startDate)
+        generateStatisticPageForEvent(workbook, event.value, startDate)
 
     workbook.close()
 
