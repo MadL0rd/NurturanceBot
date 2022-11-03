@@ -21,7 +21,8 @@ class UserHistoryEvent(enum.Enum):
     sendMessage = "Отправил сообщение"
     becomeAdmin = "Стал администратором"
     startModuleOnboarding = "Начал смотреть онбординг"
-    startModuleMainMenu = "Перешел в главное меню"  
+    startModuleMainMenu = "Перешел в главное меню" 
+    startModuleNews =  'Запросил новость'
 
 class PathConfig:
 

@@ -49,6 +49,30 @@ class MainMenu(MenuModuleInterface):
             moduleData={ "startMessageDidSent" : True }
         )
 
+    async def handleModuleNews(self, ctx: Message, msg: MessageSender) -> Completion:
+
+        log.debug(f"User: {ctx.from_user.id}")
+        storage.logToUserHistory(ctx.from_user, event.startModuleNews, "")
+
+        keyboardMarkup = ReplyKeyboardMarkup(
+            resize_keyboard=True
+        )
+        for buttonText in self.menuDict:
+            keyboardMarkup.add(KeyboardButton(buttonText))
+
+        userTg = ctx.from_user
+        userInfo = storage.getUserInfo(userTg)
+
+        await msg.answer(
+            ctx = ctx,
+            text = textConstant.menuButtonRandomNews.get,
+            keyboardMarkup = keyboardMarkup
+        )
+
+        return Completion(
+            inProgress=True
+        )
+
 
     async def handleUserMessage(self, ctx: Message, data: dict, msg: MessageSender) -> Completion:
 

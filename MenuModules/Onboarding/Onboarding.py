@@ -44,6 +44,30 @@ class Onboarding(MenuModuleInterface):
             moduleData={ "previousPageIndex" : pageIndex }
         )
 
+    async def handleModuleNews(self, ctx: Message, msg: MessageSender) -> Completion:
+
+        log.debug(f"User: {ctx.from_user.id}")
+        storage.logToUserHistory(ctx.from_user, event.startModuleNews, "")
+
+        pageIndex = 0
+        NewsPages = storage.getJsonData(storage.path.botContentNews)
+        if len(NewsPages) > pageIndex:
+            page = NewsPage(NewsPages[pageIndex])
+            await sendNews(ctx, msg, page)
+        else:
+            log.error("News is empty")
+            return Completion(
+                inProgress = False,
+                didHandledUserInteraction=True,
+                moduleData={}
+            )
+
+        return Completion(
+            inProgress = pageIndex < len(NewsPages),
+            didHandledUserInteraction=True,
+            moduleData={ "previousPageIndex" : pageIndex }
+        )
+
     async def handleUserMessage(self, ctx: Message, data: dict, msg: MessageSender) -> Completion:
 
         log.debug(f"User: {ctx.from_user.id}")
@@ -96,4 +120,20 @@ async def sendOnboardingPage(ctx: Message, msg: MessageSender, page: OnboardingP
         ctx=ctx,
         text=page.message,
         keyboardMarkup=keyboardMarkup
+    )
+
+class NewsPage:
+
+    text: str
+    picture: str
+
+    def __init__(self, data: dict):
+        self.message = data["text"]
+        self.message = data["picture"]
+
+async def sendNews(ctx: Message, msg: MessageSender, page: NewsPage):
+
+    await msg.answer(
+        ctx=ctx,
+        text=page.text,
     )
