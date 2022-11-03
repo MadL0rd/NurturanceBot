@@ -13,6 +13,7 @@ class PageNames(enum.Enum):
 
     uniqueMessages = "УникальныеСообщения"
     onboarding = "Онбординг"
+    news = "Новости"
 
 pages = PageNames
 
@@ -78,5 +79,23 @@ def updateOnboarding():
 
     storage.writeJsonData(
         storage.path.botContentOnboarding, 
+        content
+    )
+
+def updateNews():
+
+    values = getContent(pages.news, "A1:B100")
+    if len(values) > 0:
+        del values[0]
+
+    content = []
+    for line in values:
+        content.append({
+            "text": line[0],
+            "picture": line[1]
+        })
+
+    storage.writeJsonData(
+        storage.path.botContentNews, 
         content
     )

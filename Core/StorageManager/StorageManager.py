@@ -33,6 +33,7 @@ class PathConfig:
     botContentOnboarding = botContentDir/ "Onboarding.json"
     botContentUniqueMessages = botContentDir/ "UniqueTextMessages.json"
     botContentPrivateConfig = botContentDir / "PrivateConfig.json"
+    botContentNews = botContentDir / "News.json"
 
     totalHistoryTableFile = baseDir / "TotalHistory.xlsx"
     statisticHistoryTableFile = baseDir / "StatisticalHistory.xlsx"

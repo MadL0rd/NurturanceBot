@@ -1,8 +1,6 @@
 from operator import mod
 from aiogram.types import Message, CallbackQuery
 
-from sqlalchemy import true
-
 from Core.MessageSender import MessageSender
 import Core.StorageManager.StorageManager as storage
 from Core.StorageManager.StorageManager import UserHistoryEvent as event

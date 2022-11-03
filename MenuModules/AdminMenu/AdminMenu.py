@@ -59,6 +59,7 @@ class AdminMenu(MenuModuleInterface):
             message = await ctx.answer("⚠️ Подождите, идет выгрузка данных из гугл таблицы")
             sheets.updateOnboarding()
             sheets.updateUniqueMessages()
+            sheets.updateNews()
             await message.edit_text("❇️ Тексты обновлены")
 
             log.info("Bot sheets data update complete")
