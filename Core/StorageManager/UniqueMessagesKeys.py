@@ -4,11 +4,22 @@ import Core.StorageManager.StorageManager as storage
 
 class UniqueMessagesKeys(enum.Enum):
 
-    adminButtonText = "adminButtonText"
     unknownState = "unknownState"
+
     menuButtonReturnToMainMenu = "menuButtonReturnToMainMenu"
 
-    def get(self):
+    mainMenuText = "mainMenuText"
+    menuButtonExercises = "menuButtonExercises"
+    menuButtonRandomNews = "menuButtonRandomNews"
+    menuButtonRelax = "menuButtonRelax"
+    menuButtonAdmin = "menuButtonAdmin"
+
+    adminMenuText = "adminMenuText"
+    adminMenuButtonLoadData = "adminMenuButtonLoadData"
+    adminMenuButtonReloadData = "adminMenuButtonReloadData"
+
+    @property
+    def get(self) -> str:
         messagesKeys = storage.getJsonData(storage.path.botContentUniqueMessages)
         if self.value in messagesKeys:
             return messagesKeys[self.value]

@@ -20,6 +20,8 @@ class UserHistoryEvent(enum.Enum):
     start = "Старт"
     sendMessage = "Отправил сообщение"
     becomeAdmin = "Стал администратором"
+    startModuleOnboarding = "Начал смотреть онбординг"
+    startModuleMainMenu = "Перешел в главное меню"  
 
 class PathConfig:
 
@@ -52,6 +54,7 @@ def getJsonData(filePath: Path):
     return data
 
 def writeJsonData(filePath: Path, content):
+    # log.debug(content)
     data = json.dumps(content, ensure_ascii=False, indent=2)
     with filePath.open('w') as file:
         file.write(data)

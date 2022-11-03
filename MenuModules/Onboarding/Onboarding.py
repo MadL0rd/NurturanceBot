@@ -6,6 +6,7 @@ from Core.StorageManager.StorageManager import UserHistoryEvent as event
 from Core.MessageSender import MessageSender
 
 from MenuModules.MenuModuleInterface import MenuModuleInterface, MenuModuleHandlerCompletion as Completion
+from MenuModules.MenuModuleName import MenuModuleName
 from logger import logger as log
 
 class Onboarding(MenuModuleInterface):
@@ -14,7 +15,7 @@ class Onboarding(MenuModuleInterface):
     # Interface implementation
     # =====================
 
-    name: str = "Onboarding"
+    namePrivate = MenuModuleName.onboarding
 
     # Use default implementation
     # def callbackData(self, data: dict, msg: MessageSender) -> str:
@@ -22,6 +23,7 @@ class Onboarding(MenuModuleInterface):
     async def handleModuleStart(self, ctx: Message, msg: MessageSender) -> Completion:
 
         log.debug(f"User: {ctx.from_user.id}")
+        storage.logToUserHistory(ctx.from_user, event.startModuleOnboarding, "")
 
         pageIndex = 0
         onboardingPages = storage.getJsonData(storage.path.botContentOnboarding)
@@ -69,7 +71,7 @@ class Onboarding(MenuModuleInterface):
     async def handleCallback(self, ctx: CallbackQuery, data: dict, msg: MessageSender) -> Completion:
 
         log.debug(f"User: {ctx.from_user.id}")
-        log.error(f"Onboarding module does not have callbacks\nData: {data}")
+        log.error(f"{self.name} module does not have callbacks\nData: {data}")
         
     # =====================
     # Custom stuff

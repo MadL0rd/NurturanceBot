@@ -55,7 +55,8 @@ def updateUniqueMessages():
 
     content = {}
     for line in values:
-        content[line[0]] = line[1]
+        if line[0] not in content and line[0] != "":
+            content[line[0]] = line[1]
 
     storage.writeJsonData(
         storage.path.botContentUniqueMessages, 

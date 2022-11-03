@@ -1,32 +1,19 @@
 from operator import mod
 from aiogram.types import Message, CallbackQuery
-import enum
 
 from sqlalchemy import true
 
-from Core.MessageSender import MessageSender, MessageSenderAdmin
+from Core.MessageSender import MessageSender
 import Core.StorageManager.StorageManager as storage
 from Core.StorageManager.StorageManager import UserHistoryEvent as event
 
-import MenuModules.AdminMenu.AdminMenu as adminMenu
-from MenuModules.Onboarding.Onboarding import Onboarding
 from MenuModules.MenuModuleInterface import MenuModuleInterface, MenuModuleHandlerCompletion as Completion
+from MenuModules.MenuModules import MenuModules as menu
+import MenuModules.AdminMenu.AdminMenu as adminMenu
 
 from logger import logger as log
 
-msgSender = MessageSenderAdmin()
-msgSenderAdmin = MessageSenderAdmin()
-
-class MenuModules(enum.Enum):
-
-    onboarding: MenuModuleInterface = Onboarding()
-    mainMenu: MenuModuleInterface = Onboarding()
-
-    @property
-    def get(self) -> MenuModuleInterface:
-        return self.value
-
-menu = MenuModules
+msg = MessageSender()
 
 async def handleUserStart(ctx: Message):
 
@@ -34,12 +21,6 @@ async def handleUserStart(ctx: Message):
     log.debug(f"Did handle User{userTg.id} start message {ctx.text}")
 
     userInfo = storage.getUserInfo(userTg)
-
-    msg: MessageSender
-    if "isAdmin" in userInfo and userInfo["isAdmin"] == True:
-        msg = msgSender
-    else:
-        msg = msgSenderAdmin
 
     menuState = userInfo["state"]
     if not "module" in menuState:
@@ -67,18 +48,11 @@ async def handleUserMessage(ctx: Message):
     menuState = userInfo["state"]
 
     storage.logToUserHistory(userTg, event.sendMessage, ctx.text)
-
-    msg: MessageSender
-    if "isAdmin" in userInfo and userInfo["isAdmin"] == True:
-        msg = msgSenderAdmin
-    else:
-        msg = msgSender
-
+    
     # Try to find current menu module
     menuState = userInfo["state"]
-    module: MenuModuleInterface
-    completion: Completion
-    needToStartMenu = False
+    module: MenuModuleInterface = None
+    completion: Completion = None
     data = {}
     try:
         menuModuleName = menuState["module"]
@@ -86,19 +60,36 @@ async def handleUserMessage(ctx: Message):
         log.debug(f"Founded module: {module.name}")
 
     except:
-        # If can nof find module redirect to main menu
         log.debug(f"Error while finding module")
-        needToStartMenu = true
 
-    if needToStartMenu == False:
+    if module is not None:
         data = menuState["data"]
         completion: Completion = await module.handleUserMessage(
             ctx = ctx,
             msg=msg,
             data = data
         )
-    else:
-        module = menu.mainMenu.get
+
+    # Start next module if needed
+    moduleNext: MenuModuleInterface = None
+    if completion is None:
+        moduleNext = menu.mainMenu.get
+    elif completion.inProgress == False:
+        try:
+            menuModuleName = completion.nextModuleNameIfCompleted
+            moduleNext = [module.get for module in menu if module.get.name == menuModuleName][0]
+            log.debug(f"Founded module: {module.name}")
+
+        except:
+            log.debug(f"Error while finding module from completion")
+            moduleNext = menu.mainMenu.get
+
+    # Emergency reboot
+    if ctx.text == "Emergency reboot":
+        moduleNext = menu.mainMenu.get
+
+    if moduleNext is not None:
+        module = moduleNext
         menuState = {
             "module": module.name,
             "data": {}
@@ -111,16 +102,6 @@ async def handleUserMessage(ctx: Message):
     if completion.didHandledUserInteraction == False:
         await msg.answerUnknown(ctx)
 
-    if completion.inProgress == False:
-        # If module did finished redirect to main menu
-        log.debug(f"Module {module.name} completed. Start main menu")
-
-        module = menu.mainMenu.get
-        completion: Completion = await module.handleModuleStart(
-            ctx = ctx,
-            msg=msg
-        )
-
     menuState = {
         "module": module.name,
         "data": completion.moduleData 
@@ -131,8 +112,6 @@ async def handleUserMessage(ctx: Message):
     userInfo["state"] = menuState
     storage.updateUserData(userTg, userInfo)
 
-    if "isAdmin" in userInfo and userInfo["isAdmin"] == True:
-        await adminMenu.handleUserMessage(ctx)
 
 async def handleCallback(ctx: CallbackQuery):
 

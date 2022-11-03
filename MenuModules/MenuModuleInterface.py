@@ -3,6 +3,7 @@ from aiogram.types import Message, CallbackQuery
 import enum
 import json
 from Core.MessageSender import MessageSender
+from MenuModules.MenuModuleName import MenuModuleName
 
 from logger import logger as log
 
@@ -11,15 +12,21 @@ class MenuModuleHandlerCompletion:
     inProgress: bool
     didHandledUserInteraction: bool
     moduleData: dict
+    nextModuleNameIfCompleted: str
 
-    def __init__(self, inProgress: bool, didHandledUserInteraction: bool, moduleData: dict):
+    def __init__(self, inProgress: bool, didHandledUserInteraction: bool, moduleData: dict = {}, nextModuleNameIfCompleted: str = ""):
         self.inProgress = inProgress
         self.didHandledUserInteraction = didHandledUserInteraction
         self.moduleData = moduleData
+        self.nextModuleNameIfCompleted = nextModuleNameIfCompleted
 
 class MenuModuleInterface:
 
-    name: str
+    namePrivate: MenuModuleName
+
+    @property
+    def name(self) -> str:
+        return self.namePrivate.value
 
     def callbackData(self, data: dict, msg: MessageSender) -> str:
         data = {
@@ -30,16 +37,17 @@ class MenuModuleInterface:
 
     def canNotHandle(self, data: dict) -> MenuModuleHandlerCompletion:
         return MenuModuleHandlerCompletion(
-            inProgress = True,
+            inProgress=True,
             didHandledUserInteraction=False,
             moduleData=data
         )
 
-    def complete(self) -> MenuModuleHandlerCompletion:
+    def complete(self, nextModuleName: str = "") -> MenuModuleHandlerCompletion:
         return MenuModuleHandlerCompletion(
-            inProgress = False,
+            inProgress=False,
             didHandledUserInteraction=True,
-            moduleData={}
+            moduleData={},
+            nextModuleNameIfCompleted=nextModuleName
         )
 
     async def handleModuleStart(self, ctx: Message, msg: MessageSender) -> MenuModuleHandlerCompletion:

@@ -1,5 +1,12 @@
 {
   "unknownState": "Кажется, сейчас я тебя не понимаю...",
   "menuButtonReturnToMainMenu": "Главное меню",
-  "adminButtonText": "Админ"
+  "menuButtonExercises": "Перейти к упражнениям",
+  "menuButtonRandomNews": "Я не хочу делать упражнения, просто хочу переключиться",
+  "menuButtonRelax": "Мне просто нужно отдохнуть",
+  "menuButtonAdmin": "Админ",
+  "mainMenuText": "Твое состояние сейчас определяется твоими эмоциями и мыслями.\n\nЗабот поможет тебе разобраться хитросплетении внутренних переживаний и успокоить их.",
+  "adminMenuText": "Вы в меню администратора",
+  "adminMenuButtonLoadData": "Выгрузить данные",
+  "adminMenuButtonReloadData": "Стянуть новые тексты из гугл таблицы"
 }

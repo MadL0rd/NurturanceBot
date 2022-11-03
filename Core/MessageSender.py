@@ -10,7 +10,7 @@ class MessageSender:
 
     async def answer(self, ctx: Message, text: str, inlineMarkup: InlineKeyboardMarkup):
 
-        log.debug(f"MessageSender sends: {text}")
+        # log.debug(f"MessageSender sends: {text}")
         await ctx.answer(
             text,
             parse_mode=ParseMode.MARKDOWN,
@@ -19,6 +19,7 @@ class MessageSender:
 
     async def answer(self, ctx: Message, text: str, keyboardMarkup: ReplyKeyboardMarkup):
         
+        # log.debug(f"MessageSender sends: {text}")
         await ctx.answer(
             text,
             parse_mode=ParseMode.MARKDOWN,
@@ -27,18 +28,8 @@ class MessageSender:
 
     async def answerUnknown(self, ctx: Message):
 
-        nknownText = textConstant.unknownState.get()
+        nknownText = textConstant.unknownState.get
         await ctx.answer(
             nknownText,
             parse_mode=ParseMode.MARKDOWN
-        )
-
-class MessageSenderAdmin(MessageSender):
-
-    async def answer(self, ctx: Message, text: str, keyboardMarkup: ReplyKeyboardMarkup):
-        
-        await ctx.answer(
-            text,
-            parse_mode=ParseMode.MARKDOWN,
-            reply_markup=keyboardMarkup.add(KeyboardButton(textConstant.adminButtonText.get()))
         )

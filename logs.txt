@@ -911,3 +911,479 @@ Bot just started
 [2022-11-02 00:12:10,642: INFO] StorageManager.py	-> logToUserHistory[109] 	243378934 Отправил сообщение: dsd
 [2022-11-02 00:12:10,643: DEBUG] MenuDispatcher.py	-> handleUserMessage[86] 	Founded module: Onboarding
 [2022-11-02 00:12:10,643: DEBUG] Onboarding.py	-> handleUserMessage[47] 	User: 243378934
+[2022-11-02 11:04:35,053: INFO] main.py	-> <module>[35] 	Bot just started
+[2022-11-02 11:07:36,449: INFO] main.py	-> <module>[35] 	Bot just started
+[2022-11-02 11:08:00,333: DEBUG] MenuDispatcher.py	-> handleUserMessage[64] 	Did handle User243378934 message: kek
+[2022-11-02 11:08:00,335: INFO] StorageManager.py	-> logToUserHistory[109] 	243378934 Отправил сообщение: kek
+[2022-11-02 11:08:00,337: DEBUG] MenuDispatcher.py	-> handleUserMessage[86] 	Founded module: Onboarding
+[2022-11-02 11:08:00,337: DEBUG] Onboarding.py	-> handleUserMessage[47] 	User: 243378934
+[2022-11-02 11:08:15,399: DEBUG] MenuDispatcher.py	-> handleUserMessage[64] 	Did handle User243378934 message: kek
+[2022-11-02 11:08:15,400: INFO] StorageManager.py	-> logToUserHistory[109] 	243378934 Отправил сообщение: kek
+[2022-11-02 11:08:15,401: DEBUG] MenuDispatcher.py	-> handleUserMessage[86] 	Founded module: Onboarding
+[2022-11-02 11:08:15,401: DEBUG] Onboarding.py	-> handleUserMessage[47] 	User: 243378934
+[2022-11-02 11:08:15,510: INFO] AdminMenu.py	-> handleUserMessage[25] 	Bot sheets data update start
+[2022-11-02 11:08:16,673: INFO] AdminMenu.py	-> handleUserMessage[30] 	Bot sheets data update complete
+[2022-11-02 11:24:51,998: DEBUG] MenuDispatcher.py	-> handleUserMessage[64] 	Did handle User243378934 message: UserData
+[2022-11-02 11:24:51,999: INFO] StorageManager.py	-> logToUserHistory[109] 	243378934 Отправил сообщение: UserData
+[2022-11-02 11:24:52,000: DEBUG] MenuDispatcher.py	-> handleUserMessage[86] 	Founded module: Onboarding
+[2022-11-02 11:24:52,001: DEBUG] Onboarding.py	-> handleUserMessage[47] 	User: 243378934
+[2022-11-02 11:24:52,108: INFO] AdminMenu.py	-> handleUserMessage[10] 	Tables creation start
+[2022-11-02 11:24:52,293: INFO] StorageManager.py	-> generateTotalTable[189] 	Total table generation start
+[2022-11-02 11:24:52,306: INFO] StorageManager.py	-> generateTotalTable[224] 	Total table generation completed
+[2022-11-02 11:24:52,471: INFO] StorageManager.py	-> generateStatisticTable[131] 	Statistic table generation start
+[2022-11-02 11:24:52,485: INFO] StorageManager.py	-> generateStatisticTable[148] 	Statistic table generation completed
+[2022-11-02 11:24:53,404: INFO] AdminMenu.py	-> handleUserMessage[21] 	Tables creation complete
+[2022-11-03 16:03:21,904: INFO] main.py	-> <module>[35] 	Bot just started
+[2022-11-03 16:03:32,922: DEBUG] MenuDispatcher.py	-> handleUserMessage[64] 	Did handle User243378934 message: kek
+[2022-11-03 16:03:32,924: INFO] StorageManager.py	-> logToUserHistory[109] 	243378934 Отправил сообщение: kek
+[2022-11-03 16:03:32,928: DEBUG] MenuDispatcher.py	-> handleUserMessage[85] 	Founded module: Onboarding
+[2022-11-03 16:03:32,929: DEBUG] Onboarding.py	-> handleUserMessage[47] 	User: 243378934
+[2022-11-03 16:04:17,642: DEBUG] MenuDispatcher.py	-> handleUserMessage[64] 	Did handle User243378934 message: kek
+[2022-11-03 16:04:17,642: INFO] StorageManager.py	-> logToUserHistory[109] 	243378934 Отправил сообщение: kek
+[2022-11-03 16:04:17,643: DEBUG] MenuDispatcher.py	-> handleUserMessage[85] 	Founded module: Onboarding
+[2022-11-03 16:04:17,643: DEBUG] Onboarding.py	-> handleUserMessage[47] 	User: 243378934
+[2022-11-03 16:04:23,833: INFO] main.py	-> <module>[35] 	Bot just started
+[2022-11-03 16:04:26,937: DEBUG] MenuDispatcher.py	-> handleUserMessage[64] 	Did handle User243378934 message: kek
+[2022-11-03 16:04:26,938: INFO] StorageManager.py	-> logToUserHistory[109] 	243378934 Отправил сообщение: kek
+[2022-11-03 16:04:26,939: DEBUG] MenuDispatcher.py	-> handleUserMessage[85] 	Founded module: Onboarding
+[2022-11-03 16:04:26,939: DEBUG] Onboarding.py	-> handleUserMessage[47] 	User: 243378934
+[2022-11-03 16:06:30,564: INFO] main.py	-> <module>[35] 	Bot just started
+[2022-11-03 16:06:35,153: DEBUG] MenuDispatcher.py	-> handleUserMessage[64] 	Did handle User243378934 message: kek
+[2022-11-03 16:06:35,177: INFO] StorageManager.py	-> logToUserHistory[109] 	243378934 Отправил сообщение: kek
+[2022-11-03 16:06:35,183: DEBUG] MenuDispatcher.py	-> handleUserMessage[85] 	Founded module: Onboarding
+[2022-11-03 16:06:35,184: DEBUG] Onboarding.py	-> handleUserMessage[47] 	User: 243378934
+[2022-11-03 16:06:35,324: INFO] AdminMenu.py	-> handleUserMessage[25] 	Bot sheets data update start
+[2022-11-03 16:06:36,735: INFO] AdminMenu.py	-> handleUserMessage[30] 	Bot sheets data update complete
+[2022-11-03 17:02:23,645: INFO] main.py	-> <module>[35] 	Bot just started
+[2022-11-03 17:05:48,719: INFO] main.py	-> <module>[35] 	Bot just started
+[2022-11-03 17:06:24,503: INFO] main.py	-> <module>[35] 	Bot just started
+[2022-11-03 17:07:41,743: INFO] main.py	-> <module>[35] 	Bot just started
+[2022-11-03 19:30:55,654: INFO] main.py	-> <module>[35] 	Bot just started
+[2022-11-03 19:31:27,995: INFO] main.py	-> <module>[35] 	Bot just started
+[2022-11-03 19:31:37,644: INFO] main.py	-> <module>[35] 	Bot just started
+[2022-11-03 19:32:25,048: INFO] main.py	-> <module>[35] 	Bot just started
+[2022-11-03 19:32:49,917: DEBUG] MenuDispatcher.py	-> handleUserStart[21] 	Did handle User243378934 start message /start
+[2022-11-03 19:32:49,917: INFO] StorageManager.py	-> getUserInfo[71] 	User 243378934 dir does not exist
+[2022-11-03 19:32:49,919: INFO] StorageManager.py	-> logToUserHistory[111] 	243378934 Старт: Начало сохранения истории пользователя
+[2022-11-03 19:32:49,920: DEBUG] MenuDispatcher.py	-> handleUserStart[34] 	MenuModuleName.onboarding
+[2022-11-03 19:32:49,920: DEBUG] Onboarding.py	-> handleModuleStart[25] 	User: 243378934
+[2022-11-03 19:32:49,921: INFO] StorageManager.py	-> logToUserHistory[111] 	243378934 Начал смотреть онбординг: 
+[2022-11-03 19:33:45,471: INFO] main.py	-> <module>[35] 	Bot just started
+[2022-11-03 19:33:48,030: DEBUG] MenuDispatcher.py	-> handleUserStart[21] 	Did handle User243378934 start message /start
+[2022-11-03 19:33:48,030: INFO] StorageManager.py	-> getUserInfo[71] 	User 243378934 dir does not exist
+[2022-11-03 19:33:48,034: INFO] StorageManager.py	-> logToUserHistory[111] 	243378934 Старт: Начало сохранения истории пользователя
+[2022-11-03 19:33:48,035: DEBUG] MenuDispatcher.py	-> handleUserStart[34] 	MenuModuleName.onboarding
+[2022-11-03 19:33:48,035: DEBUG] Onboarding.py	-> handleModuleStart[25] 	User: 243378934
+[2022-11-03 19:33:48,035: INFO] StorageManager.py	-> logToUserHistory[111] 	243378934 Начал смотреть онбординг: 
+[2022-11-03 19:37:05,195: INFO] main.py	-> <module>[35] 	Bot just started
+[2022-11-03 19:37:09,716: DEBUG] MenuDispatcher.py	-> handleUserStart[21] 	Did handle User243378934 start message /start
+[2022-11-03 19:37:09,716: INFO] StorageManager.py	-> getUserInfo[72] 	User 243378934 dir does not exist
+[2022-11-03 19:37:09,717: DEBUG] StorageManager.py	-> writeJsonData[57] 	{'info': {'id': 243378934, 'is_bot': False, 'first_name': 'Антон', 'last_name': 'Текутов', 'username': 'MadL0rd', 'language_code': 'ru'}, 'isAdmin': False, 'state': {}, 'updateTime': {'date': '03.11.2022', 'time': '19:37:09', 'week': 44}}
+[2022-11-03 19:37:09,719: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Старт: Начало сохранения истории пользователя
+[2022-11-03 19:37:09,720: DEBUG] StorageManager.py	-> writeJsonData[57] 	[{'timestamp': {'date': '03.11.2022', 'time': '19:37:09', 'week': 44}, 'event': 'Старт', 'content': 'Начало сохранения истории пользователя'}]
+[2022-11-03 19:37:09,720: DEBUG] MenuDispatcher.py	-> handleUserStart[34] 	MenuModuleName.onboarding
+[2022-11-03 19:37:09,721: DEBUG] Onboarding.py	-> handleModuleStart[25] 	User: 243378934
+[2022-11-03 19:37:09,721: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Начал смотреть онбординг: 
+[2022-11-03 19:37:09,721: DEBUG] StorageManager.py	-> writeJsonData[57] 	[{'timestamp': {'date': '03.11.2022', 'time': '19:37:09', 'week': 44}, 'event': 'Старт', 'content': 'Начало сохранения истории пользователя'}, {'timestamp': {'date': '03.11.2022', 'time': '19:37:09', 'week': 44}, 'event': 'Начал смотреть онбординг', 'content': ''}]
+[2022-11-03 19:37:09,815: DEBUG] StorageManager.py	-> writeJsonData[57] 	{'info': {'id': 243378934, 'is_bot': False, 'first_name': 'Антон', 'last_name': 'Текутов', 'username': 'MadL0rd', 'language_code': 'ru'}, 'isAdmin': False, 'state': {'module': <MenuModuleName.onboarding: 'onboarding'>, 'data': {'previousPageIndex': 0}}, 'updateTime': {'date': '03.11.2022', 'time': '19:37:09', 'week': 44}}
+[2022-11-03 19:40:15,466: INFO] main.py	-> <module>[35] 	Bot just started
+[2022-11-03 19:40:18,099: DEBUG] MenuDispatcher.py	-> handleUserStart[21] 	Did handle User243378934 start message /start
+[2022-11-03 19:40:18,099: INFO] StorageManager.py	-> getUserInfo[72] 	User 243378934 dir does not exist
+[2022-11-03 19:40:18,103: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Старт: Начало сохранения истории пользователя
+[2022-11-03 19:40:18,104: DEBUG] MenuDispatcher.py	-> handleUserStart[34] 	onboarding
+[2022-11-03 19:40:18,104: DEBUG] Onboarding.py	-> handleModuleStart[25] 	User: 243378934
+[2022-11-03 19:40:18,104: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Начал смотреть онбординг: 
+[2022-11-03 19:41:15,266: INFO] main.py	-> <module>[35] 	Bot just started
+[2022-11-03 19:41:17,869: DEBUG] MenuDispatcher.py	-> handleUserStart[21] 	Did handle User243378934 start message /start
+[2022-11-03 19:41:17,870: INFO] StorageManager.py	-> getUserInfo[72] 	User 243378934 dir does not exist
+[2022-11-03 19:41:17,870: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Старт: Начало сохранения истории пользователя
+[2022-11-03 19:41:17,873: DEBUG] MenuDispatcher.py	-> handleUserStart[34] 	onboarding
+[2022-11-03 19:41:17,873: DEBUG] Onboarding.py	-> handleModuleStart[25] 	User: 243378934
+[2022-11-03 19:41:17,874: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Начал смотреть онбординг: 
+[2022-11-03 19:42:26,806: INFO] main.py	-> <module>[35] 	Bot just started
+[2022-11-03 19:42:34,801: DEBUG] MenuDispatcher.py	-> handleUserStart[21] 	Did handle User243378934 start message /start
+[2022-11-03 19:42:34,802: INFO] StorageManager.py	-> getUserInfo[72] 	User 243378934 dir does not exist
+[2022-11-03 19:42:34,802: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Старт: Начало сохранения истории пользователя
+[2022-11-03 19:42:34,809: DEBUG] MenuDispatcher.py	-> handleUserStart[34] 	onboarding
+[2022-11-03 19:42:34,809: DEBUG] Onboarding.py	-> handleModuleStart[25] 	User: 243378934
+[2022-11-03 19:42:34,809: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Начал смотреть онбординг: 
+[2022-11-03 19:42:37,529: DEBUG] MenuDispatcher.py	-> handleUserMessage[51] 	Did handle User243378934 message: Далее
+[2022-11-03 19:42:37,529: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Отправил сообщение: Далее
+[2022-11-03 19:42:37,530: DEBUG] MenuDispatcher.py	-> handleUserMessage[75] 	Error while finding module
+[2022-11-03 19:44:24,089: INFO] main.py	-> <module>[35] 	Bot just started
+[2022-11-03 19:44:28,718: DEBUG] MenuDispatcher.py	-> handleUserStart[21] 	Did handle User243378934 start message /start
+[2022-11-03 19:44:28,718: INFO] StorageManager.py	-> getUserInfo[72] 	User 243378934 dir does not exist
+[2022-11-03 19:44:28,719: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Старт: Начало сохранения истории пользователя
+[2022-11-03 19:44:28,720: DEBUG] MenuDispatcher.py	-> handleUserStart[34] 	onboarding
+[2022-11-03 19:44:28,720: DEBUG] Onboarding.py	-> handleModuleStart[25] 	User: 243378934
+[2022-11-03 19:44:28,721: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Начал смотреть онбординг: 
+[2022-11-03 19:44:31,569: DEBUG] MenuDispatcher.py	-> handleUserMessage[51] 	Did handle User243378934 message: Далее
+[2022-11-03 19:44:31,569: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Отправил сообщение: Далее
+[2022-11-03 19:44:31,572: DEBUG] MenuDispatcher.py	-> handleUserMessage[72] 	Founded module: onboarding
+[2022-11-03 19:44:31,572: DEBUG] Onboarding.py	-> handleUserMessage[49] 	User: 243378934
+[2022-11-03 19:44:35,242: DEBUG] MenuDispatcher.py	-> handleUserMessage[51] 	Did handle User243378934 message: Понятно. Начнем!
+[2022-11-03 19:44:35,242: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Отправил сообщение: Понятно. Начнем!
+[2022-11-03 19:44:35,243: DEBUG] MenuDispatcher.py	-> handleUserMessage[72] 	Founded module: onboarding
+[2022-11-03 19:44:35,244: DEBUG] Onboarding.py	-> handleUserMessage[49] 	User: 243378934
+[2022-11-03 19:44:35,244: DEBUG] MenuDispatcher.py	-> handleUserMessage[96] 	Error while finding module from completion
+[2022-11-03 19:44:35,244: DEBUG] MainMenu.py	-> handleModuleStart[25] 	User: 243378934
+[2022-11-03 19:44:35,244: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Начал смотреть онбординг: 
+[2022-11-03 19:48:37,548: INFO] main.py	-> <module>[35] 	Bot just started
+[2022-11-03 19:48:39,122: DEBUG] MenuDispatcher.py	-> handleUserStart[21] 	Did handle User243378934 start message /start
+[2022-11-03 19:48:39,123: INFO] StorageManager.py	-> getUserInfo[72] 	User 243378934 dir does not exist
+[2022-11-03 19:48:39,125: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Старт: Начало сохранения истории пользователя
+[2022-11-03 19:48:39,126: DEBUG] MenuDispatcher.py	-> handleUserStart[34] 	onboarding
+[2022-11-03 19:48:39,127: DEBUG] Onboarding.py	-> handleModuleStart[25] 	User: 243378934
+[2022-11-03 19:48:39,127: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Начал смотреть онбординг: 
+[2022-11-03 19:49:09,018: DEBUG] MenuDispatcher.py	-> handleUserMessage[51] 	Did handle User243378934 message: Далее
+[2022-11-03 19:49:09,019: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Отправил сообщение: Далее
+[2022-11-03 19:49:09,020: DEBUG] MenuDispatcher.py	-> handleUserMessage[72] 	Founded module: onboarding
+[2022-11-03 19:49:09,021: DEBUG] Onboarding.py	-> handleUserMessage[49] 	User: 243378934
+[2022-11-03 19:50:16,198: INFO] main.py	-> <module>[35] 	Bot just started
+[2022-11-03 19:50:21,907: DEBUG] MenuDispatcher.py	-> handleUserMessage[52] 	Did handle User243378934 message: Админ
+[2022-11-03 19:50:21,908: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Отправил сообщение: Админ
+[2022-11-03 19:50:21,909: DEBUG] MenuDispatcher.py	-> handleUserMessage[73] 	Founded module: onboarding
+[2022-11-03 19:50:21,909: DEBUG] Onboarding.py	-> handleUserMessage[49] 	User: 243378934
+[2022-11-03 19:50:24,348: DEBUG] MenuDispatcher.py	-> handleUserMessage[52] 	Did handle User243378934 message: kek
+[2022-11-03 19:50:24,348: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Отправил сообщение: kek
+[2022-11-03 19:50:24,349: DEBUG] MenuDispatcher.py	-> handleUserMessage[73] 	Founded module: onboarding
+[2022-11-03 19:50:24,349: DEBUG] Onboarding.py	-> handleUserMessage[49] 	User: 243378934
+[2022-11-03 19:50:24,439: INFO] AdminMenu.py	-> handleUserMessage[25] 	Bot sheets data update start
+[2022-11-03 19:50:25,950: INFO] AdminMenu.py	-> handleUserMessage[30] 	Bot sheets data update complete
+[2022-11-03 19:50:43,175: DEBUG] MenuDispatcher.py	-> handleUserMessage[52] 	Did handle User243378934 message: Понятно. Начнем!
+[2022-11-03 19:50:43,176: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Отправил сообщение: Понятно. Начнем!
+[2022-11-03 19:50:43,176: DEBUG] MenuDispatcher.py	-> handleUserMessage[73] 	Founded module: onboarding
+[2022-11-03 19:50:43,177: DEBUG] Onboarding.py	-> handleUserMessage[49] 	User: 243378934
+[2022-11-03 19:50:43,177: DEBUG] MenuDispatcher.py	-> handleUserMessage[97] 	Error while finding module from completion
+[2022-11-03 19:50:43,177: DEBUG] MainMenu.py	-> handleModuleStart[25] 	User: 243378934
+[2022-11-03 19:50:43,177: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Начал смотреть онбординг: 
+[2022-11-03 19:58:49,887: INFO] main.py	-> <module>[35] 	Bot just started
+[2022-11-03 20:19:17,427: INFO] main.py	-> <module>[35] 	Bot just started
+[2022-11-03 20:19:26,818: DEBUG] MenuDispatcher.py	-> handleUserMessage[52] 	Did handle User243378934 message: 0
+[2022-11-03 20:19:26,819: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Отправил сообщение: 0
+[2022-11-03 20:19:26,820: DEBUG] MenuDispatcher.py	-> handleUserMessage[73] 	Founded module: mainMenu
+[2022-11-03 20:19:26,820: DEBUG] MainMenu.py	-> handleUserMessage[55] 	User: 243378934
+[2022-11-03 20:20:29,119: INFO] main.py	-> <module>[35] 	Bot just started
+[2022-11-03 20:20:31,107: DEBUG] MenuDispatcher.py	-> handleUserMessage[52] 	Did handle User243378934 message: 0
+[2022-11-03 20:20:31,108: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Отправил сообщение: 0
+[2022-11-03 20:20:31,109: DEBUG] MenuDispatcher.py	-> handleUserMessage[69] 	Founded module: mainMenu
+[2022-11-03 20:20:31,109: DEBUG] MainMenu.py	-> handleUserMessage[55] 	User: 243378934
+[2022-11-03 20:20:35,411: DEBUG] MenuDispatcher.py	-> handleUserMessage[52] 	Did handle User243378934 message: Админ
+[2022-11-03 20:20:35,412: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Отправил сообщение: Админ
+[2022-11-03 20:20:35,414: DEBUG] MenuDispatcher.py	-> handleUserMessage[69] 	Founded module: mainMenu
+[2022-11-03 20:20:35,414: DEBUG] MainMenu.py	-> handleUserMessage[55] 	User: 243378934
+[2022-11-03 20:20:35,416: DEBUG] MenuDispatcher.py	-> handleUserMessage[90] 	Founded module: mainMenu
+[2022-11-03 20:20:35,416: DEBUG] AdminMenu.py	-> handleModuleStart[29] 	User: 243378934
+[2022-11-03 20:20:35,416: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Начал смотреть онбординг: 
+[2022-11-03 20:20:39,787: DEBUG] MenuDispatcher.py	-> handleUserMessage[52] 	Did handle User243378934 message: Unknown
+[2022-11-03 20:20:39,787: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Отправил сообщение: Unknown
+[2022-11-03 20:20:39,788: DEBUG] MenuDispatcher.py	-> handleUserMessage[69] 	Founded module: admin
+[2022-11-03 20:20:39,789: DEBUG] AdminMenu.py	-> handleUserMessage[52] 	User: 243378934
+[2022-11-03 20:20:39,789: INFO] AdminMenu.py	-> handleUserMessage[56] 	Tables creation start
+[2022-11-03 20:20:39,992: INFO] StorageManager.py	-> generateTotalTable[192] 	Total table generation start
+[2022-11-03 20:20:40,023: INFO] StorageManager.py	-> generateTotalTable[227] 	Total table generation completed
+[2022-11-03 20:20:40,199: INFO] StorageManager.py	-> generateStatisticTable[134] 	Statistic table generation start
+[2022-11-03 20:20:40,212: INFO] StorageManager.py	-> generateStatisticTable[151] 	Statistic table generation completed
+[2022-11-03 20:20:41,139: INFO] AdminMenu.py	-> handleUserMessage[67] 	Tables creation complete
+[2022-11-03 20:21:28,449: INFO] main.py	-> <module>[35] 	Bot just started
+[2022-11-03 20:21:34,380: DEBUG] MenuDispatcher.py	-> handleUserMessage[52] 	Did handle User243378934 message: Unknown
+[2022-11-03 20:21:34,380: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Отправил сообщение: Unknown
+[2022-11-03 20:21:34,382: DEBUG] MenuDispatcher.py	-> handleUserMessage[69] 	Founded module: admin
+[2022-11-03 20:21:34,382: DEBUG] AdminMenu.py	-> handleUserMessage[52] 	User: 243378934
+[2022-11-03 20:21:34,382: INFO] AdminMenu.py	-> handleUserMessage[56] 	Bot sheets data update start
+[2022-11-03 20:21:36,301: INFO] AdminMenu.py	-> handleUserMessage[63] 	Bot sheets data update complete
+[2022-11-03 20:21:49,657: DEBUG] MenuDispatcher.py	-> handleUserMessage[52] 	Did handle User243378934 message: Unknown
+[2022-11-03 20:21:49,657: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Отправил сообщение: Unknown
+[2022-11-03 20:21:49,658: DEBUG] MenuDispatcher.py	-> handleUserMessage[69] 	Founded module: admin
+[2022-11-03 20:21:49,659: DEBUG] AdminMenu.py	-> handleUserMessage[52] 	User: 243378934
+[2022-11-03 20:23:21,992: DEBUG] MenuDispatcher.py	-> handleUserMessage[52] 	Did handle User243378934 message: Unknown
+[2022-11-03 20:23:30,413: DEBUG] MenuDispatcher.py	-> handleUserMessage[52] 	Did handle User243378934 message: Unknown
+[2022-11-03 20:23:30,414: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Отправил сообщение: Unknown
+[2022-11-03 20:23:30,415: DEBUG] MenuDispatcher.py	-> handleUserMessage[72] 	Error while finding module
+[2022-11-03 20:23:30,415: DEBUG] MainMenu.py	-> handleModuleStart[25] 	User: 243378934
+[2022-11-03 20:23:30,416: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Начал смотреть онбординг: 
+[2022-11-03 20:26:09,609: INFO] main.py	-> <module>[35] 	Bot just started
+[2022-11-03 20:26:11,713: DEBUG] MenuDispatcher.py	-> handleUserMessage[52] 	Did handle User243378934 message: Unknown
+[2022-11-03 20:26:11,713: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Отправил сообщение: Unknown
+[2022-11-03 20:26:11,715: DEBUG] MenuDispatcher.py	-> handleUserMessage[72] 	Error while finding module
+[2022-11-03 20:26:11,715: DEBUG] MainMenu.py	-> handleModuleStart[25] 	User: 243378934
+[2022-11-03 20:26:11,717: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Начал смотреть онбординг: 
+[2022-11-03 20:26:11,722: DEBUG] MessageSender.py	-> answer[22] 	MessageSender sends: Твое состояние сейчас определяется твоими эмоциями и мыслями.
+
+Забот поможет тебе разобраться хитросплетении внутренних переживаний и успокоить их.
+[2022-11-03 20:27:12,163: INFO] main.py	-> <module>[35] 	Bot just started
+[2022-11-03 20:27:14,087: DEBUG] MenuDispatcher.py	-> handleUserMessage[52] 	Did handle User243378934 message: Unknown
+[2022-11-03 20:27:14,088: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Отправил сообщение: Unknown
+[2022-11-03 20:27:14,089: DEBUG] MenuDispatcher.py	-> handleUserMessage[72] 	Error while finding module
+[2022-11-03 20:27:14,089: DEBUG] MainMenu.py	-> handleModuleStart[25] 	User: 243378934
+[2022-11-03 20:27:14,089: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Начал смотреть онбординг: 
+[2022-11-03 20:27:14,092: DEBUG] MessageSender.py	-> answer[22] 	MessageSender sends: Твое состояние сейчас определяется твоими эмоциями и мыслями.
+
+Забот поможет тебе разобраться хитросплетении внутренних переживаний и успокоить их.
+[2022-11-03 20:28:24,920: INFO] main.py	-> <module>[35] 	Bot just started
+[2022-11-03 20:28:26,782: DEBUG] MenuDispatcher.py	-> handleUserMessage[52] 	Did handle User243378934 message: Unknown
+[2022-11-03 20:28:26,783: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Отправил сообщение: Unknown
+[2022-11-03 20:28:26,784: DEBUG] MenuDispatcher.py	-> handleUserMessage[72] 	Error while finding module
+[2022-11-03 20:28:26,785: DEBUG] MainMenu.py	-> handleModuleStart[25] 	User: 243378934
+[2022-11-03 20:28:26,785: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Начал смотреть онбординг: 
+[2022-11-03 20:28:26,787: DEBUG] MessageSender.py	-> answer[22] 	MessageSender sends: Твое состояние сейчас определяется твоими эмоциями и мыслями.
+
+Забот поможет тебе разобраться хитросплетении внутренних переживаний и успокоить их.
+[2022-11-03 20:29:29,123: INFO] main.py	-> <module>[35] 	Bot just started
+[2022-11-03 20:29:33,844: DEBUG] MenuDispatcher.py	-> handleUserMessage[45] 	Did handle User243378934 message: Админ
+[2022-11-03 20:29:33,845: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Отправил сообщение: Админ
+[2022-11-03 20:29:33,846: DEBUG] MenuDispatcher.py	-> handleUserMessage[60] 	Founded module: mainMenu
+[2022-11-03 20:29:33,847: DEBUG] MainMenu.py	-> handleUserMessage[55] 	User: 243378934
+[2022-11-03 20:29:33,852: DEBUG] MenuDispatcher.py	-> handleUserMessage[81] 	Founded module: mainMenu
+[2022-11-03 20:29:33,853: DEBUG] AdminMenu.py	-> handleModuleStart[29] 	User: 243378934
+[2022-11-03 20:29:33,854: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Начал смотреть онбординг: 
+[2022-11-03 20:29:48,587: DEBUG] MenuDispatcher.py	-> handleUserMessage[45] 	Did handle User243378934 message: Выгрузить данные
+[2022-11-03 20:29:48,587: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Отправил сообщение: Выгрузить данные
+[2022-11-03 20:29:48,588: DEBUG] MenuDispatcher.py	-> handleUserMessage[60] 	Founded module: admin
+[2022-11-03 20:29:48,589: DEBUG] AdminMenu.py	-> handleUserMessage[52] 	User: 243378934
+[2022-11-03 20:29:48,589: INFO] AdminMenu.py	-> handleUserMessage[72] 	Tables creation start
+[2022-11-03 20:29:48,682: INFO] StorageManager.py	-> generateTotalTable[192] 	Total table generation start
+[2022-11-03 20:29:48,698: INFO] StorageManager.py	-> generateTotalTable[227] 	Total table generation completed
+[2022-11-03 20:29:48,783: INFO] StorageManager.py	-> generateStatisticTable[134] 	Statistic table generation start
+[2022-11-03 20:29:48,808: INFO] StorageManager.py	-> generateStatisticTable[151] 	Statistic table generation completed
+[2022-11-03 20:29:49,327: INFO] AdminMenu.py	-> handleUserMessage[83] 	Tables creation complete
+[2022-11-03 20:29:51,136: DEBUG] MenuDispatcher.py	-> handleUserMessage[45] 	Did handle User243378934 message: Стянуть новые тексты из гугл таблицы
+[2022-11-03 20:29:51,137: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Отправил сообщение: Стянуть новые тексты из гугл таблицы
+[2022-11-03 20:29:51,138: DEBUG] MenuDispatcher.py	-> handleUserMessage[60] 	Founded module: admin
+[2022-11-03 20:29:51,138: DEBUG] AdminMenu.py	-> handleUserMessage[52] 	User: 243378934
+[2022-11-03 20:29:51,139: INFO] AdminMenu.py	-> handleUserMessage[56] 	Bot sheets data update start
+[2022-11-03 20:29:52,618: INFO] AdminMenu.py	-> handleUserMessage[63] 	Bot sheets data update complete
+[2022-11-03 20:34:34,253: INFO] main.py	-> <module>[35] 	Bot just started
+[2022-11-03 20:34:40,798: DEBUG] MenuDispatcher.py	-> handleUserMessage[45] 	Did handle User243378934 message: Emergency reboot
+[2022-11-03 20:34:40,799: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Отправил сообщение: Emergency reboot
+[2022-11-03 20:34:40,800: DEBUG] MenuDispatcher.py	-> handleUserMessage[60] 	Founded module: admin
+[2022-11-03 20:34:40,800: DEBUG] AdminMenu.py	-> handleUserMessage[53] 	User: 243378934
+[2022-11-03 20:34:54,589: INFO] main.py	-> <module>[35] 	Bot just started
+[2022-11-03 20:34:57,162: DEBUG] MenuDispatcher.py	-> handleUserMessage[45] 	Did handle User243378934 message: Emergency reboot
+[2022-11-03 20:34:57,162: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Отправил сообщение: Emergency reboot
+[2022-11-03 20:34:57,164: DEBUG] MenuDispatcher.py	-> handleUserMessage[60] 	Founded module: admin
+[2022-11-03 20:34:57,164: DEBUG] AdminMenu.py	-> handleUserMessage[53] 	User: 243378934
+[2022-11-03 20:34:57,165: DEBUG] MainMenu.py	-> handleModuleStart[25] 	User: 243378934
+[2022-11-03 20:34:57,165: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Начал смотреть онбординг: 
+[2022-11-03 20:35:41,099: INFO] main.py	-> <module>[35] 	Bot just started
+[2022-11-03 20:35:46,559: DEBUG] MenuDispatcher.py	-> handleUserMessage[45] 	Did handle User243378934 message: Emergency reboot
+[2022-11-03 20:35:46,560: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Отправил сообщение: Emergency reboot
+[2022-11-03 20:35:46,563: DEBUG] MenuDispatcher.py	-> handleUserMessage[60] 	Founded module: mainMenu
+[2022-11-03 20:35:46,564: DEBUG] MainMenu.py	-> handleUserMessage[55] 	User: 243378934
+[2022-11-03 20:35:46,565: DEBUG] MainMenu.py	-> handleModuleStart[25] 	User: 243378934
+[2022-11-03 20:35:46,565: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Начал смотреть онбординг: 
+[2022-11-03 20:36:13,995: INFO] main.py	-> <module>[35] 	Bot just started
+[2022-11-03 20:36:16,659: DEBUG] MenuDispatcher.py	-> handleUserMessage[45] 	Did handle User243378934 message: Админ
+[2022-11-03 20:36:16,659: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Отправил сообщение: Админ
+[2022-11-03 20:36:16,662: DEBUG] MenuDispatcher.py	-> handleUserMessage[60] 	Founded module: mainMenu
+[2022-11-03 20:36:16,668: DEBUG] MainMenu.py	-> handleUserMessage[55] 	User: 243378934
+[2022-11-03 20:36:18,475: DEBUG] MenuDispatcher.py	-> handleUserMessage[45] 	Did handle User243378934 message: Админ
+[2022-11-03 20:36:18,475: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Отправил сообщение: Админ
+[2022-11-03 20:36:18,477: DEBUG] MenuDispatcher.py	-> handleUserMessage[60] 	Founded module: mainMenu
+[2022-11-03 20:36:18,477: DEBUG] MainMenu.py	-> handleUserMessage[55] 	User: 243378934
+[2022-11-03 20:36:21,106: DEBUG] MenuDispatcher.py	-> handleUserMessage[45] 	Did handle User243378934 message: Я не хочу делать упражнения, просто хочу переключиться
+[2022-11-03 20:36:21,107: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Отправил сообщение: Я не хочу делать упражнения, просто хочу переключиться
+[2022-11-03 20:36:21,109: DEBUG] MenuDispatcher.py	-> handleUserMessage[60] 	Founded module: mainMenu
+[2022-11-03 20:36:21,109: DEBUG] MainMenu.py	-> handleUserMessage[55] 	User: 243378934
+[2022-11-03 20:36:21,110: DEBUG] MenuDispatcher.py	-> handleUserMessage[84] 	Error while finding module from completion
+[2022-11-03 20:36:21,110: DEBUG] MainMenu.py	-> handleModuleStart[25] 	User: 243378934
+[2022-11-03 20:36:21,110: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Начал смотреть онбординг: 
+[2022-11-03 20:36:24,835: DEBUG] MenuDispatcher.py	-> handleUserMessage[45] 	Did handle User243378934 message: Админ
+[2022-11-03 20:36:24,835: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Отправил сообщение: Админ
+[2022-11-03 20:36:24,837: DEBUG] MenuDispatcher.py	-> handleUserMessage[60] 	Founded module: mainMenu
+[2022-11-03 20:36:24,837: DEBUG] MainMenu.py	-> handleUserMessage[55] 	User: 243378934
+[2022-11-03 20:36:29,588: DEBUG] MenuDispatcher.py	-> handleUserMessage[45] 	Did handle User243378934 message: Emergency reboot
+[2022-11-03 20:36:29,588: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Отправил сообщение: Emergency reboot
+[2022-11-03 20:36:29,590: DEBUG] MenuDispatcher.py	-> handleUserMessage[60] 	Founded module: mainMenu
+[2022-11-03 20:36:29,590: DEBUG] MainMenu.py	-> handleUserMessage[55] 	User: 243378934
+[2022-11-03 20:36:29,591: DEBUG] MainMenu.py	-> handleModuleStart[25] 	User: 243378934
+[2022-11-03 20:36:29,591: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Начал смотреть онбординг: 
+[2022-11-03 20:36:44,954: DEBUG] MenuDispatcher.py	-> handleUserMessage[45] 	Did handle User243378934 message: Перейти к упражнениям
+[2022-11-03 20:36:44,955: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Отправил сообщение: Перейти к упражнениям
+[2022-11-03 20:36:44,957: DEBUG] MenuDispatcher.py	-> handleUserMessage[60] 	Founded module: mainMenu
+[2022-11-03 20:36:44,957: DEBUG] MainMenu.py	-> handleUserMessage[55] 	User: 243378934
+[2022-11-03 20:36:44,958: DEBUG] MenuDispatcher.py	-> handleUserMessage[84] 	Error while finding module from completion
+[2022-11-03 20:36:44,958: DEBUG] MainMenu.py	-> handleModuleStart[25] 	User: 243378934
+[2022-11-03 20:36:44,958: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Начал смотреть онбординг: 
+[2022-11-03 20:36:54,513: DEBUG] MenuDispatcher.py	-> handleUserMessage[45] 	Did handle User243378934 message: Перейти к упражнениям
+[2022-11-03 20:36:54,513: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Отправил сообщение: Перейти к упражнениям
+[2022-11-03 20:36:54,514: DEBUG] MenuDispatcher.py	-> handleUserMessage[60] 	Founded module: mainMenu
+[2022-11-03 20:36:54,515: DEBUG] MainMenu.py	-> handleUserMessage[55] 	User: 243378934
+[2022-11-03 20:36:54,516: DEBUG] MenuDispatcher.py	-> handleUserMessage[84] 	Error while finding module from completion
+[2022-11-03 20:36:54,517: DEBUG] MainMenu.py	-> handleModuleStart[25] 	User: 243378934
+[2022-11-03 20:36:54,517: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Начал смотреть онбординг: 
+[2022-11-03 20:36:57,646: DEBUG] MenuDispatcher.py	-> handleUserMessage[45] 	Did handle User243378934 message: Перейти к упражнениям
+[2022-11-03 20:36:57,647: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Отправил сообщение: Перейти к упражнениям
+[2022-11-03 20:36:57,650: DEBUG] MenuDispatcher.py	-> handleUserMessage[60] 	Founded module: mainMenu
+[2022-11-03 20:36:57,651: DEBUG] MainMenu.py	-> handleUserMessage[55] 	User: 243378934
+[2022-11-03 20:36:57,651: DEBUG] MenuDispatcher.py	-> handleUserMessage[84] 	Error while finding module from completion
+[2022-11-03 20:36:57,652: DEBUG] MainMenu.py	-> handleModuleStart[25] 	User: 243378934
+[2022-11-03 20:36:57,652: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Начал смотреть онбординг: 
+[2022-11-03 20:37:47,344: INFO] main.py	-> <module>[35] 	Bot just started
+[2022-11-03 20:37:50,762: DEBUG] MenuDispatcher.py	-> handleUserMessage[45] 	Did handle User243378934 message: Перейти к упражнениям
+[2022-11-03 20:37:50,763: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Отправил сообщение: Перейти к упражнениям
+[2022-11-03 20:37:50,767: DEBUG] MenuDispatcher.py	-> handleUserMessage[60] 	Founded module: mainMenu
+[2022-11-03 20:37:50,767: DEBUG] MainMenu.py	-> handleUserMessage[55] 	User: 243378934
+[2022-11-03 20:37:50,768: DEBUG] MenuDispatcher.py	-> handleUserMessage[81] 	Founded module: mainMenu
+[2022-11-03 20:37:50,768: DEBUG] Onboarding.py	-> handleModuleStart[25] 	User: 243378934
+[2022-11-03 20:37:50,768: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Начал смотреть онбординг: 
+[2022-11-03 20:37:52,526: DEBUG] MenuDispatcher.py	-> handleUserMessage[45] 	Did handle User243378934 message: Далее
+[2022-11-03 20:37:52,531: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Отправил сообщение: Далее
+[2022-11-03 20:37:52,532: DEBUG] MenuDispatcher.py	-> handleUserMessage[60] 	Founded module: onboarding
+[2022-11-03 20:37:52,532: DEBUG] Onboarding.py	-> handleUserMessage[49] 	User: 243378934
+[2022-11-03 20:37:53,589: DEBUG] MenuDispatcher.py	-> handleUserMessage[45] 	Did handle User243378934 message: Понятно. Начнем!
+[2022-11-03 20:37:53,589: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Отправил сообщение: Понятно. Начнем!
+[2022-11-03 20:37:53,591: DEBUG] MenuDispatcher.py	-> handleUserMessage[60] 	Founded module: onboarding
+[2022-11-03 20:37:53,591: DEBUG] Onboarding.py	-> handleUserMessage[49] 	User: 243378934
+[2022-11-03 20:37:53,591: DEBUG] MenuDispatcher.py	-> handleUserMessage[84] 	Error while finding module from completion
+[2022-11-03 20:37:53,592: DEBUG] MainMenu.py	-> handleModuleStart[25] 	User: 243378934
+[2022-11-03 20:37:53,592: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Начал смотреть онбординг: 
+[2022-11-03 20:37:55,995: DEBUG] MenuDispatcher.py	-> handleUserMessage[45] 	Did handle User243378934 message: Админ
+[2022-11-03 20:37:55,996: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Отправил сообщение: Админ
+[2022-11-03 20:37:55,997: DEBUG] MenuDispatcher.py	-> handleUserMessage[60] 	Founded module: mainMenu
+[2022-11-03 20:37:55,997: DEBUG] MainMenu.py	-> handleUserMessage[55] 	User: 243378934
+[2022-11-03 20:39:33,076: INFO] main.py	-> <module>[35] 	Bot just started
+[2022-11-03 20:39:39,065: DEBUG] MenuDispatcher.py	-> handleUserMessage[45] 	Did handle User243378934 message: Перейти к упражнениям
+[2022-11-03 20:39:39,066: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Отправил сообщение: Перейти к упражнениям
+[2022-11-03 20:39:39,070: DEBUG] MenuDispatcher.py	-> handleUserMessage[60] 	Founded module: mainMenu
+[2022-11-03 20:39:39,071: DEBUG] MainMenu.py	-> handleUserMessage[55] 	User: 243378934
+[2022-11-03 20:39:39,075: DEBUG] MenuDispatcher.py	-> handleUserMessage[81] 	Founded module: mainMenu
+[2022-11-03 20:39:39,075: DEBUG] Onboarding.py	-> handleModuleStart[25] 	User: 243378934
+[2022-11-03 20:39:39,075: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Начал смотреть онбординг: 
+[2022-11-03 20:39:40,344: DEBUG] MenuDispatcher.py	-> handleUserMessage[45] 	Did handle User243378934 message: Далее
+[2022-11-03 20:39:40,345: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Отправил сообщение: Далее
+[2022-11-03 20:39:40,346: DEBUG] MenuDispatcher.py	-> handleUserMessage[60] 	Founded module: onboarding
+[2022-11-03 20:39:40,347: DEBUG] Onboarding.py	-> handleUserMessage[49] 	User: 243378934
+[2022-11-03 20:39:41,149: DEBUG] MenuDispatcher.py	-> handleUserMessage[45] 	Did handle User243378934 message: Понятно. Начнем!
+[2022-11-03 20:39:41,149: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Отправил сообщение: Понятно. Начнем!
+[2022-11-03 20:39:41,151: DEBUG] MenuDispatcher.py	-> handleUserMessage[60] 	Founded module: onboarding
+[2022-11-03 20:39:41,152: DEBUG] Onboarding.py	-> handleUserMessage[49] 	User: 243378934
+[2022-11-03 20:39:41,152: DEBUG] MenuDispatcher.py	-> handleUserMessage[84] 	Error while finding module from completion
+[2022-11-03 20:39:41,152: DEBUG] MainMenu.py	-> handleModuleStart[25] 	User: 243378934
+[2022-11-03 20:39:41,152: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Начал смотреть онбординг: 
+[2022-11-03 20:39:42,725: DEBUG] MenuDispatcher.py	-> handleUserMessage[45] 	Did handle User243378934 message: Админ
+[2022-11-03 20:39:42,726: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Отправил сообщение: Админ
+[2022-11-03 20:39:42,727: DEBUG] MenuDispatcher.py	-> handleUserMessage[60] 	Founded module: mainMenu
+[2022-11-03 20:39:42,727: DEBUG] MainMenu.py	-> handleUserMessage[55] 	User: 243378934
+[2022-11-03 20:41:38,452: INFO] main.py	-> <module>[35] 	Bot just started
+[2022-11-03 20:41:43,827: DEBUG] MenuDispatcher.py	-> handleUserMessage[45] 	Did handle User243378934 message: Админ
+[2022-11-03 20:41:43,828: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Отправил сообщение: Админ
+[2022-11-03 20:41:43,830: DEBUG] MenuDispatcher.py	-> handleUserMessage[60] 	Founded module: mainMenu
+[2022-11-03 20:41:43,830: DEBUG] MainMenu.py	-> handleUserMessage[55] 	User: 243378934
+[2022-11-03 20:41:43,830: DEBUG] MenuDispatcher.py	-> handleUserMessage[81] 	Founded module: mainMenu
+[2022-11-03 20:41:43,831: DEBUG] AdminMenu.py	-> handleModuleStart[29] 	User: 243378934
+[2022-11-03 20:41:43,831: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Начал смотреть онбординг: 
+[2022-11-03 20:42:27,897: INFO] main.py	-> <module>[35] 	Bot just started
+[2022-11-03 20:42:32,126: DEBUG] MenuDispatcher.py	-> handleUserMessage[45] 	Did handle User243378934 message: Главное меню
+[2022-11-03 20:42:32,127: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Отправил сообщение: Главное меню
+[2022-11-03 20:42:32,128: DEBUG] MenuDispatcher.py	-> handleUserMessage[60] 	Founded module: admin
+[2022-11-03 20:42:32,129: DEBUG] AdminMenu.py	-> handleUserMessage[53] 	User: 243378934
+[2022-11-03 20:42:32,129: DEBUG] MenuDispatcher.py	-> handleUserMessage[81] 	Founded module: admin
+[2022-11-03 20:42:32,129: DEBUG] MainMenu.py	-> handleModuleStart[25] 	User: 243378934
+[2022-11-03 20:42:32,130: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Начал смотреть онбординг: 
+[2022-11-03 20:42:35,461: DEBUG] MenuDispatcher.py	-> handleUserMessage[45] 	Did handle User243378934 message: Админ
+[2022-11-03 20:42:35,461: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Отправил сообщение: Админ
+[2022-11-03 20:42:35,464: DEBUG] MenuDispatcher.py	-> handleUserMessage[60] 	Founded module: mainMenu
+[2022-11-03 20:42:35,464: DEBUG] MainMenu.py	-> handleUserMessage[55] 	User: 243378934
+[2022-11-03 20:42:35,465: DEBUG] MenuDispatcher.py	-> handleUserMessage[81] 	Founded module: mainMenu
+[2022-11-03 20:42:35,466: DEBUG] AdminMenu.py	-> handleModuleStart[29] 	User: 243378934
+[2022-11-03 20:42:35,466: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Начал смотреть онбординг: 
+[2022-11-03 20:42:38,185: DEBUG] MenuDispatcher.py	-> handleUserMessage[45] 	Did handle User243378934 message: Выгрузить данные
+[2022-11-03 20:42:38,186: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Отправил сообщение: Выгрузить данные
+[2022-11-03 20:42:38,189: DEBUG] MenuDispatcher.py	-> handleUserMessage[60] 	Founded module: admin
+[2022-11-03 20:42:38,189: DEBUG] AdminMenu.py	-> handleUserMessage[53] 	User: 243378934
+[2022-11-03 20:42:38,190: INFO] AdminMenu.py	-> handleUserMessage[73] 	Tables creation start
+[2022-11-03 20:42:38,300: INFO] StorageManager.py	-> generateTotalTable[192] 	Total table generation start
+[2022-11-03 20:42:38,318: INFO] StorageManager.py	-> generateTotalTable[227] 	Total table generation completed
+[2022-11-03 20:42:38,404: INFO] StorageManager.py	-> generateStatisticTable[134] 	Statistic table generation start
+[2022-11-03 20:42:38,421: INFO] StorageManager.py	-> generateStatisticTable[151] 	Statistic table generation completed
+[2022-11-03 20:42:39,332: INFO] AdminMenu.py	-> handleUserMessage[84] 	Tables creation complete
+[2022-11-03 20:42:40,678: DEBUG] MenuDispatcher.py	-> handleUserMessage[45] 	Did handle User243378934 message: Стянуть новые тексты из гугл таблицы
+[2022-11-03 20:42:40,679: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Отправил сообщение: Стянуть новые тексты из гугл таблицы
+[2022-11-03 20:42:40,684: DEBUG] MenuDispatcher.py	-> handleUserMessage[60] 	Founded module: admin
+[2022-11-03 20:42:40,684: DEBUG] AdminMenu.py	-> handleUserMessage[53] 	User: 243378934
+[2022-11-03 20:42:40,685: INFO] AdminMenu.py	-> handleUserMessage[57] 	Bot sheets data update start
+[2022-11-03 20:42:42,264: INFO] AdminMenu.py	-> handleUserMessage[64] 	Bot sheets data update complete
+[2022-11-03 20:42:46,259: DEBUG] MenuDispatcher.py	-> handleUserMessage[45] 	Did handle User243378934 message: Главное меню
+[2022-11-03 20:42:46,260: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Отправил сообщение: Главное меню
+[2022-11-03 20:42:46,263: DEBUG] MenuDispatcher.py	-> handleUserMessage[60] 	Founded module: admin
+[2022-11-03 20:42:46,266: DEBUG] AdminMenu.py	-> handleUserMessage[53] 	User: 243378934
+[2022-11-03 20:42:46,267: DEBUG] MenuDispatcher.py	-> handleUserMessage[81] 	Founded module: admin
+[2022-11-03 20:42:46,267: DEBUG] MainMenu.py	-> handleModuleStart[25] 	User: 243378934
+[2022-11-03 20:42:46,267: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Начал смотреть онбординг: 
+[2022-11-03 20:42:49,293: DEBUG] MenuDispatcher.py	-> handleUserMessage[45] 	Did handle User243378934 message: Админ
+[2022-11-03 20:42:49,316: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Отправил сообщение: Админ
+[2022-11-03 20:42:49,342: DEBUG] MenuDispatcher.py	-> handleUserMessage[60] 	Founded module: mainMenu
+[2022-11-03 20:42:49,342: DEBUG] MainMenu.py	-> handleUserMessage[55] 	User: 243378934
+[2022-11-03 20:42:49,343: DEBUG] MenuDispatcher.py	-> handleUserMessage[81] 	Founded module: mainMenu
+[2022-11-03 20:42:49,361: DEBUG] AdminMenu.py	-> handleModuleStart[29] 	User: 243378934
+[2022-11-03 20:42:49,362: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Начал смотреть онбординг: 
+[2022-11-03 20:43:04,334: DEBUG] MenuDispatcher.py	-> handleUserMessage[45] 	Did handle User243378934 message: Стянуть новые тексты из гугл таблицы
+[2022-11-03 20:43:04,335: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Отправил сообщение: Стянуть новые тексты из гугл таблицы
+[2022-11-03 20:43:04,336: DEBUG] MenuDispatcher.py	-> handleUserMessage[60] 	Founded module: admin
+[2022-11-03 20:43:04,337: DEBUG] AdminMenu.py	-> handleUserMessage[53] 	User: 243378934
+[2022-11-03 20:43:04,337: INFO] AdminMenu.py	-> handleUserMessage[57] 	Bot sheets data update start
+[2022-11-03 20:43:05,213: INFO] AdminMenu.py	-> handleUserMessage[64] 	Bot sheets data update complete
+[2022-11-03 20:43:06,171: DEBUG] MenuDispatcher.py	-> handleUserMessage[45] 	Did handle User243378934 message: Главное меню
+[2022-11-03 20:43:06,171: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Отправил сообщение: Главное меню
+[2022-11-03 20:43:06,173: DEBUG] MenuDispatcher.py	-> handleUserMessage[60] 	Founded module: admin
+[2022-11-03 20:43:06,173: DEBUG] AdminMenu.py	-> handleUserMessage[53] 	User: 243378934
+[2022-11-03 20:43:06,175: DEBUG] MenuDispatcher.py	-> handleUserMessage[81] 	Founded module: admin
+[2022-11-03 20:43:06,175: DEBUG] MainMenu.py	-> handleModuleStart[25] 	User: 243378934
+[2022-11-03 20:43:06,175: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Начал смотреть онбординг: 
+[2022-11-03 20:43:13,206: DEBUG] MenuDispatcher.py	-> handleUserMessage[45] 	Did handle User243378934 message: Админ
+[2022-11-03 20:43:13,207: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Отправил сообщение: Админ
+[2022-11-03 20:43:13,215: DEBUG] MenuDispatcher.py	-> handleUserMessage[60] 	Founded module: mainMenu
+[2022-11-03 20:43:13,215: DEBUG] MainMenu.py	-> handleUserMessage[55] 	User: 243378934
+[2022-11-03 20:43:13,216: DEBUG] MenuDispatcher.py	-> handleUserMessage[81] 	Founded module: mainMenu
+[2022-11-03 20:43:13,216: DEBUG] AdminMenu.py	-> handleModuleStart[29] 	User: 243378934
+[2022-11-03 20:43:13,216: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Начал смотреть онбординг: 
+[2022-11-03 20:43:15,637: DEBUG] MenuDispatcher.py	-> handleUserMessage[45] 	Did handle User243378934 message: Стянуть новые тексты из гугл таблицы
+[2022-11-03 20:43:15,638: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Отправил сообщение: Стянуть новые тексты из гугл таблицы
+[2022-11-03 20:43:15,639: DEBUG] MenuDispatcher.py	-> handleUserMessage[60] 	Founded module: admin
+[2022-11-03 20:43:15,639: DEBUG] AdminMenu.py	-> handleUserMessage[53] 	User: 243378934
+[2022-11-03 20:43:15,640: INFO] AdminMenu.py	-> handleUserMessage[57] 	Bot sheets data update start
+[2022-11-03 20:43:16,547: INFO] AdminMenu.py	-> handleUserMessage[64] 	Bot sheets data update complete
+[2022-11-03 20:43:55,828: DEBUG] MenuDispatcher.py	-> handleUserMessage[45] 	Did handle User243378934 message: Главное меню
+[2022-11-03 20:43:55,828: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Отправил сообщение: Главное меню
+[2022-11-03 20:43:55,833: DEBUG] MenuDispatcher.py	-> handleUserMessage[60] 	Founded module: admin
+[2022-11-03 20:43:55,833: DEBUG] AdminMenu.py	-> handleUserMessage[53] 	User: 243378934
+[2022-11-03 20:43:55,833: DEBUG] MenuDispatcher.py	-> handleUserMessage[81] 	Founded module: admin
+[2022-11-03 20:43:55,833: DEBUG] MainMenu.py	-> handleModuleStart[25] 	User: 243378934
+[2022-11-03 20:43:55,834: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Начал смотреть онбординг: 
+[2022-11-03 20:43:58,027: DEBUG] MenuDispatcher.py	-> handleUserMessage[45] 	Did handle User243378934 message: Мне просто нужно отдохнуть
+[2022-11-03 20:43:58,027: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Отправил сообщение: Мне просто нужно отдохнуть
+[2022-11-03 20:43:58,031: DEBUG] MenuDispatcher.py	-> handleUserMessage[60] 	Founded module: mainMenu
+[2022-11-03 20:43:58,031: DEBUG] MainMenu.py	-> handleUserMessage[55] 	User: 243378934
+[2022-11-03 20:43:58,033: DEBUG] MenuDispatcher.py	-> handleUserMessage[81] 	Founded module: mainMenu
+[2022-11-03 20:43:58,033: DEBUG] Onboarding.py	-> handleModuleStart[25] 	User: 243378934
+[2022-11-03 20:43:58,033: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Начал смотреть онбординг: 
+[2022-11-03 20:43:59,534: DEBUG] MenuDispatcher.py	-> handleUserMessage[45] 	Did handle User243378934 message: Далее
+[2022-11-03 20:43:59,534: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Отправил сообщение: Далее
+[2022-11-03 20:43:59,540: DEBUG] MenuDispatcher.py	-> handleUserMessage[60] 	Founded module: onboarding
+[2022-11-03 20:43:59,540: DEBUG] Onboarding.py	-> handleUserMessage[49] 	User: 243378934
+[2022-11-03 20:44:00,031: DEBUG] MenuDispatcher.py	-> handleUserMessage[45] 	Did handle User243378934 message: Понятно. Начнем!
+[2022-11-03 20:44:00,031: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Отправил сообщение: Понятно. Начнем!
+[2022-11-03 20:44:00,033: DEBUG] MenuDispatcher.py	-> handleUserMessage[60] 	Founded module: onboarding
+[2022-11-03 20:44:00,033: DEBUG] Onboarding.py	-> handleUserMessage[49] 	User: 243378934
+[2022-11-03 20:44:00,033: DEBUG] MenuDispatcher.py	-> handleUserMessage[84] 	Error while finding module from completion
+[2022-11-03 20:44:00,033: DEBUG] MainMenu.py	-> handleModuleStart[25] 	User: 243378934
+[2022-11-03 20:44:00,033: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Начал смотреть онбординг: 
+[2022-11-03 20:44:02,821: DEBUG] MenuDispatcher.py	-> handleUserMessage[45] 	Did handle User243378934 message: Я не хочу делать упражнения, просто хочу переключиться
+[2022-11-03 20:44:02,823: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Отправил сообщение: Я не хочу делать упражнения, просто хочу переключиться
+[2022-11-03 20:44:02,825: DEBUG] MenuDispatcher.py	-> handleUserMessage[60] 	Founded module: mainMenu
+[2022-11-03 20:44:02,825: DEBUG] MainMenu.py	-> handleUserMessage[55] 	User: 243378934
+[2022-11-03 20:44:02,826: DEBUG] MenuDispatcher.py	-> handleUserMessage[81] 	Founded module: mainMenu
+[2022-11-03 20:44:02,826: DEBUG] Onboarding.py	-> handleModuleStart[25] 	User: 243378934
+[2022-11-03 20:44:02,826: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Начал смотреть онбординг: 
+[2022-11-03 20:44:03,990: DEBUG] MenuDispatcher.py	-> handleUserMessage[45] 	Did handle User243378934 message: Далее
+[2022-11-03 20:44:03,990: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Отправил сообщение: Далее
+[2022-11-03 20:44:03,992: DEBUG] MenuDispatcher.py	-> handleUserMessage[60] 	Founded module: onboarding
+[2022-11-03 20:44:03,992: DEBUG] Onboarding.py	-> handleUserMessage[49] 	User: 243378934
+[2022-11-03 20:44:04,817: DEBUG] MenuDispatcher.py	-> handleUserMessage[45] 	Did handle User243378934 message: Понятно. Начнем!
+[2022-11-03 20:44:04,818: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Отправил сообщение: Понятно. Начнем!
+[2022-11-03 20:44:04,821: DEBUG] MenuDispatcher.py	-> handleUserMessage[60] 	Founded module: onboarding
+[2022-11-03 20:44:04,822: DEBUG] Onboarding.py	-> handleUserMessage[49] 	User: 243378934
+[2022-11-03 20:44:04,823: DEBUG] MenuDispatcher.py	-> handleUserMessage[84] 	Error while finding module from completion
+[2022-11-03 20:44:04,823: DEBUG] MainMenu.py	-> handleModuleStart[25] 	User: 243378934
+[2022-11-03 20:44:04,823: INFO] StorageManager.py	-> logToUserHistory[112] 	243378934 Начал смотреть онбординг: 
