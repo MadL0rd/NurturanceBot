@@ -23,7 +23,7 @@ class MainMenu(MenuModuleInterface):
     async def handleModuleStart(self, ctx: Message, msg: MessageSender) -> Completion:
 
         log.debug(f"User: {ctx.from_user.id}")
-        storage.logToUserHistory(ctx.from_user, event.startModuleOnboarding, "")
+        storage.logToUserHistory(ctx.from_user, event.startModuleMainMenu, "")
 
         keyboardMarkup = ReplyKeyboardMarkup(
             resize_keyboard=True
@@ -49,32 +49,7 @@ class MainMenu(MenuModuleInterface):
             moduleData={ "startMessageDidSent" : True }
         )
 
-    async def handleModuleNews(self, ctx: Message, msg: MessageSender) -> Completion:
-
-        log.debug(f"User: {ctx.from_user.id}")
-        storage.logToUserHistory(ctx.from_user, event.startModuleNews, "")
-
-        keyboardMarkup = ReplyKeyboardMarkup(
-            resize_keyboard=True
-        )
-        for buttonText in self.menuDict:
-            keyboardMarkup.add(KeyboardButton(buttonText))
-
-        userTg = ctx.from_user
-        userInfo = storage.getUserInfo(userTg)
-
-        await msg.answer(
-            ctx = ctx,
-            text = textConstant.menuButtonRandomNews.get,
-            keyboardMarkup = keyboardMarkup
-        )
-
-        return Completion(
-            inProgress=True
-        )
-
-
-    async def handleUserMessage(self, ctx: Message, data: dict, msg: MessageSender) -> Completion:
+    async def handleUserMessage(self, ctx: Message, msg: MessageSender, data: dict) -> Completion:
 
         log.debug(f"User: {ctx.from_user.id}")
 
@@ -103,11 +78,11 @@ class MainMenu(MenuModuleInterface):
 
     @property
     def menuDict(self) -> dict:
+        # TODO: update after modules implementation
         return {
             # textConstant.menuButtonExercises.get: MenuModuleName.exercises.get,
-            # textConstant.menuButtonRandomNews.get: MenuModuleName.randomNews.get,
             # textConstant.menuButtonRelax.get: MenuModuleName.relax.get
             textConstant.menuButtonExercises.get: MenuModuleName.onboarding.get,
-            textConstant.menuButtonRandomNews.get: MenuModuleName.onboarding.get,
+            textConstant.menuButtonRandomNews.get: MenuModuleName.randomNews.get,
             textConstant.menuButtonRelax.get: MenuModuleName.onboarding.get
         }

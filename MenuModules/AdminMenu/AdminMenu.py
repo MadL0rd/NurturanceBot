@@ -48,9 +48,12 @@ class AdminMenu(MenuModuleInterface):
         )
 
 
-    async def handleUserMessage(self, ctx: Message, data: dict, msg: MessageSender) -> Completion:
+    async def handleUserMessage(self, ctx: Message, msg: MessageSender, data: dict) -> Completion:
 
         log.debug(f"User: {ctx.from_user.id}")
+
+        if ctx.text == textConstant.menuButtonReturnToMainMenu.get:
+            return self.complete(nextModuleName=MenuModuleName.mainMenu.get)
         
         if ctx.text == "kek" or ctx.text == textConstant.adminMenuButtonReloadData.get:
             
@@ -89,9 +92,6 @@ class AdminMenu(MenuModuleInterface):
                 didHandledUserInteraction=True
             )
 
-        if ctx.text == textConstant.menuButtonReturnToMainMenu.get:
-            return self.complete(nextModuleName=MenuModuleName.mainMenu.get)
-        
         return self.canNotHandle(data)
 
     async def handleCallback(self, ctx: CallbackQuery, data: dict, msg: MessageSender) -> Completion:

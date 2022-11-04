@@ -73,6 +73,7 @@ async def handleUserMessage(ctx: Message):
     if completion is None:
         moduleNext = menu.mainMenu.get
     elif completion.inProgress == False:
+        log.debug(f"Module {module.name} completed")
         try:
             menuModuleName = completion.nextModuleNameIfCompleted
             moduleNext = [module.get for module in menu if module.get.name == menuModuleName][0]

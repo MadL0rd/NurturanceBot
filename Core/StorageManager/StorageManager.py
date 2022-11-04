@@ -22,7 +22,7 @@ class UserHistoryEvent(enum.Enum):
     becomeAdmin = "Стал администратором"
     startModuleOnboarding = "Начал смотреть онбординг"
     startModuleMainMenu = "Перешел в главное меню" 
-    startModuleNews =  'Запросил новость'
+    startModuleNews =  "Запросил новость"
 
 class PathConfig:
 

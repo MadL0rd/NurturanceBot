@@ -18,6 +18,10 @@ class UniqueMessagesKeys(enum.Enum):
     adminMenuButtonLoadData = "adminMenuButtonLoadData"
     adminMenuButtonReloadData = "adminMenuButtonReloadData"
 
+    randomNewsStartText = "randomNewsStartText"
+    randomNewsButtonNews = "randomNewsButtonNews"
+    randomNewsAllNewsWasShown = "randomNewsAllNewsWasShown"
+
     @property
     def get(self) -> str:
         messagesKeys = storage.getJsonData(storage.path.botContentUniqueMessages)

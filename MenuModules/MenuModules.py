@@ -3,6 +3,7 @@ from MenuModules.Onboarding.Onboarding import Onboarding
 from MenuModules.MainMenu.MainMenu import MainMenu
 from MenuModules.MenuModuleInterface import MenuModuleInterface
 from MenuModules.AdminMenu.AdminMenu import AdminMenu
+from MenuModules.RandomNews.RandomNews import RandomNews
 
 class MenuModules(enum.Enum):
 
@@ -10,7 +11,7 @@ class MenuModules(enum.Enum):
     mainMenu: MenuModuleInterface = MainMenu()
     adminMenu: MenuModuleInterface = AdminMenu()
     exercises: MenuModuleInterface = Onboarding()
-    randomNews: MenuModuleInterface = Onboarding()
+    randomNews: MenuModuleInterface = RandomNews()
     relax: MenuModuleInterface = Onboarding()
 
     @property
