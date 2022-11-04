@@ -80,9 +80,8 @@ class MainMenu(MenuModuleInterface):
     def menuDict(self) -> dict:
         # TODO: update after modules implementation
         return {
-            # textConstant.menuButtonExercises.get: MenuModuleName.exercises.get,
             # textConstant.menuButtonRelax.get: MenuModuleName.relax.get
-            textConstant.menuButtonExercises.get: MenuModuleName.onboarding.get,
+            textConstant.menuButtonExercises.get: MenuModuleName.exercises.get,
             textConstant.menuButtonRandomNews.get: MenuModuleName.randomNews.get,
             textConstant.menuButtonRelax.get: MenuModuleName.onboarding.get
         }

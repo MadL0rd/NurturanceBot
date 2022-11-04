@@ -23,8 +23,9 @@ class UserHistoryEvent(enum.Enum):
     startModuleOnboarding = "Начал смотреть онбординг"
     startModuleMainMenu = "Перешел в главное меню" 
     startModuleNews =  "Запросил новость"
-    startModuleTaskEmotions = 'Запросил упражнение по эмоциям'
-    startModuleTaskThoughts = 'Запросил упражнение по мыслям'
+    startModuleExercises =  "Перешел к упражнениям"
+    chooseExerciseEmotion =  "Начал прорабатывать эмоцию"
+    chooseExerciseThought =  "Начал прорабатывать мысль"
 
 
 class PathConfig:
@@ -142,7 +143,9 @@ def generateStatisticTable():
 
     statisticEvents = [
         UserHistoryEvent.start,
-        UserHistoryEvent.sendMessage
+        UserHistoryEvent.startModuleExercises,
+        UserHistoryEvent.chooseExerciseEmotion,
+        UserHistoryEvent.chooseExerciseThought        
     ]
 
     dateConfig = getJsonData(path.botContentPrivateConfig)["startDate"]

@@ -8,6 +8,7 @@ import json
 import enum
 
 import Core.StorageManager.StorageManager as storage
+from logger import logger as log
 
 class PageNames(enum.Enum):
 
@@ -57,6 +58,7 @@ def updateUniqueMessages():
         del values[0]
 
     content = {}
+    log.debug(values)
     for line in values:
         try:
             if line[0] not in content and line[0] != "":

@@ -5,6 +5,7 @@ from aiogram.types import ReplyKeyboardRemove, ReplyKeyboardMarkup, KeyboardButt
 from main import bot
 from Core.StorageManager.UniqueMessagesKeys import textConstant
 from logger import logger as log
+from main import bot
 
 class MessageSender:
 
@@ -33,3 +34,6 @@ class MessageSender:
             nknownText,
             parse_mode=ParseMode.MARKDOWN
         )
+    
+    async def sendPhoto(self, ctx: Message, url: str):
+        await bot.send_photo(chat_id=ctx.chat.id, photo=url)
