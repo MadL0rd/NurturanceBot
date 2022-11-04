@@ -4,6 +4,7 @@ import Core.StorageManager.StorageManager as storage
 from Core.StorageManager.StorageManager import UserHistoryEvent as event
 from Core.MessageSender import MessageSender
 from Core.StorageManager.UniqueMessagesKeys import textConstant
+from pathlib import Path
 
 from MenuModules.MenuModuleInterface import MenuModuleInterface, MenuModuleHandlerCompletion as Completion
 from MenuModules.MenuModuleName import MenuModuleName
@@ -129,10 +130,18 @@ class Exercises(MenuModuleInterface):
                 intensityValue = emojiNumbers[ctx.text]
                 data["intensityValue"] = intensityValue
 
+                exercises = {
+                    "currentIndex": 0
+                }
+                exercisesFile: Path
+                # questionsFile = storage.path.
                 if data["exerciseType"] == "emotion":
                     storage.logToUserHistory(ctx.from_user, event.assessmentEmotion, f"{intensityValue}")
+                    exercisesFile = storage.path.botContentEmotions
+
                 if data["exerciseType"] == "thought":
                     storage.logToUserHistory(ctx.from_user, event.assessmentThought, f"{intensityValue}")
+                    exercisesFile = storage.path.botContentEmotions
 
                 storage.logToUserHistory(ctx.from_user, event.chooseExerciseEmotion, ctx.text)
                 return Completion(

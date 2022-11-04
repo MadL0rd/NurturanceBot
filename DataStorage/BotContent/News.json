@@ -1,14 +1,17 @@
 [
   {
-    "text": "1",
-    "picture": "Новость №раз"
+    "ID": "1",
+    "text": "Новость №раз",
+    "picture": "https://deadlylaugh.ru/group/id-111111134/photo/w/64f7f06a655ef7067de40ad8c8ceb4bd.jpg"
   },
   {
-    "text": "2",
-    "picture": "Новость №два"
+    "ID": "2",
+    "text": "Новость №два",
+    "picture": "https://deadlylaugh.ru/group/id-111111134/photo/w/64f7f06a655ef7067de40ad8c8ceb4bd.jpg"
   },
   {
-    "text": "3",
-    "picture": "Новость №три"
+    "ID": "3",
+    "text": "Новость №три",
+    "picture": "https://deadlylaugh.ru/group/id-111111134/photo/w/64f7f06a655ef7067de40ad8c8ceb4bd.jpg"
   }
 ]
