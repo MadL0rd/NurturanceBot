@@ -53,6 +53,7 @@ class Exercises(MenuModuleInterface):
         
         messageText = ctx.text
 
+        # Choose exercise type if needed
         if "exerciseType" not in data:
             if messageText == textConstant.exercisesButtonEmotion.get:
                 await msg.sendPhoto(ctx, textConstant.exercisesEmotionEmotionsListImage.get)
@@ -95,6 +96,7 @@ class Exercises(MenuModuleInterface):
                 
             return self.canNotHandle(data)
 
+        # Enter emotion or thought
         if "exerciseUserValue" not in data:
             data["exerciseUserValue"] = ctx.text
 
@@ -115,6 +117,7 @@ class Exercises(MenuModuleInterface):
                 moduleData=data
             )
 
+        # Emotion or thought intensity
         if "intensityValue" not in data:
             if ctx.text in emojiNumbers:
                 
