@@ -122,3 +122,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+
+# Custom
+logs.txt
+/DataStorage/Users
+.xlsx
