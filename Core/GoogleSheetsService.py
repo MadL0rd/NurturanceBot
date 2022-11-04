@@ -14,6 +14,8 @@ class PageNames(enum.Enum):
     uniqueMessages = "УникальныеСообщения"
     onboarding = "Онбординг"
     news = "Новости"
+    taskEmotions ='УпражненияЭмоции'
+    taskThoughts = 'УпражненияМысли'
 
 pages = PageNames
 
@@ -56,8 +58,11 @@ def updateUniqueMessages():
 
     content = {}
     for line in values:
-        if line[0] not in content and line[0] != "":
-            content[line[0]] = line[1]
+        try:
+            if line[0] not in content and line[0] != "":
+                content[line[0]] = line[1]
+        except:
+            continue
 
     storage.writeJsonData(
         storage.path.botContentUniqueMessages, 
@@ -91,11 +96,54 @@ def updateNews():
     content = []
     for line in values:
         content.append({
-            "text": line[0],
-            "picture": line[1]
+            "ID": line[0],
+            "text": line[1],
+            "picture": line[2]
         })
 
     storage.writeJsonData(
         storage.path.botContentNews, 
+        content
+    )
+
+def updatetaskEmotions():
+
+    values = getContent(pages.taskEmotions, "A1:E100")
+    if len(values) > 0:
+        del values[0]
+
+    content = []
+    for line in values:
+        content.append({
+            "ID": line[0],
+            "text": line[1],
+            "picture": line[2],
+            "audio": line[3],
+            "video": line[4]
+        })
+
+    storage.writeJsonData(
+        storage.path.botContentEmotions, 
+        content
+    )
+
+def updatetaskThoughts():
+
+    values = getContent(pages.taskThoughts, "A1:E100")
+    if len(values) > 0:
+        del values[0]
+
+    content = []
+    for line in values:
+        content.append({
+            "ID": line[0],
+            "text": line[1],
+            "picture": line[2],
+            "audio": line[3],
+            "video": line[4]
+        })
+
+    storage.writeJsonData(
+        storage.path.botContentThoughts, 
         content
     )
