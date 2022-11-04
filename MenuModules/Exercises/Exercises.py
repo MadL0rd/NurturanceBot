@@ -125,13 +125,22 @@ class Exercises(MenuModuleInterface):
 
         if "intensityValue" not in data:
             if ctx.text in emojiNumbers:
-                data["intensityValue"] = emojiNumbers[ctx.text]
+                
+                intensityValue = emojiNumbers[ctx.text]
+                data["intensityValue"] = intensityValue
+
+                if data["exerciseType"] == "emotion":
+                    storage.logToUserHistory(ctx.from_user, event.assessmentEmotion, f"{intensityValue}")
+                if data["exerciseType"] == "thought":
+                    storage.logToUserHistory(ctx.from_user, event.assessmentThought, f"{intensityValue}")
+
+                storage.logToUserHistory(ctx.from_user, event.chooseExerciseEmotion, ctx.text)
                 return Completion(
                     inProgress=True,
                     didHandledUserInteraction=True,
                     moduleData=data
                 )
-
+            
             return self.canNotHandle(data)
 
         
@@ -169,3 +178,6 @@ emojiNumbers = {
     "9️⃣": 9,
     "🔟": 10
 }
+
+def getRandomTaskFrom():
+    

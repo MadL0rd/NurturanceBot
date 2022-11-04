@@ -26,6 +26,8 @@ class UserHistoryEvent(enum.Enum):
     startModuleExercises =  "Перешел к упражнениям"
     chooseExerciseEmotion =  "Начал прорабатывать эмоцию"
     chooseExerciseThought =  "Начал прорабатывать мысль"
+    assessmentEmotion = "Оценил силу эмоции"
+    assessmentThought = "Оценил силу мысли"
 
 
 class PathConfig:
