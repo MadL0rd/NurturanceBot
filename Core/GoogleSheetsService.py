@@ -58,7 +58,7 @@ def updateUniqueMessages():
         del values[0]
 
     content = {}
-    log.debug(values)
+    #log.debug(values)
     for line in values:
         try:
             if line[0] not in content and line[0] != "":
@@ -91,17 +91,31 @@ def updateOnboarding():
 
 def updateNews():
 
-    values = getContent(pages.news, "A1:B100")
-    if len(values) > 0:
-        del values[0]
-
+    values = getContent(pages.news, "A2:C100")
+    
     content = []
     for line in values:
-        content.append({
-            "ID": line[0],
-            "text": line[1],
-            "picture": line[2]
-        })
+        exercise = {}
+        try:
+            if line[0] != "":
+                exercise["ID"] = line[0]
+            else: 
+                continue
+        except:
+            continue
+
+        try:
+            if line[1] != "":
+                exercise["text"] = line[1]
+        except:
+            print("Argument text not found")
+
+        try:
+            if line[2] != "":
+                exercise["picture"] = line[2]
+        except:
+            print("Argument picture not found")            
+        content.append(exercise)
 
     storage.writeJsonData(
         storage.path.botContentNews, 
@@ -110,19 +124,44 @@ def updateNews():
 
 def updatetaskEmotions():
 
-    values = getContent(pages.taskEmotions, "A1:E100")
-    if len(values) > 0:
-        del values[0]
-
+    values = getContent(pages.taskEmotions, "A2:E100")
+    
     content = []
     for line in values:
-        content.append({
-            "ID": line[0],
-            "text": line[1],
-            "picture": line[2],
-            "audio": line[3],
-            "video": line[4]
-        })
+        exercise = {}
+        try:
+            if line[0] != "":
+                exercise["ID"] = line[0]
+            else: 
+                continue
+        except:
+            continue
+
+        try:
+            if line[1] != "":
+                exercise["text"] = line[1]
+        except:
+            print("Argument text not found")
+
+        try:
+            if line[2] != "":
+                exercise["picture"] = line[2]
+        except:
+            print("Argument picture not found")
+
+        try:
+            if line[3] != "":
+                exercise["audio"] = line[3]
+        except:
+            print("Argument audio not found")
+
+        try:
+            if line[4] != "":
+                exercise["video"] = line[4]
+        except:
+            print("Argument video not found")
+            
+        content.append(exercise)
 
     storage.writeJsonData(
         storage.path.botContentEmotions, 
@@ -131,19 +170,44 @@ def updatetaskEmotions():
 
 def updatetaskThoughts():
 
-    values = getContent(pages.taskThoughts, "A1:E100")
-    if len(values) > 0:
-        del values[0]
-
+    values = getContent(pages.taskThoughts, "A2:E100")
+    
     content = []
     for line in values:
-        content.append({
-            "ID": line[0],
-            "text": line[1],
-            "picture": line[2],
-            "audio": line[3],
-            "video": line[4]
-        })
+        exercise = {}
+        try:
+            if line[0] != "":
+                exercise["ID"] = line[0]
+            else: 
+                continue
+        except:
+            continue
+
+        try:
+            if line[1] != "":
+                exercise["text"] = line[1]
+        except:
+            print("Argument text not found")
+
+        try:
+            if line[2] != "":
+                exercise["picture"] = line[2]
+        except:
+            print("Argument picture not found")
+
+        try:
+            if line[3] != "":
+                exercise["audio"] = line[3]
+        except:
+            print("Argument audio not found")
+
+        try:
+            if line[4] != "":
+                exercise["video"] = line[4]
+        except:
+            print("Argument video not found")
+            
+        content.append(exercise)
 
     storage.writeJsonData(
         storage.path.botContentThoughts, 
