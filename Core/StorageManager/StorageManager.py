@@ -43,6 +43,7 @@ class PathConfig:
     botContentNews = botContentDir / "News.json"
     botContentEmotions = botContentDir / "Emotions.json"
     botContentThoughts = botContentDir / "Thoughts.json"
+    botContentQuestions = botContentDir / "Question.json"
 
     totalHistoryTableFile = baseDir / "TotalHistory.xlsx"
     statisticHistoryTableFile = baseDir / "StatisticalHistory.xlsx"
