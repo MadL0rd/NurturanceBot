@@ -23,6 +23,9 @@ class UserHistoryEvent(enum.Enum):
     startModuleOnboarding = "Начал смотреть онбординг"
     startModuleMainMenu = "Перешел в главное меню" 
     startModuleNews =  "Запросил новость"
+    startModuleTaskEmotions = 'Запросил упражнение по эмоциям'
+    startModuleTaskThoughts = 'Запросил упражнение по мыслям'
+
 
 class PathConfig:
 
@@ -35,6 +38,8 @@ class PathConfig:
     botContentUniqueMessages = botContentDir/ "UniqueTextMessages.json"
     botContentPrivateConfig = botContentDir / "PrivateConfig.json"
     botContentNews = botContentDir / "News.json"
+    botContentEmotions = botContentDir / "Emotions.json"
+    botContentThoughts = botContentDir / "Thoughts.json"
 
     totalHistoryTableFile = baseDir / "TotalHistory.xlsx"
     statisticHistoryTableFile = baseDir / "StatisticalHistory.xlsx"

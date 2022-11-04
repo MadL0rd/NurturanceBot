@@ -96,6 +96,7 @@ class NewsPage:
     picture: str
 
     def __init__(self, data: dict):
+        self.message = data["ID"]
         self.message = data["text"]
         self.message = data["picture"]
 
