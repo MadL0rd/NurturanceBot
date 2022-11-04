@@ -1,4 +1,4 @@
-from operator import mod
+import json
 from aiogram.types import Message, CallbackQuery
 
 from Core.MessageSender import MessageSender
@@ -7,7 +7,6 @@ from Core.StorageManager.StorageManager import UserHistoryEvent as event
 
 from MenuModules.MenuModuleInterface import MenuModuleInterface, MenuModuleHandlerCompletion as Completion
 from MenuModules.MenuModules import MenuModules as menu
-import MenuModules.AdminMenu.AdminMenu as adminMenu
 
 from logger import logger as log
 
@@ -84,7 +83,7 @@ async def handleUserMessage(ctx: Message):
             moduleNext = menu.mainMenu.get
 
     # Emergency reboot
-    if ctx.text == "Emergency reboot":
+    if ctx.text == "/back_to_menu":
         moduleNext = menu.mainMenu.get
 
     if moduleNext is not None:
@@ -116,6 +115,6 @@ async def handleCallback(ctx: CallbackQuery):
 
     log.debug("Did handle callback")
     
-    # ctxData = json.loads(ctx.data)
-    # print(ctxData)
+    ctxData = json.loads(ctx.data)
+    print(ctxData)
     storage.getUserInfo(ctx.from_user)

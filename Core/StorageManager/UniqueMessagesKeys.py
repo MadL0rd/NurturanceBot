@@ -22,6 +22,16 @@ class UniqueMessagesKeys(enum.Enum):
     randomNewsButtonNews = "randomNewsButtonNews"
     randomNewsAllNewsWasShown = "randomNewsAllNewsWasShown"
 
+    exercisesStartText = "exercisesStartText"
+    exercisesButtonThought = "exercisesButtonThought"
+    exercisesButtonEmotion = "exercisesButtonEmotion"
+
+    exercisesEmotionStartText = "exercisesEmotionStartText"
+    exercisesThoughtStartText = "exercisesThoughtStartText"
+    exercisesEmotionEmotionsListImage = "exercisesEmotionEmotionsListImage"
+    exercisesEmotionScaleText = "exercisesEmotionScaleText"
+    exercisesThoughtScaleText = "exercisesThoughtScaleText"
+
     @property
     def get(self) -> str:
         messagesKeys = storage.getJsonData(storage.path.botContentUniqueMessages)

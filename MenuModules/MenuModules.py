@@ -4,13 +4,14 @@ from MenuModules.MainMenu.MainMenu import MainMenu
 from MenuModules.MenuModuleInterface import MenuModuleInterface
 from MenuModules.AdminMenu.AdminMenu import AdminMenu
 from MenuModules.RandomNews.RandomNews import RandomNews
+from MenuModules.Exercises.Exercises import Exercises
 
 class MenuModules(enum.Enum):
 
     onboarding: MenuModuleInterface = Onboarding()
     mainMenu: MenuModuleInterface = MainMenu()
     adminMenu: MenuModuleInterface = AdminMenu()
-    exercises: MenuModuleInterface = Onboarding()
+    exercises: MenuModuleInterface = Exercises()
     randomNews: MenuModuleInterface = RandomNews()
     relax: MenuModuleInterface = Onboarding()
 
