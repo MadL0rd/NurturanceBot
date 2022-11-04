@@ -31,6 +31,9 @@ class UniqueMessagesKeys(enum.Enum):
     exercisesEmotionEmotionsListImage = "exercisesEmotionEmotionsListImage"
     exercisesEmotionScaleText = "exercisesEmotionScaleText"
     exercisesThoughtScaleText = "exercisesThoughtScaleText"
+    exercisesButtonComplete = "exercisesButtonComplete"
+    exercisesScaleTextComplete = "exercisesScaleTextComplete"
+    exercisesCompleteText = "exercisesCompleteText"
 
     @property
     def get(self) -> str:

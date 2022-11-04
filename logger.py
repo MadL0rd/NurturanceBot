@@ -30,10 +30,11 @@ class CustomFormatter(logging.Formatter):
       return formatter.format(record)
 
 # logging.basicConfig(format=format, level=logging.INFO)
-
 # logger = logging.getLogger()
-logger = logging.getLogger("sdsfds")
-logger.setLevel(logging.DEBUG)
+
+logger = logging.getLogger()
+logger.setLevel(logging.INFO)
+
 if (logger.hasHandlers()):
   logger.handlers.clear()
 

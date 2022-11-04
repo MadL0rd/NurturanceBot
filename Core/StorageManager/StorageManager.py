@@ -26,8 +26,10 @@ class UserHistoryEvent(enum.Enum):
     startModuleExercises =  "Перешел к упражнениям"
     chooseExerciseEmotion =  "Начал прорабатывать эмоцию"
     chooseExerciseThought =  "Начал прорабатывать мысль"
-    assessmentEmotion = "Оценил силу эмоции"
-    assessmentThought = "Оценил силу мысли"
+    assessmentBefore = "Оценил до"
+    assessmentAfter = "Оценил после"
+    assessmentDelta = "Разница оценок до и после"
+    questionAnswer = "Ответил на вопрос"
 
 
 class PathConfig:
@@ -43,7 +45,7 @@ class PathConfig:
     botContentNews = botContentDir / "News.json"
     botContentEmotions = botContentDir / "Emotions.json"
     botContentThoughts = botContentDir / "Thoughts.json"
-    botContentQuestions = botContentDir / "Question.json"
+    botContentQuestions = botContentDir / "Questions.json"
 
     totalHistoryTableFile = baseDir / "TotalHistory.xlsx"
     statisticHistoryTableFile = baseDir / "StatisticalHistory.xlsx"
