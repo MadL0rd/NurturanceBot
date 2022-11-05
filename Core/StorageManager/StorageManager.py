@@ -33,6 +33,7 @@ class UserHistoryEvent(enum.Enum):
     sessionGenerated = "Сессия создана"
     sessionReload = "Перезапустил сессию"
     sessionComplete = "Завершил сессию"
+    notificationChooseTime = "Передвинул время уведомлений"
 
 class PathConfig:
 

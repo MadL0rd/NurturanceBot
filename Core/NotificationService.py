@@ -1,6 +1,7 @@
 import aioschedule
 from aiogram import Bot
 import asyncio
+from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 import Core.StorageManager.StorageManager as storage
 from Core.StorageManager.UniqueMessagesKeys import textConstant
@@ -47,7 +48,13 @@ class NotificationService:
         log.info(time)
         userIds = getAllUsersWith("evening", time)
         for userId in userIds:
-            await self.bot.send_message(userId, textConstant.notificationEveningText.get)
+            await self.bot.send_message(
+                userId, 
+                textConstant.notificationEveningText.get,
+                reply_markup=InlineKeyboardMarkup(
+                    inline_keyboard=[[InlineKeyboardButton(text="Начать", callback_data='StartEveningReflection')]]
+                )
+            )
 
 def getAllUsersWith(type: str, time: str) -> list:
     userIds = []
