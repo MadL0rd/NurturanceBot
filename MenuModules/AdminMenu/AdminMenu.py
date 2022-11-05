@@ -65,6 +65,9 @@ class AdminMenu(MenuModuleInterface):
             sheets.updateNews()
             sheets.updatetaskEmotions()
             sheets.updatetaskThoughts()
+            sheets.updateQuestions()
+            sheets.updateNotifications()
+            sheets.updateFairytale()
             await message.edit_text("❇️ Тексты обновлены")
 
             log.info("Bot sheets data update complete")
