@@ -127,7 +127,9 @@ class NotificationsSettings(MenuModuleInterface):
     # =====================
 
 def replyMarkupForNotificationType(type: str) -> ReplyKeyboardMarkup:
-    keyboardMarkup = ReplyKeyboardMarkup()
+    keyboardMarkup = ReplyKeyboardMarkup(
+        resize_keyboard=True
+    )
     notoficationTimes = storage.getJsonData(storage.path.botContentNotificationTimes)
     for item in notoficationTimes[type]:
         keyboardMarkup.add(KeyboardButton(item))

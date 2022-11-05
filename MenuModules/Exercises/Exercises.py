@@ -58,7 +58,9 @@ class Exercises(MenuModuleInterface):
             if messageText == textConstant.exercisesButtonEmotion.get:
                 await msg.sendPhoto(ctx, textConstant.exercisesEmotionEmotionsListImage.get)
 
-                keyboardMarkup=ReplyKeyboardMarkup()
+                keyboardMarkup=ReplyKeyboardMarkup(
+                    resize_keyboard=True
+                )
                 for emotionLine in emotionLinesArray:
                     buttons = []
                     for emotion in emotionLine:
@@ -221,6 +223,7 @@ class Exercises(MenuModuleInterface):
                 storage.logToUserHistory(ctx.from_user, event.assessmentDelta, f"{delta}")
                 
                 keyboardMarkup = ReplyKeyboardMarkup(
+                    resize_keyboard=True
                 ).add(KeyboardButton(textConstant.exercisesButtonSessionReload.get)
                 ).add(KeyboardButton(textConstant.exercisesButtonSessionEnd.get))
                 await msg.answer(ctx, textConstant.exercisesSessionCompleteText.get, keyboardMarkup)
@@ -242,8 +245,10 @@ class Exercises(MenuModuleInterface):
             await showExercise(ctx, msg, data["exercises"]["content"][0])
             data["exercises"]["currentIndex"] = 0
             data["intensityValue"] = data["intensityValueAfter"]
-            del data["intensityValueAfter"]
-            del data["userQuestionAnswer"]
+            if "intensityValueAfter" in data:
+                del data["intensityValueAfter"]
+            if "userQuestionAnswer" in data:
+                del data["userQuestionAnswer"]
 
             return Completion(
                 inProgress=True,
@@ -294,6 +299,7 @@ emojiNumbers = {
 async def sendAssessmentMessage(ctx: Message, msg: MessageSender, text: str):
 
     keyboardMarkup=ReplyKeyboardMarkup(
+        resize_keyboard=True
     ).row(KeyboardButton("1️⃣"), KeyboardButton("2️⃣"), KeyboardButton("3️⃣")
     ).row(KeyboardButton("4️⃣"), KeyboardButton("5️⃣"), KeyboardButton("6️⃣")
     ).row(KeyboardButton("7️⃣"), KeyboardButton("8️⃣"), KeyboardButton("9️⃣")
@@ -306,7 +312,9 @@ async def sendAssessmentMessage(ctx: Message, msg: MessageSender, text: str):
     )
 
 async def showExercise(ctx: Message, msg: MessageSender, itemDict: dict):
-    keyboardMarkup=ReplyKeyboardMarkup().add(KeyboardButton(textConstant.exercisesButtonComplete.get))
+    keyboardMarkup=ReplyKeyboardMarkup(
+        resize_keyboard=True
+    ).add(KeyboardButton(textConstant.exercisesButtonComplete.get))
     if itemDict["type"] == "question":
         keyboardMarkup = ReplyKeyboardRemove()
     
