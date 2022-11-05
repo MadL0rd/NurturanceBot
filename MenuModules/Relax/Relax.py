@@ -31,18 +31,27 @@ class Relax(MenuModuleInterface):
         await msg.answer(
             ctx=ctx,
             text=textConstant.relaxStartMessage.get,
-            keyboardMarkup=ReplyKeyboardRemove()
+            keyboardMarkup=ReplyKeyboardMarkup(
+                resize_keyboard=True
+            ).add(KeyboardButton(textConstant.menuButtonReturnToMainMenu.get))
+
         )
 
         loop = asyncio.get_event_loop()
         loop.create_task(sendMessageAfterFiveMinutes(ctx, msg))
 
-        return self.complete()
+        return Completion(
+            inProgress=True,
+            didHandledUserInteraction=True
+        )
 
     async def handleUserMessage(self, ctx: Message, msg: MessageSender, data: dict) -> Completion:
 
         log.debug(f"User: {ctx.from_user.id}")
-        return self.complete()
+        if ctx.text == textConstant.menuButtonReturnToMainMenu.get:
+            return self.complete(nextModuleName=MenuModuleName.mainMenu.get)
+        
+        return self.canNotHandle(data=data)
 
     async def handleCallback(self, ctx: CallbackQuery, data: dict, msg: MessageSender) -> Completion:
 
@@ -52,17 +61,6 @@ class Relax(MenuModuleInterface):
     # =====================
     # Custom stuff
     # =====================
-
-    @property
-    def menuDict(self) -> dict:
-        # TODO: update after modules implementation
-        return {
-            # textConstant.menuButtonRelax.get: MenuModuleName.relax.get
-            textConstant.menuButtonExercises.get: MenuModuleName.exercises.get,
-            textConstant.menuButtonRandomNews.get: MenuModuleName.randomNews.get,
-            textConstant.menuButtonRelax.get: MenuModuleName.onboarding.get,
-            textConstant.menuButtonNotifications.get: MenuModuleName.notificationsSettings.get
-        }
 
 @asyncio.coroutine
 async def sendMessageAfterFiveMinutes(ctx: Message, msg: MessageSender):

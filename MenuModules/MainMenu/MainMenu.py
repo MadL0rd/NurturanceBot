@@ -78,7 +78,6 @@ class MainMenu(MenuModuleInterface):
 
     @property
     def menuDict(self) -> dict:
-        # TODO: update after modules implementation
         return {
             textConstant.menuButtonExercises.get: MenuModuleName.exercises.get,
             textConstant.menuButtonRandomNews.get: MenuModuleName.randomNews.get,
