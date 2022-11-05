@@ -98,6 +98,7 @@ class RandomNews(MenuModuleInterface):
         newsNumber = choice(arrayOfUnsendedNews)
         newsLine = newsList[newsNumber-1]     
         NewsText = newsLine.get("text")
+        newsPicture = newsLine.get("picture")
         
         userNews.append(str(newsNumber))
         storage.updateUserNews(ctx.from_user, userNews)
@@ -108,6 +109,12 @@ class RandomNews(MenuModuleInterface):
             text = NewsText,
             keyboardMarkup = self.keyboardMarkup
             )
+
+        await MessageSender.sendPhoto(
+            self= self,
+            ctx= ctx,
+            url= newsPicture
+        )
         #else:
            # await msg.answer(
             #    ctx = ctx,
