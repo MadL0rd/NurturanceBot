@@ -1,4 +1,7 @@
-from aiogram.types import Message, CallbackQuery, ReplyKeyboardMarkup, KeyboardButton
+import asyncio
+from aiogram.types import Message, CallbackQuery, ReplyKeyboardMarkup, KeyboardButton, ReplyKeyboardRemove
+from time import sleep
+import aioschedule
 
 import Core.StorageManager.StorageManager as storage
 from Core.StorageManager.StorageManager import UserHistoryEvent as event
@@ -9,13 +12,13 @@ from MenuModules.MenuModuleInterface import MenuModuleInterface, MenuModuleHandl
 from MenuModules.MenuModuleName import MenuModuleName
 from logger import logger as log
 
-class MainMenu(MenuModuleInterface):
+class Relax(MenuModuleInterface):
 
     # =====================
     # Interface implementation
     # =====================
 
-    namePrivate = MenuModuleName.mainMenu
+    namePrivate = MenuModuleName.relax
 
     # Use default implementation
     # def callbackData(self, data: dict, msg: MessageSender) -> str:
@@ -25,47 +28,21 @@ class MainMenu(MenuModuleInterface):
         log.debug(f"User: {ctx.from_user.id}")
         storage.logToUserHistory(ctx.from_user, event.startModuleMainMenu, "")
 
-        keyboardMarkup = ReplyKeyboardMarkup(
-            resize_keyboard=True
-        )
-        for buttonText in self.menuDict:
-            keyboardMarkup.add(KeyboardButton(buttonText))
-
-        userTg = ctx.from_user
-        userInfo = storage.getUserInfo(userTg)
-
-        if "isAdmin" in userInfo and userInfo["isAdmin"] == True:
-            keyboardMarkup.add(KeyboardButton(textConstant.menuButtonAdmin.get))
-
         await msg.answer(
-            ctx = ctx,
-            text = textConstant.mainMenuText.get,
-            keyboardMarkup = keyboardMarkup
+            ctx=ctx,
+            text=textConstant.relaxStartMessage.get,
+            keyboardMarkup=ReplyKeyboardRemove()
         )
 
-        return Completion(
-            inProgress=True,
-            didHandledUserInteraction=True,
-            moduleData={ "startMessageDidSent" : True }
-        )
+        loop = asyncio.get_event_loop()
+        loop.create_task(sendMessageAfterFiveMinutes(ctx, msg))
+
+        return self.complete()
 
     async def handleUserMessage(self, ctx: Message, msg: MessageSender, data: dict) -> Completion:
 
         log.debug(f"User: {ctx.from_user.id}")
-
-        if "startMessageDidSent" not in data or data["startMessageDidSent"] != True:
-            return self.handleModuleStart(ctx, msg)
-        
-        messageText = ctx.text
-
-        if messageText == textConstant.menuButtonAdmin.get:
-            return self.complete(nextModuleName = MenuModuleName.admin.get)
-
-        if messageText not in self.menuDict:
-            return self.canNotHandle(data)
-
-        return self.complete(nextModuleName = self.menuDict[messageText])
-        
+        return self.complete()
 
     async def handleCallback(self, ctx: CallbackQuery, data: dict, msg: MessageSender) -> Completion:
 
@@ -80,8 +57,18 @@ class MainMenu(MenuModuleInterface):
     def menuDict(self) -> dict:
         # TODO: update after modules implementation
         return {
+            # textConstant.menuButtonRelax.get: MenuModuleName.relax.get
             textConstant.menuButtonExercises.get: MenuModuleName.exercises.get,
             textConstant.menuButtonRandomNews.get: MenuModuleName.randomNews.get,
-            textConstant.menuButtonRelax.get: MenuModuleName.relax.get,
+            textConstant.menuButtonRelax.get: MenuModuleName.onboarding.get,
             textConstant.menuButtonNotifications.get: MenuModuleName.notificationsSettings.get
         }
+
+@asyncio.coroutine
+async def sendMessageAfterFiveMinutes(ctx: Message, msg: MessageSender):
+    await asyncio.sleep(5 * 60)
+    await msg.answer(
+        ctx=ctx,
+        text=textConstant.relaxCompleteMessage.get,
+        keyboardMarkup = ReplyKeyboardMarkup()
+    )

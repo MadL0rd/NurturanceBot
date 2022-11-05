@@ -43,6 +43,9 @@ class UniqueMessagesKeys(enum.Enum):
     notificationEveningText = "notificationEveningText"
     notificationSettingsText = "notificationSettingsText"
 
+    relaxStartMessage = "relaxStartMessage"
+    relaxCompleteMessage = "relaxCompleteMessage"
+
     @property
     def get(self) -> str:
         messagesKeys = storage.getJsonData(storage.path.botContentUniqueMessages)
