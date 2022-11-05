@@ -162,6 +162,12 @@ class Exercises(MenuModuleInterface):
                 await showExercise(ctx, msg, exercises["content"][0])
 
                 data["exercises"] = exercises
+                
+                historyText = f"{data['exerciseType']}\n"
+                for item in data["exercises"]["content"]:
+                    historyText += f"Тип: {item['type']}; ID: {item['value']['ID']}\n"
+                storage.logToUserHistory(ctx.from_user, event.sessionGenerated, historyText)
+
                 return Completion(
                     inProgress=True,
                     didHandledUserInteraction=True,
@@ -194,12 +200,11 @@ class Exercises(MenuModuleInterface):
                     moduleData=data
                 )
 
-
         if item["type"] == "question" and "userQuestionAnswer" not in data:
             storage.logToUserHistory(ctx.from_user, event.questionAnswer, ctx.text)
             answerText = textConstant.exercisesScaleTextComplete.get
             await sendAssessmentMessage(ctx, msg, answerText)
-            data[f"userQuestionAnswer"] = ctx.text
+            data["userQuestionAnswer"] = ctx.text
 
             return Completion(
                 inProgress=True,
@@ -207,7 +212,6 @@ class Exercises(MenuModuleInterface):
                 moduleData=data
             )
 
-        # TODO: Implement session reload
         if "intensityValueAfter" not in data:
             if ctx.text in emojiNumbers:
                 intensityValue = emojiNumbers[ctx.text]
@@ -215,11 +219,43 @@ class Exercises(MenuModuleInterface):
                 storage.logToUserHistory(ctx.from_user, event.assessmentAfter, f"{intensityValue}")
                 delta = intensityValue - data["intensityValue"]
                 storage.logToUserHistory(ctx.from_user, event.assessmentDelta, f"{delta}")
-                msg.answer(ctx, textConstant.exercisesCompleteText.get, ReplyKeyboardRemove())
                 
-                return self.complete()
+                keyboardMarkup = ReplyKeyboardMarkup(
+                ).add(KeyboardButton(textConstant.exercisesButtonSessionReload.get)
+                ).add(KeyboardButton(textConstant.exercisesButtonSessionEnd.get))
+                await msg.answer(ctx, textConstant.exercisesSessionCompleteText.get, keyboardMarkup)
 
+                return Completion(
+                    inProgress=True,
+                    didHandledUserInteraction=True,
+                    moduleData=data
+                )
+            
             return self.canNotHandle(data)
+
+        if ctx.text == textConstant.exercisesButtonSessionReload.get:
+            historyText = f"{data['exerciseType']}\n"
+            for item in data["exercises"]["content"]:
+                historyText += f"Тип: {item['type']}; ID: {item['value']['ID']}\n"
+            storage.logToUserHistory(ctx.from_user, event.sessionReload, historyText)
+
+            await showExercise(ctx, msg, data["exercises"]["content"][0])
+            data["exercises"]["currentIndex"] = 0
+            data["intensityValue"] = data["intensityValueAfter"]
+            del data["intensityValueAfter"]
+            del data["userQuestionAnswer"]
+
+            return Completion(
+                inProgress=True,
+                didHandledUserInteraction=True,
+                moduleData=data
+            )
+
+        if ctx.text == textConstant.exercisesButtonSessionEnd.get:
+            await msg.answer(ctx, textConstant.exercisesCompleteText.get, ReplyKeyboardRemove())
+
+            return self.complete()
+        
         return self.canNotHandle(data)
         
 

@@ -30,6 +30,9 @@ class UserHistoryEvent(enum.Enum):
     assessmentAfter = "Оценил после"
     assessmentDelta = "Разница оценок до и после"
     questionAnswer = "Ответил на вопрос"
+    sessionGenerated = "Сессия создана"
+    sessionReload = "Перезапустил сессию"
+    sessionComplete = "Завершил сессию"
 
 
 class PathConfig:
