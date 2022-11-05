@@ -26,9 +26,14 @@ class UserHistoryEvent(enum.Enum):
     startModuleExercises =  "Перешел к упражнениям"
     chooseExerciseEmotion =  "Начал прорабатывать эмоцию"
     chooseExerciseThought =  "Начал прорабатывать мысль"
-    assessmentEmotion = "Оценил силу эмоции"
-    assessmentThought = "Оценил силу мысли"
-
+    assessmentBefore = "Оценил до"
+    assessmentAfter = "Оценил после"
+    assessmentDelta = "Разница оценок до и после"
+    questionAnswer = "Ответил на вопрос"
+    sessionGenerated = "Сессия создана"
+    sessionReload = "Перезапустил сессию"
+    sessionComplete = "Завершил сессию"
+    notificationChooseTime = "Передвинул время уведомлений"
 
 class PathConfig:
 
@@ -44,7 +49,8 @@ class PathConfig:
     botContentEmotions = botContentDir / "Emotions.json"
     botContentThoughts = botContentDir / "Thoughts.json"
     botContentQuestions = botContentDir / "Questions.json"
-    botContentNotifications = botContentDir / "Notifications.json"
+    botContentNotificationTimes = botContentDir / "NotificationTimes.json"
+    eveningReflectionQuestions = botContentDir / "EveningReflectionQuestions.json"
     botContentFairytale = botContentDir / "Fairytale.json"
 
     totalHistoryTableFile = baseDir / "TotalHistory.xlsx"
@@ -71,8 +77,10 @@ def getJsonData(filePath: Path):
 
 def writeJsonData(filePath: Path, content):
     # log.debug(content)
-    data = json.dumps(content, indent=2)
-    with filePath.open('w', encoding= 'utf-8') as file:
+    data = json.dumps(content, ensure_ascii=False, indent=2)
+    with filePath.open('w') as file:
+    # data = json.dumps(content, indent=2)
+    # with filePath.open('w', encoding= 'utf-8') as file:
         file.write(data)
 
 # =====================
@@ -109,12 +117,15 @@ def generateUserStorage(user: User):
 
     userFolder = path.userFolder(user)
     userFolder.mkdir(parents=True, exist_ok=True)
+
+    notoficationsConfig = getJsonData(path.botContentNotificationTimes)
     
     userData = json.loads(user.as_json())
     userData = {
         "info": userData,
         "isAdmin": False,
-        "state": {}
+        "state": {},
+        "notifications": notoficationsConfig["userDefault"]
     }
     updateUserNews(user,[])
     updateUserData(user, userData)
@@ -171,13 +182,26 @@ def generateStatisticTable():
         UserHistoryEvent.start,
         UserHistoryEvent.startModuleExercises,
         UserHistoryEvent.chooseExerciseEmotion,
-        UserHistoryEvent.chooseExerciseThought        
+        UserHistoryEvent.chooseExerciseThought,
+        UserHistoryEvent.questionAnswer,
+        UserHistoryEvent.sessionGenerated,
+        UserHistoryEvent.sessionReload,
+        UserHistoryEvent.sessionComplete,
+        UserHistoryEvent.notificationChooseTime
     ]
 
     dateConfig = getJsonData(path.botContentPrivateConfig)["startDate"]
     startDate = date(dateConfig["year"], dateConfig["month"], dateConfig["day"])
 
     workbook = xlsxwriter.Workbook(path.statisticHistoryTableFile)
+
+    event = UserHistoryEvent.assessmentDelta
+    generateStatisticPageForEvent(workbook, event.value, startDate, StatisticPageOperation.sum)
+
+    event = UserHistoryEvent.assessmentBefore
+    generateStatisticPageForEvent(workbook, event.value, startDate, StatisticPageOperation.average)
+    event = UserHistoryEvent.assessmentAfter
+    generateStatisticPageForEvent(workbook, event.value, startDate, StatisticPageOperation.average)
 
     for event in statisticEvents:
         generateStatisticPageForEvent(workbook, event.value, startDate)
@@ -190,7 +214,12 @@ def daterange(start_date, end_date):
     for n in range(int((end_date - start_date).days + 1)):
         yield start_date + timedelta(n)
 
-def generateStatisticPageForEvent(workbook: xlsxwriter.Workbook, eventName: string, startDate: date):
+class StatisticPageOperation(enum.Enum):
+    count = "count"
+    sum = "sum"
+    average = "average"
+
+def generateStatisticPageForEvent(workbook: xlsxwriter.Workbook, eventName: string, startDate: date, operation: StatisticPageOperation = StatisticPageOperation.count):
 
     worksheet = workbook.add_worksheet(eventName)
     row = 0 
@@ -216,8 +245,27 @@ def generateStatisticPageForEvent(workbook: xlsxwriter.Workbook, eventName: stri
         
         row = 1
         for single_date in dates:
-            dateEventsCount = len([event for event in history if event["timestamp"]["date"] == single_date and event["event"] == eventName])
-            worksheet.write(row, col, dateEventsCount)
+            dayEvents = [event for event in history if event["timestamp"]["date"] == single_date and event["event"] == eventName]
+
+            if operation == StatisticPageOperation.count:
+                dateEventsCount = len(dayEvents)
+                worksheet.write(row, col, dateEventsCount)
+
+            if operation == StatisticPageOperation.sum:
+                try:
+                    values = [int(event["content"]) for event in dayEvents]
+                except:
+                    values = []
+                worksheet.write(row, col, sum(values))
+
+            if operation == StatisticPageOperation.average:
+                try:
+                    values = [int(event["content"]) for event in dayEvents]
+                    result = sum(values) / len(values)
+                except:
+                    result = 0
+                worksheet.write(row, col, result)
+
             row += 1
 
         col += 1

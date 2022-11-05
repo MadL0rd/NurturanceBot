@@ -78,10 +78,9 @@ class MainMenu(MenuModuleInterface):
 
     @property
     def menuDict(self) -> dict:
-        # TODO: update after modules implementation
         return {
-            # textConstant.menuButtonRelax.get: MenuModuleName.relax.get
             textConstant.menuButtonExercises.get: MenuModuleName.exercises.get,
             textConstant.menuButtonRandomNews.get: MenuModuleName.randomNews.get,
-            textConstant.menuButtonRelax.get: MenuModuleName.onboarding.get
+            textConstant.menuButtonRelax.get: MenuModuleName.relax.get,
+            textConstant.menuButtonNotifications.get: MenuModuleName.notificationsSettings.get
         }

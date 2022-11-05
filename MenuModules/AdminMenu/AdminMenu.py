@@ -27,7 +27,6 @@ class AdminMenu(MenuModuleInterface):
     async def handleModuleStart(self, ctx: Message, msg: MessageSender) -> Completion:
 
         log.debug(f"User: {ctx.from_user.id}")
-        storage.logToUserHistory(ctx.from_user, event.startModuleOnboarding, "")
 
         keyboardMarkup = ReplyKeyboardMarkup(
             resize_keyboard=True
@@ -55,19 +54,35 @@ class AdminMenu(MenuModuleInterface):
         if ctx.text == textConstant.menuButtonReturnToMainMenu.get:
             return self.complete(nextModuleName=MenuModuleName.mainMenu.get)
         
-        if ctx.text == "kek" or ctx.text == textConstant.adminMenuButtonReloadData.get:
+        if ctx.text == textConstant.adminMenuButtonReloadData.get:
             
             log.info("Bot sheets data update start")
 
-            message = await ctx.answer("⚠️ Подождите, идет выгрузка данных из гугл таблицы")
-            sheets.updateOnboarding()
+            message = await ctx.answer(updateStateReloadDataMessage(0))
+
             sheets.updateUniqueMessages()
+            await message.edit_text(updateStateReloadDataMessage(1))
+
+            sheets.updateOnboarding()
+            await message.edit_text(updateStateReloadDataMessage(2))
+
             sheets.updateNews()
+            await message.edit_text(updateStateReloadDataMessage(3))
+
             sheets.updatetaskEmotions()
+            await message.edit_text(updateStateReloadDataMessage(4))
+
             sheets.updatetaskThoughts()
+            await message.edit_text(updateStateReloadDataMessage(5))
+
             sheets.updateQuestions()
-            sheets.updateNotifications()
+            await message.edit_text(updateStateReloadDataMessage(6))
+
+            sheets.updateEveningReflectionQuestions()
+            await message.edit_text(updateStateReloadDataMessage(7))
+
             sheets.updateFairytale()
+            
             await message.edit_text("❇️ Тексты обновлены")
 
             log.info("Bot sheets data update complete")
@@ -77,7 +92,7 @@ class AdminMenu(MenuModuleInterface):
                 didHandledUserInteraction=True
             )
         
-        if ctx.text == "lol" or ctx.text == textConstant.adminMenuButtonLoadData.get:
+        if ctx.text == textConstant.adminMenuButtonLoadData.get:
 
             log.info("Tables creation start")
 
@@ -107,3 +122,21 @@ class AdminMenu(MenuModuleInterface):
     # =====================
     # Custom stuff
     # =====================
+
+def updateStateReloadDataMessage(stateIndex: int) -> str:
+    text = "⚠️ Подождите, идет выгрузка данных из гугл таблицы"
+    tablePageNames = [
+        "УникальныеСообщения",
+        "Онбординг",
+        "Новости",
+        'УпражненияЭмоции',
+        'УпражненияМысли',
+        'Вопросы',
+        'ВечерняяРефлексияВопросы',
+        'Сказка'
+    ]
+    for index, value in enumerate(tablePageNames):
+        indicator = "🔴" if index > stateIndex else "🟢"
+        text += f"\n{indicator} {value}"
+
+    return text

@@ -18,7 +18,7 @@ class PageNames(enum.Enum):
     taskEmotions ='УпражненияЭмоции'
     taskThoughts = 'УпражненияМысли'
     questions = 'Вопросы'
-    notifications = 'Уведомления'
+    notifications = 'ВечерняяРефлексияВопросы'
     fairytale = 'Сказка'
 
 pages = PageNames
@@ -111,13 +111,13 @@ def updateNews():
             if line[1] != "":
                 exercise["text"] = line[1]
         except:
-            print("Argument text not found")
+            log.debug("Argument text not found")
 
         try:
             if line[2] != "":
                 exercise["picture"] = line[2]
         except:
-            print("Argument picture not found")            
+            log.debug("Argument picture not found")            
         content.append(exercise)
 
     storage.writeJsonData(
@@ -144,25 +144,25 @@ def updatetaskEmotions():
             if line[1] != "":
                 exercise["text"] = line[1]
         except:
-            print("Argument text not found")
+            log.debug("Argument text not found")
 
         try:
             if line[2] != "":
                 exercise["picture"] = line[2]
         except:
-            print("Argument picture not found")
+            log.debug("Argument picture not found")
 
         try:
             if line[3] != "":
                 exercise["audio"] = line[3]
         except:
-            print("Argument audio not found")
+            log.debug("Argument audio not found")
 
         try:
             if line[4] != "":
                 exercise["video"] = line[4]
         except:
-            print("Argument video not found")
+            log.debug("Argument video not found")
             
         content.append(exercise)
 
@@ -190,25 +190,25 @@ def updatetaskThoughts():
             if line[1] != "":
                 exercise["text"] = line[1]
         except:
-            print("Argument text not found")
+            log.debug("Argument text not found")
 
         try:
             if line[2] != "":
                 exercise["picture"] = line[2]
         except:
-            print("Argument picture not found")
+            log.debug("Argument picture not found")
 
         try:
             if line[3] != "":
                 exercise["audio"] = line[3]
         except:
-            print("Argument audio not found")
+            log.debug("Argument audio not found")
 
         try:
             if line[4] != "":
                 exercise["video"] = line[4]
         except:
-            print("Argument video not found")
+            log.debug("Argument video not found")
             
         content.append(exercise)
 
@@ -236,7 +236,7 @@ def updateQuestions():
             if line[1] != "":
                 exercise["text"] = line[1]
         except:
-            print("Argument text not found")           
+            log.debug("Argument text not found")           
         content.append(exercise)
 
     storage.writeJsonData(
@@ -244,7 +244,7 @@ def updateQuestions():
         content
     )
 
-def updateNotifications():
+def updateEveningReflectionQuestions():
 
     values = getContent(pages.notifications, "A2:100")
     
@@ -267,7 +267,7 @@ def updateNotifications():
         content.append(exercise)
 
     storage.writeJsonData(
-        storage.path.botContentNotifications, 
+        storage.path.eveningReflectionQuestions, 
         content
     )
 

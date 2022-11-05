@@ -37,3 +37,9 @@ class MessageSender:
     
     async def sendPhoto(self, ctx: Message, url: str):
         await bot.send_photo(chat_id=ctx.chat.id, photo=url)
+
+    async def sendAudio(self, ctx: Message, url: str):
+        await bot.send_voice(chat_id=ctx.chat.id, voice=url)
+
+    async def sendVideo(self, ctx: Message, url: str):
+        await bot.send_video(chat_id=ctx.chat.id, video=url)

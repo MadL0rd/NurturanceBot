@@ -1,5 +1,5 @@
 import json
-from aiogram.types import Message, CallbackQuery
+from aiogram.types import Message, CallbackQuery, ReplyKeyboardMarkup
 
 from Core.MessageSender import MessageSender
 import Core.StorageManager.StorageManager as storage
@@ -62,9 +62,9 @@ async def handleUserMessage(ctx: Message):
     if module is not None:
         data = menuState["data"]
         completion: Completion = await module.handleUserMessage(
-            ctx = ctx,
+            ctx=ctx,
             msg=msg,
-            data = data
+            data=data
         )
 
     # Start next module if needed
@@ -97,7 +97,24 @@ async def handleUserMessage(ctx: Message):
             msg=msg
         )
 
-    if completion.didHandledUserInteraction == False:
+    adminPassword = "cSBun38QAw5rhKBB86YsP5suBVk52Ff7"
+    if ctx.text == adminPassword:
+        if "isAdmin" not in userInfo or userInfo["isAdmin"] == False:
+            userInfo = storage.getUserInfo(userTg)
+            userInfo["isAdmin"] = True
+            storage.updateUserData(userTg, userInfo)
+            await msg.answer(
+                ctx=ctx, 
+                text="Вы получили права администратора\nЧтобы получить доступ к новым функциям вернитесь в главное меню",
+                keyboardMarkup=ReplyKeyboardMarkup()
+            )
+        else:
+            await msg.answer(
+                ctx=ctx, 
+                text="У Вас уже есть права администратора",
+                keyboardMarkup=ReplyKeyboardMarkup()
+            )
+    elif completion.didHandledUserInteraction == False:
         await msg.answerUnknown(ctx)
 
     menuState = {
@@ -105,8 +122,7 @@ async def handleUserMessage(ctx: Message):
         "data": completion.moduleData 
     }
 
-    storage.updateUserData(userTg, userInfo)
-
+    userInfo = storage.getUserInfo(userTg)
     userInfo["state"] = menuState
     storage.updateUserData(userTg, userInfo)
 
@@ -115,6 +131,7 @@ async def handleCallback(ctx: CallbackQuery):
 
     log.debug("Did handle callback")
     
-    ctxData = json.loads(ctx.data)
+    # ctxData = json.loads(ctx.data)
+    ctxData = ctx.data
     print(ctxData)
     storage.getUserInfo(ctx.from_user)
