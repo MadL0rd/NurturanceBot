@@ -178,6 +178,3 @@ emojiNumbers = {
     "9️⃣": 9,
     "🔟": 10
 }
-
-def getRandomTaskFrom():
-    

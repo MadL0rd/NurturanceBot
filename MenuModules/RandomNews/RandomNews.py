@@ -2,12 +2,15 @@ from aiogram.types import Message, CallbackQuery, ReplyKeyboardMarkup, KeyboardB
 
 import Core.StorageManager.StorageManager as storage
 from Core.StorageManager.StorageManager import UserHistoryEvent as event
+from Core.StorageManager.StorageManager import PathConfig
 from Core.MessageSender import MessageSender
 from Core.StorageManager.UniqueMessagesKeys import textConstant
 
 from MenuModules.MenuModuleInterface import MenuModuleInterface, MenuModuleHandlerCompletion as Completion
 from MenuModules.MenuModuleName import MenuModuleName
 from logger import logger as log
+from random import choice
+from pathlib import Path
 
 class RandomNews(MenuModuleInterface):
 
@@ -75,12 +78,49 @@ class RandomNews(MenuModuleInterface):
     # =====================
 
     async def sendNews(self, ctx: CallbackQuery, msg: MessageSender):
-        # TODO: here u need to send news or textConstant.randomNewsAllNewsWasShown.get
+        
+        newsList = storage.getJsonData(storage.path.botContentNews)
+        userNews = storage.getUserNews(ctx.from_user)
+        if len(newsList) == len(userNews):
+            await msg.answer(
+            ctx = ctx,
+            text = textConstant.randomNewsAllNewsWasShown.get,
+            keyboardMarkup = self.keyboardMarkup
+            )
+            return
+        
+        arrayOfUnsendedNews=[]
+        i = 1
+        for i in range(1,len(newsList)+1): 
+            if str(i) not in userNews:
+                arrayOfUnsendedNews.append(i)
+       
+        newsNumber = choice(arrayOfUnsendedNews)
+        newsLine = newsList[newsNumber-1]     
+        NewsText = newsLine.get("text")
+        newsPicture = newsLine.get("picture")
+        
+        userNews.append(str(newsNumber))
+        storage.updateUserNews(ctx.from_user, userNews)
+        
+
         await msg.answer(
             ctx = ctx,
-            text = "Какая-то ебучая новость",
+            text = NewsText,
             keyboardMarkup = self.keyboardMarkup
+            )
+
+        await MessageSender.sendPhoto(
+            self= self,
+            ctx= ctx,
+            url= newsPicture
         )
+        #else:
+           # await msg.answer(
+            #    ctx = ctx,
+             #   text = "Какая-то ебучая новость",
+              #  keyboardMarkup = self.keyboardMarkup
+            #)
         
         # pageIndex = 0
         # NewsPages = storage.getJsonData(storage.path.botContentNews)

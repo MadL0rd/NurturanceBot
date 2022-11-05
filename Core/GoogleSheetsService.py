@@ -17,6 +17,9 @@ class PageNames(enum.Enum):
     news = "Новости"
     taskEmotions ='УпражненияЭмоции'
     taskThoughts = 'УпражненияМысли'
+    questions = 'Вопросы'
+    notifications = 'Уведомления'
+    fairytale = 'Сказка'
 
 pages = PageNames
 
@@ -211,5 +214,80 @@ def updatetaskThoughts():
 
     storage.writeJsonData(
         storage.path.botContentThoughts, 
+        content
+    )
+
+def updateQuestions():
+
+    values = getContent(pages.questions, "A2:C100")
+    
+    content = []
+    for line in values:
+        exercise = {}
+        try:
+            if line[0] != "":
+                exercise["ID"] = line[0]
+            else: 
+                continue
+        except:
+            continue
+
+        try:
+            if line[1] != "":
+                exercise["text"] = line[1]
+        except:
+            print("Argument text not found")           
+        content.append(exercise)
+
+    storage.writeJsonData(
+        storage.path.botContentQuestions, 
+        content
+    )
+
+def updateNotifications():
+
+    values = getContent(pages.notifications, "A2:100")
+    
+    content = []
+    for line in values:
+        exercise = {}
+        try:
+            if line[0] != "":
+                exercise["ID"] = line[0]
+            else: 
+                continue
+        except:
+            continue
+
+        try:
+            if line[1] != "":
+                exercise["text"] = line[1]
+        except:
+            print("Argument text not found")           
+        content.append(exercise)
+
+    storage.writeJsonData(
+        storage.path.botContentNotifications, 
+        content
+    )
+
+def updateFairytale():
+
+    values = getContent(pages.fairytale, "A2:A100")
+    
+    content = []
+    for line in values:
+        exercise = {}
+        try:
+            if line[0] != "":
+                exercise["text"] = line[0]
+            else: 
+                continue
+        except:
+            continue          
+        content.append(exercise)
+
+    storage.writeJsonData(
+        storage.path.botContentFairytale, 
         content
     )
