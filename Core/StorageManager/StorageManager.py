@@ -54,6 +54,9 @@ class PathConfig:
     def userInfoFile(self, user: User):
         return self.userFolder(user) / "info.json"
     
+    def userNewsFile(self, user: User):
+        return self.userFolder(user) / "news.json"
+
     def userHistoryFile(self, user: User):
         return self.userFolder(user) / "history.json"
 
@@ -66,8 +69,8 @@ def getJsonData(filePath: Path):
 
 def writeJsonData(filePath: Path, content):
     # log.debug(content)
-    data = json.dumps(content, ensure_ascii=False, indent=2)
-    with filePath.open('w') as file:
+    data = json.dumps(content, indent=2)
+    with filePath.open('w', encoding= 'utf-8') as file:
         file.write(data)
 
 # =====================
@@ -87,6 +90,19 @@ def getUserInfo(user: User):
 
     return getJsonData(userInfoFile)
 
+def getUserNews(user: User)->list: 
+    
+    userNewsFile = path.userNewsFile(user)
+
+    # If user file does not exist
+    if not userNewsFile.exists():
+        log.info(f"User {user.id} dir does not exist")
+        generateUserStorage(user)
+
+    userNewsFile = path.userNewsFile(user)
+
+    return getJsonData(userNewsFile)
+
 def generateUserStorage(user: User):
 
     userFolder = path.userFolder(user)
@@ -98,7 +114,7 @@ def generateUserStorage(user: User):
         "isAdmin": False,
         "state": {}
     }
-
+    updateUserNews(user,[])
     updateUserData(user, userData)
     logToUserHistory(user, UserHistoryEvent.start, "Начало сохранения истории пользователя")
 
@@ -117,6 +133,11 @@ def updateUserData(user: User, userData):
     userInfoFile = path.userInfoFile(user)
     userData["updateTime"] = getTimestamp()
     writeJsonData(userInfoFile, userData)
+
+def updateUserNews(user: User, userNews):
+    
+    userNewsFile = path.userNewsFile(user)
+    writeJsonData(userNewsFile, userNews)
 
 def logToUserHistory(user: User, event: UserHistoryEvent, content: string):
 
