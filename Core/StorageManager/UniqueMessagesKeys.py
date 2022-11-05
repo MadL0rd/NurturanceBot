@@ -13,6 +13,7 @@ class UniqueMessagesKeys(enum.Enum):
     menuButtonRandomNews = "menuButtonRandomNews"
     menuButtonRelax = "menuButtonRelax"
     menuButtonAdmin = "menuButtonAdmin"
+    menuButtonNotifications = "menuButtonNotifications"
 
     adminMenuText = "adminMenuText"
     adminMenuButtonLoadData = "adminMenuButtonLoadData"
@@ -37,6 +38,10 @@ class UniqueMessagesKeys(enum.Enum):
     exercisesSessionCompleteText = "exercisesSessionCompleteText"
     exercisesButtonSessionReload = "exercisesButtonSessionReload"
     exercisesButtonSessionEnd = "exercisesButtonSessionEnd"
+    notificationMorningText = "notificationMorningText"
+    notificationDayText = "notificationDayText"
+    notificationEveningText = "notificationEveningText"
+    notificationSettingsText = "notificationSettingsText"
 
     @property
     def get(self) -> str:

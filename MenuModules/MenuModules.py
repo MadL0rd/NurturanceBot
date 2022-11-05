@@ -1,4 +1,5 @@
 import enum
+from MenuModules.NotificationsSettings.NotificationsSettings import NotificationsSettings
 from MenuModules.Onboarding.Onboarding import Onboarding
 from MenuModules.MainMenu.MainMenu import MainMenu
 from MenuModules.MenuModuleInterface import MenuModuleInterface
@@ -14,6 +15,7 @@ class MenuModules(enum.Enum):
     exercises: MenuModuleInterface = Exercises()
     randomNews: MenuModuleInterface = RandomNews()
     relax: MenuModuleInterface = Onboarding()
+    notificationsSettings: MenuModuleInterface = NotificationsSettings()
 
     @property
     def get(self) -> MenuModuleInterface:

@@ -83,5 +83,6 @@ class MainMenu(MenuModuleInterface):
             # textConstant.menuButtonRelax.get: MenuModuleName.relax.get
             textConstant.menuButtonExercises.get: MenuModuleName.exercises.get,
             textConstant.menuButtonRandomNews.get: MenuModuleName.randomNews.get,
-            textConstant.menuButtonRelax.get: MenuModuleName.onboarding.get
+            textConstant.menuButtonRelax.get: MenuModuleName.onboarding.get,
+            textConstant.menuButtonNotifications.get: MenuModuleName.notificationsSettings.get
         }

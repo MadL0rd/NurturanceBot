@@ -18,7 +18,7 @@ class PageNames(enum.Enum):
     taskEmotions ='УпражненияЭмоции'
     taskThoughts = 'УпражненияМысли'
     questions = 'Вопросы'
-    notifications = 'Уведомления'
+    notifications = 'ВечерняяРефлексияВопросы'
     fairytale = 'Сказка'
 
 pages = PageNames
@@ -244,7 +244,7 @@ def updateQuestions():
         content
     )
 
-def updateNotifications():
+def updateEveningReflectionQuestions():
 
     values = getContent(pages.notifications, "A2:100")
     
@@ -267,7 +267,7 @@ def updateNotifications():
         content.append(exercise)
 
     storage.writeJsonData(
-        storage.path.botContentNotifications, 
+        storage.path.eveningReflectionQuestions, 
         content
     )
 

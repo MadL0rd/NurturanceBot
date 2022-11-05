@@ -73,9 +73,16 @@ class AdminMenu(MenuModuleInterface):
             await message.edit_text(updateStateReloadDataMessage(4))
 
             sheets.updatetaskThoughts()
+            await message.edit_text(updateStateReloadDataMessage(5))
+
             sheets.updateQuestions()
-            sheets.updateNotifications()
+            await message.edit_text(updateStateReloadDataMessage(6))
+
+            sheets.updateEveningReflectionQuestions()
+            await message.edit_text(updateStateReloadDataMessage(7))
+
             sheets.updateFairytale()
+            
             await message.edit_text("❇️ Тексты обновлены")
 
             log.info("Bot sheets data update complete")
@@ -122,9 +129,11 @@ def updateStateReloadDataMessage(stateIndex: int) -> str:
         "УникальныеСообщения",
         "Онбординг",
         "Новости",
-        "УпражненияЭмоции",
-        "УпражненияМысли",
-        "Вопросы"
+        'УпражненияЭмоции',
+        'УпражненияМысли',
+        'Вопросы',
+        'ВечерняяРефлексияВопросы',
+        'Сказка'
     ]
     for index, value in enumerate(tablePageNames):
         indicator = "🔴" if index > stateIndex else "🟢"
