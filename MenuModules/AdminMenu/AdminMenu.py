@@ -73,9 +73,9 @@ class AdminMenu(MenuModuleInterface):
             await message.edit_text(updateStateReloadDataMessage(4))
 
             sheets.updatetaskThoughts()
-            await message.edit_text(updateStateReloadDataMessage(5))
-
             sheets.updateQuestions()
+            sheets.updateNotifications()
+            sheets.updateFairytale()
             await message.edit_text("❇️ Тексты обновлены")
 
             log.info("Bot sheets data update complete")
