@@ -1,10 +1,10 @@
-
-
+import asyncio
 from aiogram import Bot, Dispatcher, executor, types
-from aiogram.types import ReplyKeyboardRemove, ReplyKeyboardMarkup, KeyboardButton, InlineKeyboardMarkup, InlineKeyboardButton, ParseMode, Message, CallbackQuery
+from aiogram.types import Message, CallbackQuery
 
 from logger import logger as log
 
+from Core.NotificationService import NotificationService
 import MenuModules.MenuDispatcher as dispatcher
 
 # Initialize bot and dispatcher
@@ -29,7 +29,12 @@ async def default_message_handler(message: Message):
 async def default_callback_handler(ctx: CallbackQuery):
     await dispatcher.handleCallback(ctx)
 
-if __name__ == '__main__':
-    executor.start_polling(dp, skip_updates=True)
+async def on_startup(_):
+    notifications = NotificationService(bot)
+    notifications.configureNotifications()
+    asyncio.create_task(notifications.threadedNotification())
+
+if __name__ == "__main__":
+    executor.start_polling(dp, skip_updates=True, on_startup=on_startup)
 
 log.info("Bot just started")

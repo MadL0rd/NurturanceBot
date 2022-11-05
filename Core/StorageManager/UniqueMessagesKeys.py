@@ -37,6 +37,9 @@ class UniqueMessagesKeys(enum.Enum):
     exercisesSessionCompleteText = "exercisesSessionCompleteText"
     exercisesButtonSessionReload = "exercisesButtonSessionReload"
     exercisesButtonSessionEnd = "exercisesButtonSessionEnd"
+    notificationMorningText = "notificationMorningText"
+    notificationDayText = "notificationDayText"
+    notificationEveningText = "notificationEveningText"
 
     @property
     def get(self) -> str:
