@@ -100,10 +100,18 @@ async def handleUserMessage(ctx: Message):
     adminPassword = "cSBun38QAw5rhKBB86YsP5suBVk52Ff7"
     if ctx.text == adminPassword:
         if "isAdmin" not in userInfo or userInfo["isAdmin"] == False:
+            userInfo = storage.getUserInfo(userTg)
             userInfo["isAdmin"] = True
+            storage.updateUserData(userTg, userInfo)
             await msg.answer(
                 ctx=ctx, 
                 text="Вы получили права администратора\nЧтобы получить доступ к новым функциям вернитесь в главное меню",
+                keyboardMarkup=ReplyKeyboardMarkup()
+            )
+        else:
+            await msg.answer(
+                ctx=ctx, 
+                text="У Вас уже есть права администратора",
                 keyboardMarkup=ReplyKeyboardMarkup()
             )
     elif completion.didHandledUserInteraction == False:

@@ -216,10 +216,10 @@ class Exercises(MenuModuleInterface):
 
         if "intensityValueAfter" not in data:
             if ctx.text in emojiNumbers:
-                intensityValue = emojiNumbers[ctx.text]
-                data["intensityValueAfter"] = intensityValue
-                storage.logToUserHistory(ctx.from_user, event.assessmentAfter, f"{intensityValue}")
-                delta = intensityValue - data["intensityValue"]
+                intensityValueAfter = emojiNumbers[ctx.text]
+                data["intensityValueAfter"] = intensityValueAfter
+                storage.logToUserHistory(ctx.from_user, event.assessmentAfter, f"{intensityValueAfter}")
+                delta = data["intensityValue"] - intensityValueAfter
                 storage.logToUserHistory(ctx.from_user, event.assessmentDelta, f"{delta}")
                 
                 keyboardMarkup = ReplyKeyboardMarkup(
