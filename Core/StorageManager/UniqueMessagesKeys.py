@@ -13,10 +13,38 @@ class UniqueMessagesKeys(enum.Enum):
     menuButtonRandomNews = "menuButtonRandomNews"
     menuButtonRelax = "menuButtonRelax"
     menuButtonAdmin = "menuButtonAdmin"
+    menuButtonNotifications = "menuButtonNotifications"
 
     adminMenuText = "adminMenuText"
     adminMenuButtonLoadData = "adminMenuButtonLoadData"
     adminMenuButtonReloadData = "adminMenuButtonReloadData"
+
+    randomNewsStartText = "randomNewsStartText"
+    randomNewsButtonNews = "randomNewsButtonNews"
+    randomNewsAllNewsWasShown = "randomNewsAllNewsWasShown"
+
+    exercisesStartText = "exercisesStartText"
+    exercisesButtonThought = "exercisesButtonThought"
+    exercisesButtonEmotion = "exercisesButtonEmotion"
+
+    exercisesEmotionStartText = "exercisesEmotionStartText"
+    exercisesThoughtStartText = "exercisesThoughtStartText"
+    exercisesEmotionEmotionsListImage = "exercisesEmotionEmotionsListImage"
+    exercisesEmotionScaleText = "exercisesEmotionScaleText"
+    exercisesThoughtScaleText = "exercisesThoughtScaleText"
+    exercisesButtonComplete = "exercisesButtonComplete"
+    exercisesScaleTextComplete = "exercisesScaleTextComplete"
+    exercisesCompleteText = "exercisesCompleteText"
+    exercisesSessionCompleteText = "exercisesSessionCompleteText"
+    exercisesButtonSessionReload = "exercisesButtonSessionReload"
+    exercisesButtonSessionEnd = "exercisesButtonSessionEnd"
+    notificationMorningText = "notificationMorningText"
+    notificationDayText = "notificationDayText"
+    notificationEveningText = "notificationEveningText"
+    notificationSettingsText = "notificationSettingsText"
+
+    relaxStartMessage = "relaxStartMessage"
+    relaxCompleteMessage = "relaxCompleteMessage"
 
     @property
     def get(self) -> str:

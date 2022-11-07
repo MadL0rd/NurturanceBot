@@ -1,7 +1,5 @@
-from operator import mod
-from aiogram.types import Message, CallbackQuery
-
-from sqlalchemy import true
+import json
+from aiogram.types import Message, CallbackQuery, ReplyKeyboardMarkup
 
 from Core.MessageSender import MessageSender
 import Core.StorageManager.StorageManager as storage
@@ -9,7 +7,6 @@ from Core.StorageManager.StorageManager import UserHistoryEvent as event
 
 from MenuModules.MenuModuleInterface import MenuModuleInterface, MenuModuleHandlerCompletion as Completion
 from MenuModules.MenuModules import MenuModules as menu
-import MenuModules.AdminMenu.AdminMenu as adminMenu
 
 from logger import logger as log
 
@@ -65,9 +62,9 @@ async def handleUserMessage(ctx: Message):
     if module is not None:
         data = menuState["data"]
         completion: Completion = await module.handleUserMessage(
-            ctx = ctx,
+            ctx=ctx,
             msg=msg,
-            data = data
+            data=data
         )
 
     # Start next module if needed
@@ -75,6 +72,7 @@ async def handleUserMessage(ctx: Message):
     if completion is None:
         moduleNext = menu.mainMenu.get
     elif completion.inProgress == False:
+        log.debug(f"Module {module.name} completed")
         try:
             menuModuleName = completion.nextModuleNameIfCompleted
             moduleNext = [module.get for module in menu if module.get.name == menuModuleName][0]
@@ -85,7 +83,7 @@ async def handleUserMessage(ctx: Message):
             moduleNext = menu.mainMenu.get
 
     # Emergency reboot
-    if ctx.text == "Emergency reboot":
+    if ctx.text == "/back_to_menu":
         moduleNext = menu.mainMenu.get
 
     if moduleNext is not None:
@@ -99,7 +97,24 @@ async def handleUserMessage(ctx: Message):
             msg=msg
         )
 
-    if completion.didHandledUserInteraction == False:
+    adminPassword = "cSBun38QAw5rhKBB86YsP5suBVk52Ff7"
+    if ctx.text == adminPassword:
+        if "isAdmin" not in userInfo or userInfo["isAdmin"] == False:
+            userInfo = storage.getUserInfo(userTg)
+            userInfo["isAdmin"] = True
+            storage.updateUserData(userTg, userInfo)
+            await msg.answer(
+                ctx=ctx, 
+                text="Вы получили права администратора\nЧтобы получить доступ к новым функциям вернитесь в главное меню",
+                keyboardMarkup=ReplyKeyboardMarkup()
+            )
+        else:
+            await msg.answer(
+                ctx=ctx, 
+                text="У Вас уже есть права администратора",
+                keyboardMarkup=ReplyKeyboardMarkup()
+            )
+    elif completion.didHandledUserInteraction == False:
         await msg.answerUnknown(ctx)
 
     menuState = {
@@ -107,8 +122,7 @@ async def handleUserMessage(ctx: Message):
         "data": completion.moduleData 
     }
 
-    storage.updateUserData(userTg, userInfo)
-
+    userInfo = storage.getUserInfo(userTg)
     userInfo["state"] = menuState
     storage.updateUserData(userTg, userInfo)
 
@@ -118,5 +132,6 @@ async def handleCallback(ctx: CallbackQuery):
     log.debug("Did handle callback")
     
     # ctxData = json.loads(ctx.data)
-    # print(ctxData)
+    ctxData = ctx.data
+    print(ctxData)
     storage.getUserInfo(ctx.from_user)

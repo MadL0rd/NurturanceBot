@@ -8,11 +8,18 @@ import json
 import enum
 
 import Core.StorageManager.StorageManager as storage
+from logger import logger as log
 
 class PageNames(enum.Enum):
 
     uniqueMessages = "УникальныеСообщения"
     onboarding = "Онбординг"
+    news = "Новости"
+    taskEmotions ='УпражненияЭмоции'
+    taskThoughts = 'УпражненияМысли'
+    questions = 'Вопросы'
+    notifications = 'ВечерняяРефлексияВопросы'
+    fairytale = 'Сказка'
 
 pages = PageNames
 
@@ -54,9 +61,13 @@ def updateUniqueMessages():
         del values[0]
 
     content = {}
+    #log.debug(values)
     for line in values:
-        if line[0] not in content and line[0] != "":
-            content[line[0]] = line[1]
+        try:
+            if line[0] not in content and line[0] != "":
+                content[line[0]] = line[1]
+        except:
+            continue
 
     storage.writeJsonData(
         storage.path.botContentUniqueMessages, 
@@ -78,5 +89,205 @@ def updateOnboarding():
 
     storage.writeJsonData(
         storage.path.botContentOnboarding, 
+        content
+    )
+
+def updateNews():
+
+    values = getContent(pages.news, "A2:C100")
+    
+    content = []
+    for line in values:
+        exercise = {}
+        try:
+            if line[0] != "":
+                exercise["ID"] = line[0]
+            else: 
+                continue
+        except:
+            continue
+
+        try:
+            if line[1] != "":
+                exercise["text"] = line[1]
+        except:
+            log.debug("Argument text not found")
+
+        try:
+            if line[2] != "":
+                exercise["picture"] = line[2]
+        except:
+            log.debug("Argument picture not found")            
+        content.append(exercise)
+
+    storage.writeJsonData(
+        storage.path.botContentNews, 
+        content
+    )
+
+def updatetaskEmotions():
+
+    values = getContent(pages.taskEmotions, "A2:E100")
+    
+    content = []
+    for line in values:
+        exercise = {}
+        try:
+            if line[0] != "":
+                exercise["ID"] = line[0]
+            else: 
+                continue
+        except:
+            continue
+
+        try:
+            if line[1] != "":
+                exercise["text"] = line[1]
+        except:
+            log.debug("Argument text not found")
+
+        try:
+            if line[2] != "":
+                exercise["picture"] = line[2]
+        except:
+            log.debug("Argument picture not found")
+
+        try:
+            if line[3] != "":
+                exercise["audio"] = line[3]
+        except:
+            log.debug("Argument audio not found")
+
+        try:
+            if line[4] != "":
+                exercise["video"] = line[4]
+        except:
+            log.debug("Argument video not found")
+            
+        content.append(exercise)
+
+    storage.writeJsonData(
+        storage.path.botContentEmotions, 
+        content
+    )
+
+def updatetaskThoughts():
+
+    values = getContent(pages.taskThoughts, "A2:E100")
+    
+    content = []
+    for line in values:
+        exercise = {}
+        try:
+            if line[0] != "":
+                exercise["ID"] = line[0]
+            else: 
+                continue
+        except:
+            continue
+
+        try:
+            if line[1] != "":
+                exercise["text"] = line[1]
+        except:
+            log.debug("Argument text not found")
+
+        try:
+            if line[2] != "":
+                exercise["picture"] = line[2]
+        except:
+            log.debug("Argument picture not found")
+
+        try:
+            if line[3] != "":
+                exercise["audio"] = line[3]
+        except:
+            log.debug("Argument audio not found")
+
+        try:
+            if line[4] != "":
+                exercise["video"] = line[4]
+        except:
+            log.debug("Argument video not found")
+            
+        content.append(exercise)
+
+    storage.writeJsonData(
+        storage.path.botContentThoughts, 
+        content
+    )
+
+def updateQuestions():
+
+    values = getContent(pages.questions, "A2:C100")
+    
+    content = []
+    for line in values:
+        exercise = {}
+        try:
+            if line[0] != "":
+                exercise["ID"] = line[0]
+            else: 
+                continue
+        except:
+            continue
+
+        try:
+            if line[1] != "":
+                exercise["text"] = line[1]
+        except:
+            log.debug("Argument text not found")           
+        content.append(exercise)
+
+    storage.writeJsonData(
+        storage.path.botContentQuestions, 
+        content
+    )
+
+def updateEveningReflectionQuestions():
+
+    values = getContent(pages.notifications, "A2:100")
+    
+    content = []
+    for line in values:
+        exercise = {}
+        try:
+            if line[0] != "":
+                exercise["ID"] = line[0]
+            else: 
+                continue
+        except:
+            continue
+
+        try:
+            if line[1] != "":
+                exercise["text"] = line[1]
+        except:
+            print("Argument text not found")           
+        content.append(exercise)
+
+    storage.writeJsonData(
+        storage.path.eveningReflectionQuestions, 
+        content
+    )
+
+def updateFairytale():
+
+    values = getContent(pages.fairytale, "A2:A100")
+    
+    content = []
+    for line in values:
+        exercise = {}
+        try:
+            if line[0] != "":
+                exercise["text"] = line[0]
+            else: 
+                continue
+        except:
+            continue          
+        content.append(exercise)
+
+    storage.writeJsonData(
+        storage.path.botContentFairytale, 
         content
     )

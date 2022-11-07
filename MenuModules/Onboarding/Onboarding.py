@@ -44,7 +44,7 @@ class Onboarding(MenuModuleInterface):
             moduleData={ "previousPageIndex" : pageIndex }
         )
 
-    async def handleUserMessage(self, ctx: Message, data: dict, msg: MessageSender) -> Completion:
+    async def handleUserMessage(self, ctx: Message, msg: MessageSender, data: dict) -> Completion:
 
         log.debug(f"User: {ctx.from_user.id}")
 
