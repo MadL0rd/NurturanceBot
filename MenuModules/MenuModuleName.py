@@ -11,6 +11,8 @@ class MenuModuleName(enum.Enum):
     notificationsSettings: str = "motificationsSettings"
     otherHuman: str = "otherHuman"
     otherHumanEnding: str = 'otherHumanEnding'
+    otherHumanEndingYes: str = 'otherHumanEndingYes'
+    otherHumanEndingNo: str = 'otherHumanEndingNo'
     eveningReflectionQuestions: str = "eveningReflectionQuestions"
     reflectionMenu: str = 'reflectionMenu'
 

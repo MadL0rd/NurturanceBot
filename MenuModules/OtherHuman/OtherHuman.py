@@ -9,6 +9,7 @@ from MenuModules.MenuModuleInterface import MenuModuleInterface, MenuModuleHandl
 from MenuModules.MenuModuleName import MenuModuleName
 from Core.StorageManager.UniqueMessagesKeys import textConstant
 from logger import logger as log
+import asyncio
 
 class OtherHuman(MenuModuleInterface):
 
@@ -51,6 +52,7 @@ class OtherHuman(MenuModuleInterface):
 
         pageIndex = data["previousPageIndex"]
         otherHumanPages = storage.getJsonData(storage.path.botContentOtherHuman)
+    
         page = OtherHumanPage(otherHumanPages[pageIndex])
 
         if ctx.text != page.buttonText and pageIndex != 1:
@@ -59,19 +61,22 @@ class OtherHuman(MenuModuleInterface):
         pageIndex += 1
         if len(otherHumanPages) == pageIndex:
             return self.complete()
-
-        # Надо придумать как ожидать ввод данных от пользователя
-        # if pageIndex == 2 and ctx.text == ctx.text:
-        #     return await sendOtherHumanPage(ctx, msg, page)
             
-
-
         page = OtherHumanPage(otherHumanPages[pageIndex])
         await sendOtherHumanPage(ctx, msg, page)
 
-        # if pageIndex == len(otherHumanPages):
-        #     self.complete(nextModuleName=MenuModuleName.otherHumanEnding.get)
-    
+
+
+# =====================
+# #ЭТО КОСТЫЛЬ, нужен для того чтобы переходить на otherHumanEnding
+# #Скорее всего можно проще, но я не осилил
+# ======================
+        if pageIndex == len(otherHumanPages) - 1:
+            return self.complete(nextModuleName=MenuModuleName.otherHumanEnding.get)
+        
+
+
+        
         return Completion(
             inProgress = True,
             didHandledUserInteraction = True,
@@ -82,7 +87,7 @@ class OtherHuman(MenuModuleInterface):
 
         log.debug(f"User: {ctx.from_user.id}")
         log.error(f"{self.name} module does not have callbacks\nData: {data}")
-        
+        self.complete(nextModuleName=MenuModuleName.otherHumanEnding.get)
 
 
 

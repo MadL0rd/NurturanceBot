@@ -6,7 +6,9 @@ from MenuModules.MainMenu.MainMenu import MainMenu
 from MenuModules.MenuModuleInterface import MenuModuleInterface
 from MenuModules.AdminMenu.AdminMenu import AdminMenu
 from MenuModules.OtherHuman.OtherHuman import OtherHuman
-# from MenuModules.OtherHuman.OtherHumanEnding import OtherHumanEnding
+from MenuModules.OtherHuman.OtherHumanEnding import OtherHumanEnding
+from MenuModules.OtherHuman.OtherHumanEndingYes import OtherHumanEndingYes
+from MenuModules.OtherHuman.OtherHumanEndingNo import OtherHumanEndingNo
 from MenuModules.RandomNews.RandomNews import RandomNews
 from MenuModules.Exercises.Exercises import Exercises
 from MenuModules.Relax.Relax import Relax
@@ -22,10 +24,13 @@ class MenuModules(enum.Enum):
     relax: MenuModuleInterface = Relax()
     notificationsSettings: MenuModuleInterface = NotificationsSettings()
     otherHuman: MenuModuleInterface = OtherHuman()
-    # otherHumanEnding: MenuModuleInterface = OtherHumanEnding()
     eveningReflectionQuestions: MenuModuleInterface = EveningReflectionQuestions()
     reflectionMenu: MenuModuleInterface = ReflectionMenu()
+    otherHumanEnding: MenuModuleInterface = OtherHumanEnding()
+    otherHumanEndingYes: MenuModuleInterface = OtherHumanEndingYes()
+    otherHumanEndingNo: MenuModuleInterface = OtherHumanEndingNo()
 
+    
     @property
     def get(self) -> MenuModuleInterface:
         return self.value
