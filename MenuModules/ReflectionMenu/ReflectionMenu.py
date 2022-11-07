@@ -53,7 +53,7 @@ class ReflectionMenu(MenuModuleInterface):
         log.debug(f"User: {ctx.from_user.id}")
 
         if ctx.text == textConstant.reflectionMenuButtonFairytale.get:
-            return self.complete(nextModuleName=MenuModuleName.mainMenu.get)
+            return self.complete(nextModuleName=MenuModuleName.fairytale.get)
         
         if ctx.text == textConstant.reflectionMenuButtonOtherHuman.get:
             return self.complete(nextModuleName=MenuModuleName.otherHuman.get)

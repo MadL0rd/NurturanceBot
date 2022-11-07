@@ -53,6 +53,8 @@ class UniqueMessagesKeys(enum.Enum):
     otherHumanEnding = "otherHumanEnding"
     otherHumanWhatsNext = "otherHumanWhatsNext"
 
+    fairytaleEnding = 'fairytaleEnding'
+
     @property
     def get(self) -> str:
         messagesKeys = storage.getJsonData(storage.path.botContentUniqueMessages)

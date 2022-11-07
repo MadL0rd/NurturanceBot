@@ -10,8 +10,8 @@ from MenuModules.MenuModuleName import MenuModuleName
 from Core.StorageManager.UniqueMessagesKeys import textConstant
 from logger import logger as log
 
-class OtherHumanEndingYes(MenuModuleInterface):
-    namePrivate = MenuModuleName.otherHumanEndingYes
+class FairytaleEnding(MenuModuleInterface):
+    namePrivate = MenuModuleName.fairytaleEnding
 
     async def handleModuleStart(self, ctx: Message, msg: MessageSender) -> Completion:
 
@@ -19,12 +19,13 @@ class OtherHumanEndingYes(MenuModuleInterface):
 
         endingkeyboardMarkup = ReplyKeyboardMarkup(
             resize_keyboard=True
-        ).add(KeyboardButton("Закончить сессию")
-        ).add(KeyboardButton("Перейти к написанию сказки"))
+        ).add(KeyboardButton("Написать ещё одну историю")
+        ).add(KeyboardButton("Завершить сессию")
+        ).add(KeyboardButton("Перейти к работе с другими людьми"))
 
         await msg.answer(
             ctx = ctx,
-            text = textConstant.otherHumanWhatsNext.get,
+            text = textConstant.fairytaleEnding.get,
             keyboardMarkup = endingkeyboardMarkup
         )
 
@@ -33,17 +34,18 @@ class OtherHumanEndingYes(MenuModuleInterface):
             didHandledUserInteraction=True,
             moduleData={ "startMessageDidSent" : True }
         )
-
-
     async def handleUserMessage(self, ctx: Message, msg: MessageSender, data: dict) -> Completion:
 
         log.debug(f"User: {ctx.from_user.id}")
 
-        if ctx.text == "Закончить сессию":
-            return self.complete(nextModuleName=MenuModuleName.mainMenu.get)
+        if ctx.text == "Написать ещё одну историю":
+            return self.complete(nextModuleName=MenuModuleName.fairytale.get)
         
-        if ctx.text == "Перейти к написанию сказки":
-            return self.complete(nextModuleName=MenuModuleName.fairytale.get)      
+        if ctx.text == "Завершить сессию":
+            return self.complete(nextModuleName=MenuModuleName.mainMenu.get)      
+
+        if ctx.text == "Перейти к работе с другими людьми":
+            return self.complete(nextModuleName=MenuModuleName.otherHuman.get)      
 
         return self.canNotHandle(data)
 

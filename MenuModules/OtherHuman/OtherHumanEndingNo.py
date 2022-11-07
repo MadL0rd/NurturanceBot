@@ -47,7 +47,7 @@ class OtherHumanEndingNo(MenuModuleInterface):
             return self.complete(nextModuleName=MenuModuleName.mainMenu.get)      
 
         if ctx.text == "Перейти к написанию сказки":
-            return self.complete(nextModuleName=MenuModuleName.mainMenu.get)
+            return self.complete(nextModuleName=MenuModuleName.fairytale.get)
 
         return self.canNotHandle(data)
 

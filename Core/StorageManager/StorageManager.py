@@ -25,6 +25,7 @@ class UserHistoryEvent(enum.Enum):
     startModuleNews =  "Запросил новость"
     startModuleExercises =  "Перешел к упражнениям"
     startModuleEveningReflectionQuestions = "Приступил к вечерней рефлексии"
+    startModuleFairytale = "Приступил к написанию сказки"
     startModuleOtherHuman = "Перешел к проработке отношений с другим человеком"
     chooseExerciseEmotion =  "Начал прорабатывать эмоцию"
     chooseExerciseThought =  "Начал прорабатывать мысль"

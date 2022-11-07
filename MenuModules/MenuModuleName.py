@@ -15,6 +15,8 @@ class MenuModuleName(enum.Enum):
     otherHumanEndingNo: str = 'otherHumanEndingNo'
     eveningReflectionQuestions: str = "eveningReflectionQuestions"
     reflectionMenu: str = 'reflectionMenu'
+    fairytale: str = 'fairytale'
+    fairytaleEnding: str = 'fairytaleEnding'
 
 
     @property
