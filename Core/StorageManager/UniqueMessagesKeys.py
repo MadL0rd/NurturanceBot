@@ -18,6 +18,7 @@ class UniqueMessagesKeys(enum.Enum):
     adminMenuText = "adminMenuText"
     adminMenuButtonLoadData = "adminMenuButtonLoadData"
     adminMenuButtonReloadData = "adminMenuButtonReloadData"
+    adminMenuButtonEveningReflectionStart = "adminMenuButtonEveningReflectionStart"
 
     randomNewsStartText = "randomNewsStartText"
     randomNewsButtonNews = "randomNewsButtonNews"

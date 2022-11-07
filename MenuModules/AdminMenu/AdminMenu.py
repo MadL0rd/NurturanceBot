@@ -32,7 +32,7 @@ class AdminMenu(MenuModuleInterface):
             resize_keyboard=True
         ).add(KeyboardButton(textConstant.adminMenuButtonReloadData.get)
         ).add(KeyboardButton(textConstant.adminMenuButtonLoadData.get)
-        ).add(KeyboardButton("ZALUPA")
+        ).add(KeyboardButton(textConstant.adminMenuButtonEveningReflectionStart.get)
         ).add(KeyboardButton(textConstant.menuButtonReturnToMainMenu.get))
         
 
@@ -56,7 +56,7 @@ class AdminMenu(MenuModuleInterface):
         if ctx.text == textConstant.menuButtonReturnToMainMenu.get:
             return self.complete(nextModuleName=MenuModuleName.mainMenu.get)
         
-        if ctx.text == "ZALUPA":
+        if ctx.text == textConstant.adminMenuButtonEveningReflectionStart.get:
             return self.complete(nextModuleName=MenuModuleName.eveningReflectionQuestions.get)
         
         if ctx.text == textConstant.adminMenuButtonReloadData.get:

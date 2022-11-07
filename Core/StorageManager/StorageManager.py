@@ -81,8 +81,10 @@ def getJsonData(filePath: Path):
 
 def writeJsonData(filePath: Path, content):
     # log.debug(content)
-    data = json.dumps(content, indent=2)
-    with filePath.open('w', encoding= 'utf-8') as file:
+    data = json.dumps(content, ensure_ascii=False, indent=2)
+    with filePath.open('w') as file:
+    # data = json.dumps(content, indent=2)
+    # with filePath.open('w', encoding= 'utf-8') as file:
         file.write(data)
 
 # =====================
