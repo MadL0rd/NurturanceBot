@@ -1,5 +1,6 @@
 import enum
 from MenuModules.EveningReflectionQuestions.EveningReflectionQuestions import EveningReflectionQuestions
+from MenuModules.Exercises.ExercisesEnding import ExercisesEnding
 from MenuModules.Fairytale.Fairytale import Fairytale
 from MenuModules.Fairytale.FairytaleEnding import FairytaleEnding
 from MenuModules.NotificationsSettings.NotificationsSettings import NotificationsSettings
@@ -22,6 +23,7 @@ class MenuModules(enum.Enum):
     mainMenu: MenuModuleInterface = MainMenu()
     adminMenu: MenuModuleInterface = AdminMenu()
     exercises: MenuModuleInterface = Exercises()
+    exercisesEnding = ExercisesEnding()
     randomNews: MenuModuleInterface = RandomNews()
     relax: MenuModuleInterface = Relax()
     notificationsSettings: MenuModuleInterface = NotificationsSettings()

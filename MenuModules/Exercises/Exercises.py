@@ -257,9 +257,7 @@ class Exercises(MenuModuleInterface):
             )
 
         if ctx.text == textConstant.exercisesButtonSessionEnd.get:
-            await msg.answer(ctx, textConstant.exercisesCompleteText.get, ReplyKeyboardRemove())
-
-            return self.complete()
+            return self.complete(nextModuleName=MenuModuleName.exercisesEnding.get)
         
         return self.canNotHandle(data)
         

@@ -1,4 +1,5 @@
 import asyncio
+import sys
 from aiogram import Bot, Dispatcher, executor, types
 from aiogram.types import Message, CallbackQuery
 
@@ -8,16 +9,18 @@ from Core.NotificationService import NotificationService
 import MenuModules.MenuDispatcher as dispatcher
 
 # =====================
-# Version 1.1.2
+# Version 1.1.3
 # =====================
 
 # Initialize bot and dispatcher
 
+log.info(sys.argv)
+
 # Main token
 apiKey = "5659838410:AAEw9C4HuJs5R_wlzFpXeldJPk1N9ELLez4"
 
-# Test token
-apiKey = "5507754697:AAFKM_4mwbXkQv1XO0z_WhaCiPzTEoEXM7s"
+if len(sys.argv) > 1:
+    apiKey = sys.argv[1]
 
 bot = Bot(token=apiKey)
 dp = Dispatcher(bot)
