@@ -37,6 +37,8 @@ class UserHistoryEvent(enum.Enum):
     sessionReload = "Перезапустил сессию"
     sessionComplete = "Завершил сессию"
     notificationChooseTime = "Передвинул время уведомлений"
+    otherHumanSessionSuccessYes = "ПоработалСЧеловеком: удачно"
+    otherHumanSessionSuccessNo = "ПоработалСЧеловеком: неудачно"
 
 class PathConfig:
 
@@ -191,7 +193,9 @@ def generateStatisticTable():
         UserHistoryEvent.sessionGenerated,
         UserHistoryEvent.sessionReload,
         UserHistoryEvent.sessionComplete,
-        UserHistoryEvent.notificationChooseTime
+        UserHistoryEvent.notificationChooseTime,
+        UserHistoryEvent.otherHumanSessionSuccessYes,
+        UserHistoryEvent.otherHumanSessionSuccessNo
     ]
 
     dateConfig = getJsonData(path.botContentPrivateConfig)["startDate"]

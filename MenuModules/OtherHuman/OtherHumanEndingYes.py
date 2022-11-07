@@ -19,8 +19,8 @@ class OtherHumanEndingYes(MenuModuleInterface):
 
         endingkeyboardMarkup = ReplyKeyboardMarkup(
             resize_keyboard=True
-        ).add(KeyboardButton("Закончить сессию")
-        ).add(KeyboardButton("Перейти к написанию сказки"))
+        ).add(KeyboardButton(textConstant.otherHumanEnding.get)
+        ).add(KeyboardButton(textConstant.otherHumanButtonWriteFairytale.get))
 
         await msg.answer(
             ctx = ctx,
@@ -39,10 +39,12 @@ class OtherHumanEndingYes(MenuModuleInterface):
 
         log.debug(f"User: {ctx.from_user.id}")
 
-        if ctx.text == "Закончить сессию":
+        if ctx.text == textConstant.otherHumanEnding.get:
+            storage.logToUserHistory(ctx.from_user, storage.UserHistoryEvent.otherHumanSessionSuccessYes)
             return self.complete(nextModuleName=MenuModuleName.mainMenu.get)
         
-        if ctx.text == "Перейти к написанию сказки":
+        if ctx.text == textConstant.otherHumanButtonWriteFairytale.get:
+            storage.logToUserHistory(ctx.from_user, storage.UserHistoryEvent.otherHumanSessionSuccessNo)
             return self.complete(nextModuleName=MenuModuleName.fairytale.get)      
 
         return self.canNotHandle(data)

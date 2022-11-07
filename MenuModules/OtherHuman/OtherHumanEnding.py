@@ -19,8 +19,8 @@ class OtherHumanEnding(MenuModuleInterface):
 
         endingkeyboardMarkup = ReplyKeyboardMarkup(
             resize_keyboard=True
-        ).add(KeyboardButton("Нет")
-        ).add(KeyboardButton("Да"))
+        ).add(KeyboardButton(textConstant.otherHumanButtonSessionSuccessYes.get)
+        ).add(KeyboardButton(textConstant.otherHumanButtonSessionSuccessNo.get))
 
         await msg.answer(
             ctx = ctx,
@@ -39,10 +39,10 @@ class OtherHumanEnding(MenuModuleInterface):
 
         log.debug(f"User: {ctx.from_user.id}")
 
-        if ctx.text == "Нет":
+        if ctx.text == textConstant.otherHumanButtonSessionSuccessYes.get:
             return self.complete(nextModuleName=MenuModuleName.otherHumanEndingNo.get)
         
-        if ctx.text == "Да":
+        if ctx.text == textConstant.otherHumanButtonSessionSuccessNo.get:
             return self.complete(nextModuleName=MenuModuleName.otherHumanEndingYes.get)      
 
         return self.canNotHandle(data)

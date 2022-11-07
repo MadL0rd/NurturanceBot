@@ -1,5 +1,5 @@
 from email import message
-from aiogram.types import Message, CallbackQuery, ReplyKeyboardMarkup, KeyboardButton
+from aiogram.types import Message, CallbackQuery, ReplyKeyboardMarkup, KeyboardButton, ReplyKeyboardRemove
 
 import Core.StorageManager.StorageManager as storage
 from Core.StorageManager.StorageManager import UserHistoryEvent as event
@@ -55,7 +55,7 @@ class OtherHuman(MenuModuleInterface):
     
         page = OtherHumanPage(otherHumanPages[pageIndex])
 
-        if ctx.text != page.buttonText and pageIndex != 1:
+        if page.buttonText != "UserText" and ctx.text != page.buttonText and pageIndex != 1:
             return self.canNotHandle(data)
         
         pageIndex += 1
@@ -65,17 +65,12 @@ class OtherHuman(MenuModuleInterface):
         page = OtherHumanPage(otherHumanPages[pageIndex])
         await sendOtherHumanPage(ctx, msg, page)
 
-
-
 # =====================
 # #ЭТО КОСТЫЛЬ, нужен для того чтобы переходить на otherHumanEnding
 # #Скорее всего можно проще, но я не осилил
 # ======================
         if pageIndex == len(otherHumanPages) - 1:
             return self.complete(nextModuleName=MenuModuleName.otherHumanEnding.get)
-        
-
-
         
         return Completion(
             inProgress = True,
@@ -89,14 +84,9 @@ class OtherHuman(MenuModuleInterface):
         log.error(f"{self.name} module does not have callbacks\nData: {data}")
         self.complete(nextModuleName=MenuModuleName.otherHumanEnding.get)
 
-
-
-
-
     # =====================
     # Custom stuff
     # =====================
-
 
 class OtherHumanPage:
 
@@ -112,6 +102,9 @@ async def sendOtherHumanPage(ctx: Message, msg: MessageSender, page: OtherHumanP
     keyboardMarkup = ReplyKeyboardMarkup(
         resize_keyboard=True
     ).add(KeyboardButton(page.buttonText))
+
+    if page.buttonText == "UserText":
+        keyboardMarkup = ReplyKeyboardRemove()
 
     await msg.answer(
         ctx=ctx,

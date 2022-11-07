@@ -33,7 +33,6 @@ class ReflectionMenu(MenuModuleInterface):
         ).add(KeyboardButton(textConstant.reflectionMenuButtonFairytale.get)
         ).add(KeyboardButton(textConstant.reflectionMenuButtonOtherHuman.get)
         ).add(KeyboardButton(textConstant.menuButtonReturnToMainMenu.get))
-        
 
         await msg.answer(
             ctx = ctx,
@@ -46,7 +45,6 @@ class ReflectionMenu(MenuModuleInterface):
             didHandledUserInteraction=True,
             moduleData={ "startMessageDidSent" : True }
         )
-
 
     async def handleUserMessage(self, ctx: Message, msg: MessageSender, data: dict) -> Completion:
 

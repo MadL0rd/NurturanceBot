@@ -52,7 +52,12 @@ class UniqueMessagesKeys(enum.Enum):
     reflectionMenuButtonOtherHuman = "reflectionMenuButtonOtherHuman"
 
     otherHumanEnding = "otherHumanEnding"
+    otherHumanButtonSessionSuccessYes = "otherHumanButtonSessionSuccessYes"
+    otherHumanButtonSessionSuccessNo = "otherHumanButtonSessionSuccessNo"
     otherHumanWhatsNext = "otherHumanWhatsNext"
+    otherHumanButtonRestart = "otherHumanButtonRestart"
+    otherHumanButtonEndSession = "otherHumanButtonEndSession"
+    otherHumanButtonWriteFairytale = "otherHumanButtonWriteFairytale"
 
     fairytaleEnding = 'fairytaleEnding'
 

@@ -1,5 +1,5 @@
 from email import message
-from aiogram.types import Message, CallbackQuery, ReplyKeyboardMarkup, KeyboardButton
+from aiogram.types import Message, CallbackQuery, ReplyKeyboardMarkup, KeyboardButton, ReplyKeyboardRemove
 
 import Core.StorageManager.StorageManager as storage
 from Core.StorageManager.StorageManager import UserHistoryEvent as event
@@ -56,28 +56,12 @@ class EveningReflectionQuestions(MenuModuleInterface):
 
         reflectionQuestionLine = choice(reflectionQuestionList)   
         reflectionQuestionText = reflectionQuestionLine.get("text")
-                
-
+        
         await msg.answer(
             ctx = ctx,
             text = reflectionQuestionText,
-            keyboardMarkup=None
-            )
-
-        #else:
-           # await msg.answer(
-            #    ctx = ctx,
-             #   text = "Какая-то ебучая новость",
-              #  keyboardMarkup = self.keyboardMarkup
-            #)
-        
-        # pageIndex = 0
-        # NewsPages = storage.getJsonData(storage.path.botContentNews)
-        # if len(NewsPages) > pageIndex:
-        #     page = NewsPage(NewsPages[pageIndex])
-        #     await sendNews(ctx, msg, page)
-        # else:
-        #     log.error("News is empty")
+            keyboardMarkup=ReplyKeyboardRemove()
+        )
 
 class EveningReflectionQuestionsPage:
 
@@ -86,10 +70,3 @@ class EveningReflectionQuestionsPage:
     def __init__(self, data: dict):
         self.message = data["ID"]
         self.message = data["text"]
-
-async def sendReflectionQuestion(ctx: Message, msg: MessageSender, page: EveningReflectionQuestionsPage):
-
-    await msg.answer(
-        ctx=ctx,
-        text=page.text,
-    )
