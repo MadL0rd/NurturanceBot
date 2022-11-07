@@ -17,7 +17,7 @@ import MenuModules.MenuDispatcher as dispatcher
 apiKey = "5659838410:AAEw9C4HuJs5R_wlzFpXeldJPk1N9ELLez4"
 
 # Test token
-# apiKey = "5507754697:AAFKM_4mwbXkQv1XO0z_WhaCiPzTEoEXM7s"
+apiKey = "5507754697:AAFKM_4mwbXkQv1XO0z_WhaCiPzTEoEXM7s"
 
 bot = Bot(token=apiKey)
 dp = Dispatcher(bot)
@@ -42,8 +42,7 @@ async def on_startup(_):
     notifications = NotificationService(bot)
     notifications.configureNotifications()
     asyncio.create_task(notifications.threadedNotification())
+    log.info("Bot just started")
 
 if __name__ == "__main__":
     executor.start_polling(dp, skip_updates=True, on_startup=on_startup)
-
-log.info("Bot just started")

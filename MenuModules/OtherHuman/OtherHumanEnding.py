@@ -46,7 +46,7 @@ class OtherHumanEnding(MenuModuleInterface):
         
         if ctx.text == textConstant.otherHumanButtonSessionSuccessNo.get:
             storage.logToUserHistory(ctx.from_user, storage.UserHistoryEvent.otherHumanSessionSuccessNo, "")
-            return self.complete(nextModuleName=MenuModuleName.otherHumanEndingNo.get)      
+            return self.complete(nextModuleName=MenuModuleName.otherHumanEndingNo.get)
 
         return self.canNotHandle(data)
 

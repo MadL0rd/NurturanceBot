@@ -16,8 +16,6 @@ from MenuModules.Exercises.Exercises import Exercises
 from MenuModules.Relax.Relax import Relax
 from MenuModules.ReflectionMenu.ReflectionMenu import ReflectionMenu
 
-
-
 class MenuModules(enum.Enum):
 
     onboarding: MenuModuleInterface = Onboarding()
@@ -35,7 +33,6 @@ class MenuModules(enum.Enum):
     otherHumanEndingNo: MenuModuleInterface = OtherHumanEndingNo()
     fairytale: MenuModuleInterface = Fairytale()
     fairytaleEnding: MenuModuleInterface = FairytaleEnding()
-
     
     @property
     def get(self) -> MenuModuleInterface:
