@@ -19,13 +19,13 @@ class FairytaleEnding(MenuModuleInterface):
 
         endingkeyboardMarkup = ReplyKeyboardMarkup(
             resize_keyboard=True
-        ).add(KeyboardButton("Написать ещё одну историю")
-        ).add(KeyboardButton("Завершить сессию")
-        ).add(KeyboardButton("Перейти к работе с другими людьми"))
+        ).add(KeyboardButton(textConstant.fairytaleEndingButtonRestart.get)
+        ).add(KeyboardButton(textConstant.fairytaleEndingButtonOtherPerson.get)
+        ).add(KeyboardButton(textConstant.fairytaleEndingButtonEndSession.get))
 
         await msg.answer(
             ctx = ctx,
-            text = textConstant.fairytaleEnding.get,
+            text = textConstant.fairytaleEndingText.get,
             keyboardMarkup = endingkeyboardMarkup
         )
 
@@ -38,13 +38,13 @@ class FairytaleEnding(MenuModuleInterface):
 
         log.debug(f"User: {ctx.from_user.id}")
 
-        if ctx.text == "Написать ещё одну историю":
+        if ctx.text == textConstant.fairytaleEndingButtonRestart.get:
             return self.complete(nextModuleName=MenuModuleName.fairytale.get)
         
-        if ctx.text == "Завершить сессию":
+        if ctx.text == textConstant.fairytaleEndingButtonEndSession.get:
             return self.complete(nextModuleName=MenuModuleName.mainMenu.get)      
 
-        if ctx.text == "Перейти к работе с другими людьми":
+        if ctx.text == textConstant.fairytaleEndingButtonOtherPerson.get:
             return self.complete(nextModuleName=MenuModuleName.otherHuman.get)      
 
         return self.canNotHandle(data)

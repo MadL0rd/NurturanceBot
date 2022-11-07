@@ -59,7 +59,12 @@ class UniqueMessagesKeys(enum.Enum):
     otherHumanButtonEndSession = "otherHumanButtonEndSession"
     otherHumanButtonWriteFairytale = "otherHumanButtonWriteFairytale"
 
-    fairytaleEnding = 'fairytaleEnding'
+    fairytaleStart = "fairytaleStart"
+    fairytaleButtonStart = "fairytaleButtonStart"
+    fairytaleEndingText = "fairytaleEndingText"
+    fairytaleEndingButtonRestart = "fairytaleEndingButtonRestart"
+    fairytaleEndingButtonEndSession = "fairytaleEndingButtonEndSession"
+    fairytaleEndingButtonOtherPerson = "fairytaleEndingButtonOtherPerson"
 
     @property
     def get(self) -> str:

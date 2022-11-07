@@ -11,6 +11,7 @@ from Core.StorageManager.UniqueMessagesKeys import textConstant
 from logger import logger as log
 
 class OtherHumanEndingNo(MenuModuleInterface):
+
     namePrivate = MenuModuleName.otherHumanEndingNo
 
     async def handleModuleStart(self, ctx: Message, msg: MessageSender) -> Completion:
@@ -20,8 +21,8 @@ class OtherHumanEndingNo(MenuModuleInterface):
         endingkeyboardMarkup = ReplyKeyboardMarkup(
             resize_keyboard=True
         ).add(KeyboardButton(textConstant.otherHumanButtonRestart.get)
-        ).add(KeyboardButton(textConstant.otherHumanEnding.get)
-        ).add(KeyboardButton(textConstant.otherHumanButtonWriteFairytale.get))
+        ).add(KeyboardButton(textConstant.otherHumanButtonWriteFairytale.get)
+        ).add(KeyboardButton(textConstant.otherHumanButtonEndSession.get))
 
         await msg.answer(
             ctx = ctx,
@@ -35,7 +36,6 @@ class OtherHumanEndingNo(MenuModuleInterface):
             moduleData={ "startMessageDidSent" : True }
         )
 
-
     async def handleUserMessage(self, ctx: Message, msg: MessageSender, data: dict) -> Completion:
 
         log.debug(f"User: {ctx.from_user.id}")
@@ -43,7 +43,7 @@ class OtherHumanEndingNo(MenuModuleInterface):
         if ctx.text == textConstant.otherHumanButtonRestart.get:
             return self.complete(nextModuleName=MenuModuleName.otherHuman.get)
         
-        if ctx.text == textConstant.otherHumanEnding.get:
+        if ctx.text == textConstant.otherHumanButtonEndSession.get:
             return self.complete(nextModuleName=MenuModuleName.mainMenu.get)      
 
         if ctx.text == textConstant.otherHumanButtonWriteFairytale.get:

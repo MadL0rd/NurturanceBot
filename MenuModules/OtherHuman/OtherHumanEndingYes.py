@@ -11,6 +11,7 @@ from Core.StorageManager.UniqueMessagesKeys import textConstant
 from logger import logger as log
 
 class OtherHumanEndingYes(MenuModuleInterface):
+    
     namePrivate = MenuModuleName.otherHumanEndingYes
 
     async def handleModuleStart(self, ctx: Message, msg: MessageSender) -> Completion:
@@ -19,8 +20,8 @@ class OtherHumanEndingYes(MenuModuleInterface):
 
         endingkeyboardMarkup = ReplyKeyboardMarkup(
             resize_keyboard=True
-        ).add(KeyboardButton(textConstant.otherHumanEnding.get)
-        ).add(KeyboardButton(textConstant.otherHumanButtonWriteFairytale.get))
+        ).add(KeyboardButton(textConstant.otherHumanButtonWriteFairytale.get)
+        ).add(KeyboardButton(textConstant.otherHumanButtonEndSession.get))
 
         await msg.answer(
             ctx = ctx,
@@ -39,12 +40,10 @@ class OtherHumanEndingYes(MenuModuleInterface):
 
         log.debug(f"User: {ctx.from_user.id}")
 
-        if ctx.text == textConstant.otherHumanEnding.get:
-            storage.logToUserHistory(ctx.from_user, storage.UserHistoryEvent.otherHumanSessionSuccessYes)
+        if ctx.text == textConstant.otherHumanButtonEndSession.get:
             return self.complete(nextModuleName=MenuModuleName.mainMenu.get)
         
         if ctx.text == textConstant.otherHumanButtonWriteFairytale.get:
-            storage.logToUserHistory(ctx.from_user, storage.UserHistoryEvent.otherHumanSessionSuccessNo)
             return self.complete(nextModuleName=MenuModuleName.fairytale.get)      
 
         return self.canNotHandle(data)

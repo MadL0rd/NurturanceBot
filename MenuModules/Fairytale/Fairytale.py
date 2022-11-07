@@ -1,5 +1,5 @@
 from email import message
-from aiogram.types import Message, CallbackQuery, ReplyKeyboardMarkup, KeyboardButton
+from aiogram.types import Message, CallbackQuery, ReplyKeyboardMarkup, KeyboardButton, ReplyKeyboardRemove
 
 import Core.StorageManager.StorageManager as storage
 from Core.StorageManager.StorageManager import UserHistoryEvent as event
@@ -25,22 +25,20 @@ class Fairytale(MenuModuleInterface):
 
         log.debug(f"User: {ctx.from_user.id}")
         storage.logToUserHistory(ctx.from_user, event.startModuleFairytale, "")
+        
+        keyboardMarkup = ReplyKeyboardMarkup(
+            resize_keyboard=True
+        ).add(KeyboardButton(textConstant.fairytaleButtonStart.get))
+        await msg.answer(
+            ctx=ctx,
+            text=textConstant.fairytaleStart.get,
+            keyboardMarkup=keyboardMarkup
+        )
 
-        pageIndex = 0
-        FairytalePages = storage.getJsonData(storage.path.botContentFairytale)
-        if len(FairytalePages) > pageIndex:
-            page = FairytalePage(FairytalePages[pageIndex])
-            await sendFairytalePage(ctx, msg, page)
-        else:
-            log.error("Fairytale is empty")
-            return Completion(
-                inProgress = False,
-                didHandledUserInteraction=True,
-                moduleData={}
-            )
+        pageIndex = -1
 
         return Completion(
-            inProgress = pageIndex < len(FairytalePages),
+            inProgress = True,
             didHandledUserInteraction=True,
             moduleData={ "previousPageIndex" : pageIndex }
         )
@@ -50,6 +48,10 @@ class Fairytale(MenuModuleInterface):
         log.debug(f"User: {ctx.from_user.id}")
 
         pageIndex = data["previousPageIndex"]
+
+        if pageIndex == -1 and ctx.text != textConstant.fairytaleButtonStart.get:
+            return self.canNotHandle(data)
+
         pageIndex += 1
         
         FairytalePages = storage.getJsonData(storage.path.botContentFairytale)
@@ -57,13 +59,7 @@ class Fairytale(MenuModuleInterface):
         if pageIndex == len(FairytalePages):
             return self.complete(nextModuleName=MenuModuleName.fairytaleEnding.get)
 
-        
         page = FairytalePage(FairytalePages[pageIndex])
-
-        # if ctx.text != page.buttonText and pageIndex != 1:
-        #     return self.canNotHandle(data)
-        
-        
         
         if len(FairytalePages) == pageIndex:
             return self.complete()
@@ -71,17 +67,12 @@ class Fairytale(MenuModuleInterface):
         if ctx.text == ctx.text:
             await sendFairytalePage(ctx, msg, page)
 
-
-
 # =====================
 # #ЭТО КОСТЫЛЬ, нужен для того чтобы переходить на otherHumanEnding
 # #Скорее всего можно проще, но я не осилил
 # ======================
         # if pageIndex == len(otherHumanPages) - 1:
         #     return self.complete(nextModuleName=MenuModuleName.otherHumanEnding.get)
-        
-
-
         
         return Completion(
             inProgress = True,
@@ -93,10 +84,6 @@ class Fairytale(MenuModuleInterface):
 
         log.debug(f"User: {ctx.from_user.id}")
         log.error(f"{self.name} module does not have callbacks\nData: {data}")
-
-
-
-
 
     # =====================
     # Custom stuff
@@ -114,5 +101,5 @@ async def sendFairytalePage(ctx: Message, msg: MessageSender, page: FairytalePag
     await msg.answer(
         ctx=ctx,
         text=page.message,
-        keyboardMarkup= None
+        keyboardMarkup=ReplyKeyboardRemove()
     )

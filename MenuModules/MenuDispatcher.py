@@ -39,7 +39,7 @@ async def handleUserStart(ctx: Message):
 async def handleUserMessage(ctx: Message):
 
     userTg = ctx.from_user
-    log.debug(f"Did handle User{userTg.id} message: {ctx.text}")
+    log.info(f"Did handle User{userTg.id} message: {ctx.text}")
 
     userInfo = storage.getUserInfo(userTg)
     menuState = userInfo["state"]
@@ -54,10 +54,10 @@ async def handleUserMessage(ctx: Message):
     try:
         menuModuleName = menuState["module"]
         module = [module.get for module in menu if module.get.name == menuModuleName][0]
-        log.debug(f"Founded module: {module.name}")
+        log.info(f"Founded module: {module.name}")
 
     except:
-        log.debug(f"Error while finding module")
+        log.info(f"Error while finding module")
 
     if module is not None:
         data = menuState["data"]
@@ -72,14 +72,14 @@ async def handleUserMessage(ctx: Message):
     if completion is None:
         moduleNext = menu.mainMenu.get
     elif completion.inProgress == False:
-        log.debug(f"Module {module.name} completed")
+        log.info(f"Module {module.name} completed")
         try:
             menuModuleName = completion.nextModuleNameIfCompleted
             moduleNext = [module.get for module in menu if module.get.name == menuModuleName][0]
-            log.debug(f"Founded module: {module.name}")
+            log.info(f"Founded module: {module.name}")
 
         except:
-            log.debug(f"Error while finding module from completion")
+            log.info(f"Error while finding module from completion")
             moduleNext = menu.mainMenu.get
 
     # Emergency reboot
