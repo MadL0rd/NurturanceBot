@@ -7,6 +7,10 @@ from logger import logger as log
 from Core.NotificationService import NotificationService
 import MenuModules.MenuDispatcher as dispatcher
 
+# =====================
+# Version 1.0.0
+# =====================
+
 # Initialize bot and dispatcher
 
 apiKey = "5659838410:AAEw9C4HuJs5R_wlzFpXeldJPk1N9ELLez4"

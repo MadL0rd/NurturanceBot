@@ -35,8 +35,8 @@ class CustomFormatter(logging.Formatter):
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
 
-if (logger.hasHandlers()):
-  logger.handlers.clear()
+# if (logger.hasHandlers()):
+#   logger.handlers.clear()
 
 stream_handler = StreamHandler(stream=sys.stdout)
 stream_handler.setFormatter(CustomFormatter())
