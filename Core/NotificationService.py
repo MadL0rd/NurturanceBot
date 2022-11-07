@@ -36,19 +36,13 @@ class NotificationService:
         log.info(time)
         userIds = getAllUsersWith("morning", time)
         for userId in userIds:
-            await self.bot.send_message(userId,
-             textConstant.notificationMorningText.get,
-             #TODO: Дописать reply_markup
-             )
+            await self.bot.send_message(userId, textConstant.notificationMorningText.get)
 
     async def dayNotification(self, time: str):
         log.info(time)
         userIds = getAllUsersWith("day", time)
         for userId in userIds:
-            await self.bot.send_message(userId,
-             textConstant.notificationDayText.get,
-             #TODO: Дописать reply_markup
-             )
+            await self.bot.send_message(userId, textConstant.notificationDayText.get)
 
     async def eveningNotification(self, time: str):
         log.info(time)

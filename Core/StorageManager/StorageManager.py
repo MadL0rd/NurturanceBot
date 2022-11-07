@@ -19,6 +19,7 @@ class UserHistoryEvent(enum.Enum):
 
     start = "Старт"
     sendMessage = "Отправил сообщение"
+    callbackButtonDidTapped = "Нажал на кнопку в сообщении"
     becomeAdmin = "Стал администратором"
     startModuleOnboarding = "Начал смотреть онбординг"
     startModuleMainMenu = "Перешел в главное меню" 
