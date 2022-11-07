@@ -32,7 +32,9 @@ class AdminMenu(MenuModuleInterface):
             resize_keyboard=True
         ).add(KeyboardButton(textConstant.adminMenuButtonReloadData.get)
         ).add(KeyboardButton(textConstant.adminMenuButtonLoadData.get)
+        ).add(KeyboardButton(textConstant.adminMenuButtonEveningReflectionStart.get)
         ).add(KeyboardButton(textConstant.menuButtonReturnToMainMenu.get))
+        
 
         await msg.answer(
             ctx = ctx,
@@ -53,6 +55,9 @@ class AdminMenu(MenuModuleInterface):
 
         if ctx.text == textConstant.menuButtonReturnToMainMenu.get:
             return self.complete(nextModuleName=MenuModuleName.mainMenu.get)
+        
+        if ctx.text == textConstant.adminMenuButtonEveningReflectionStart.get:
+            return self.complete(nextModuleName=MenuModuleName.eveningReflectionQuestions.get)
         
         if ctx.text == textConstant.adminMenuButtonReloadData.get:
             
@@ -82,7 +87,10 @@ class AdminMenu(MenuModuleInterface):
             await message.edit_text(updateStateReloadDataMessage(7))
 
             sheets.updateFairytale()
-            
+            await message.edit_text(updateStateReloadDataMessage(8))
+
+            sheets.updateOhterHuman()
+
             await message.edit_text("❇️ Тексты обновлены")
 
             log.info("Bot sheets data update complete")
@@ -133,7 +141,8 @@ def updateStateReloadDataMessage(stateIndex: int) -> str:
         'УпражненияМысли',
         'Вопросы',
         'ВечерняяРефлексияВопросы',
-        'Сказка'
+        'Сказка',
+        'Работа с другим человеком'
     ]
     for index, value in enumerate(tablePageNames):
         indicator = "🔴" if index > stateIndex else "🟢"

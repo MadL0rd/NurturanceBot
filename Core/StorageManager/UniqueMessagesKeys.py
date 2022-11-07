@@ -18,6 +18,7 @@ class UniqueMessagesKeys(enum.Enum):
     adminMenuText = "adminMenuText"
     adminMenuButtonLoadData = "adminMenuButtonLoadData"
     adminMenuButtonReloadData = "adminMenuButtonReloadData"
+    adminMenuButtonEveningReflectionStart = "adminMenuButtonEveningReflectionStart"
 
     randomNewsStartText = "randomNewsStartText"
     randomNewsButtonNews = "randomNewsButtonNews"
@@ -45,6 +46,25 @@ class UniqueMessagesKeys(enum.Enum):
 
     relaxStartMessage = "relaxStartMessage"
     relaxCompleteMessage = "relaxCompleteMessage"
+
+    reflectionMenuText = "reflectionMenuText"
+    reflectionMenuButtonFairytale = "reflectionMenuButtonFairytale"
+    reflectionMenuButtonOtherHuman = "reflectionMenuButtonOtherHuman"
+
+    otherHumanEnding = "otherHumanEnding"
+    otherHumanButtonSessionSuccessYes = "otherHumanButtonSessionSuccessYes"
+    otherHumanButtonSessionSuccessNo = "otherHumanButtonSessionSuccessNo"
+    otherHumanWhatsNext = "otherHumanWhatsNext"
+    otherHumanButtonRestart = "otherHumanButtonRestart"
+    otherHumanButtonEndSession = "otherHumanButtonEndSession"
+    otherHumanButtonWriteFairytale = "otherHumanButtonWriteFairytale"
+
+    fairytaleStart = "fairytaleStart"
+    fairytaleButtonStart = "fairytaleButtonStart"
+    fairytaleEndingText = "fairytaleEndingText"
+    fairytaleEndingButtonRestart = "fairytaleEndingButtonRestart"
+    fairytaleEndingButtonEndSession = "fairytaleEndingButtonEndSession"
+    fairytaleEndingButtonOtherPerson = "fairytaleEndingButtonOtherPerson"
 
     @property
     def get(self) -> str:

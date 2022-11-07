@@ -19,11 +19,15 @@ class UserHistoryEvent(enum.Enum):
 
     start = "Старт"
     sendMessage = "Отправил сообщение"
+    callbackButtonDidTapped = "Нажал на кнопку в сообщении"
     becomeAdmin = "Стал администратором"
     startModuleOnboarding = "Начал смотреть онбординг"
     startModuleMainMenu = "Перешел в главное меню" 
     startModuleNews =  "Запросил новость"
     startModuleExercises =  "Перешел к упражнениям"
+    startModuleEveningReflectionQuestions = "Приступил к вечерней рефлексии"
+    startModuleFairytale = "Приступил к написанию сказки"
+    startModuleOtherHuman = "Перешел к проработке отношений с другим человеком"
     chooseExerciseEmotion =  "Начал прорабатывать эмоцию"
     chooseExerciseThought =  "Начал прорабатывать мысль"
     assessmentBefore = "Оценил до"
@@ -34,6 +38,8 @@ class UserHistoryEvent(enum.Enum):
     sessionReload = "Перезапустил сессию"
     sessionComplete = "Завершил сессию"
     notificationChooseTime = "Передвинул время уведомлений"
+    otherHumanSessionSuccessYes = "ПоработалСЧеловеком Удачно"
+    otherHumanSessionSuccessNo = "ПоработалСЧеловеком Неудачно"
 
 class PathConfig:
 
@@ -50,8 +56,9 @@ class PathConfig:
     botContentThoughts = botContentDir / "Thoughts.json"
     botContentQuestions = botContentDir / "Questions.json"
     botContentNotificationTimes = botContentDir / "NotificationTimes.json"
-    eveningReflectionQuestions = botContentDir / "EveningReflectionQuestions.json"
+    botContentEveningReflectionQuestions = botContentDir / "EveningReflectionQuestions.json"
     botContentFairytale = botContentDir / "Fairytale.json"
+    botContentOtherHuman = botContentDir / "OtherHuman.json"
 
     totalHistoryTableFile = baseDir / "TotalHistory.xlsx"
     statisticHistoryTableFile = baseDir / "StatisticalHistory.xlsx"
@@ -187,7 +194,9 @@ def generateStatisticTable():
         UserHistoryEvent.sessionGenerated,
         UserHistoryEvent.sessionReload,
         UserHistoryEvent.sessionComplete,
-        UserHistoryEvent.notificationChooseTime
+        UserHistoryEvent.notificationChooseTime,
+        UserHistoryEvent.otherHumanSessionSuccessYes,
+        UserHistoryEvent.otherHumanSessionSuccessNo
     ]
 
     dateConfig = getJsonData(path.botContentPrivateConfig)["startDate"]
@@ -215,16 +224,25 @@ def daterange(start_date, end_date):
         yield start_date + timedelta(n)
 
 class StatisticPageOperation(enum.Enum):
-    count = "count"
-    sum = "sum"
-    average = "average"
+    count = "Количество"
+    sum = "Сумма"
+    average = "Среднее значение"
 
 def generateStatisticPageForEvent(workbook: xlsxwriter.Workbook, eventName: string, startDate: date, operation: StatisticPageOperation = StatisticPageOperation.count):
 
     worksheet = workbook.add_worksheet(eventName)
-    row = 0 
+    row = 1
     col = 0
 
+    startRow = 4
+
+    worksheet.write(row, col, "Метрика:")
+    worksheet.write(row, col + 1, eventName)
+    row += 1
+    worksheet.write(row, col, "Тип агрегирования:")
+    worksheet.write(row, col + 1, operation.value)
+
+    row = startRow
     worksheet.write(row, col, "Дата / Пользователь")
     row += 1
 
@@ -237,13 +255,13 @@ def generateStatisticPageForEvent(workbook: xlsxwriter.Workbook, eventName: stri
     usersCount = 0
     for userFolder in path.usersDir.iterdir():
         usersCount += 1
-        row = 0
+        row = startRow
         history = getJsonData(userFolder / "history.json")
         
         columnTitle = f"user{userFolder.name}"
         worksheet.write(row, col, columnTitle)
         
-        row = 1
+        row += 1
         for single_date in dates:
             dayEvents = [event for event in history if event["timestamp"]["date"] == single_date and event["event"] == eventName]
 

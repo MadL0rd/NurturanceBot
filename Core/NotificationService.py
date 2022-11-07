@@ -52,7 +52,7 @@ class NotificationService:
                 userId, 
                 textConstant.notificationEveningText.get,
                 reply_markup=InlineKeyboardMarkup(
-                    # inline_keyboard=[[InlineKeyboardButton(text="Начать", callback_data='StartEveningReflection')]]
+                    inline_keyboard=[[InlineKeyboardButton(text="Начать", callback_data='StartEveningReflection')]]
                 )
             )
 

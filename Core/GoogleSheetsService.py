@@ -20,6 +20,7 @@ class PageNames(enum.Enum):
     questions = 'Вопросы'
     notifications = 'ВечерняяРефлексияВопросы'
     fairytale = 'Сказка'
+    otherHuman = 'РаботаСДругимЧеловеком'
 
 pages = PageNames
 
@@ -259,6 +260,8 @@ def updateEveningReflectionQuestions():
         except:
             continue
 
+        
+
         try:
             if line[1] != "":
                 exercise["text"] = line[1]
@@ -267,7 +270,7 @@ def updateEveningReflectionQuestions():
         content.append(exercise)
 
     storage.writeJsonData(
-        storage.path.eveningReflectionQuestions, 
+        storage.path.botContentEveningReflectionQuestions, 
         content
     )
 
@@ -289,5 +292,32 @@ def updateFairytale():
 
     storage.writeJsonData(
         storage.path.botContentFairytale, 
+        content
+    )
+
+def updateOhterHuman():
+
+    values = getContent(pages.otherHuman, "A2:B10")
+    
+    content = []
+    for line in values:
+        exercise = {}
+        try:
+            if line[0] != "":
+                exercise["message"] = line[0]
+            else: 
+                continue
+        except:
+            continue
+
+        try:
+            if line[1] != "":
+                exercise["buttonText"] = line[1]
+        except:
+            log.debug("Argument buttonText not found")
+        content.append(exercise)
+        
+    storage.writeJsonData(
+        storage.path.botContentOtherHuman, 
         content
     )
