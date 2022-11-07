@@ -39,6 +39,8 @@ class UniqueMessagesKeys(enum.Enum):
     exercisesSessionCompleteText = "exercisesSessionCompleteText"
     exercisesButtonSessionReload = "exercisesButtonSessionReload"
     exercisesButtonSessionEnd = "exercisesButtonSessionEnd"
+    exercisesCompleteButtonText = "exercisesCompleteButtonText"
+    
     notificationMorningText = "notificationMorningText"
     notificationDayText = "notificationDayText"
     notificationEveningText = "notificationEveningText"

@@ -5,6 +5,7 @@ class MenuModuleName(enum.Enum):
     onboarding: str = "onboarding"
     mainMenu: str = "mainMenu"
     exercises: str = "exercises"
+    exercisesEnding: str = "exercisesEnding"
     randomNews: str = "randomNews"
     relax: str = "relax"
     admin: str = "admin"
