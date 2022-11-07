@@ -10,7 +10,8 @@
             "request": "launch",
             "program": "${workspaceFolder}/main.py",
             "console": "integratedTerminal",
-            "justMyCode": true
+            "justMyCode": true,
+            "args": ["5507754697:AAFKM_4mwbXkQv1XO0z_WhaCiPzTEoEXM7s"]
         }
     ]
 }
