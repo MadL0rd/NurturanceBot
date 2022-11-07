@@ -13,7 +13,12 @@ import MenuModules.MenuDispatcher as dispatcher
 
 # Initialize bot and dispatcher
 
+# Main token
 apiKey = "5659838410:AAEw9C4HuJs5R_wlzFpXeldJPk1N9ELLez4"
+
+# Test token
+apiKey = "5507754697:AAFKM_4mwbXkQv1XO0z_WhaCiPzTEoEXM7s"
+
 bot = Bot(token=apiKey)
 dp = Dispatcher(bot)
 

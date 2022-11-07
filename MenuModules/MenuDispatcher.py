@@ -1,7 +1,7 @@
 import json
-from aiogram.types import Message, CallbackQuery, ReplyKeyboardMarkup
+from aiogram.types import Message, CallbackQuery, ReplyKeyboardMarkup, InlineKeyboardMarkup, ReplyKeyboardRemove
 
-from Core.MessageSender import MessageSender
+from Core.MessageSender import MessageSender, CallbackMessageSender
 import Core.StorageManager.StorageManager as storage
 from Core.StorageManager.StorageManager import UserHistoryEvent as event
 
@@ -11,6 +11,7 @@ from MenuModules.MenuModules import MenuModules as menu
 from logger import logger as log
 
 msg = MessageSender()
+callbackMsg = CallbackMessageSender()
 
 async def handleUserStart(ctx: Message):
 
@@ -39,7 +40,7 @@ async def handleUserStart(ctx: Message):
 async def handleUserMessage(ctx: Message):
 
     userTg = ctx.from_user
-    log.debug(f"Did handle User{userTg.id} message: {ctx.text}")
+    log.info(f"Did handle User{userTg.id} message: {ctx.text}")
 
     userInfo = storage.getUserInfo(userTg)
     menuState = userInfo["state"]
@@ -54,10 +55,10 @@ async def handleUserMessage(ctx: Message):
     try:
         menuModuleName = menuState["module"]
         module = [module.get for module in menu if module.get.name == menuModuleName][0]
-        log.debug(f"Founded module: {module.name}")
+        log.info(f"Founded module: {module.name}")
 
     except:
-        log.debug(f"Error while finding module")
+        log.info(f"Error while finding module")
 
     if module is not None:
         data = menuState["data"]
@@ -72,14 +73,14 @@ async def handleUserMessage(ctx: Message):
     if completion is None:
         moduleNext = menu.mainMenu.get
     elif completion.inProgress == False:
-        log.debug(f"Module {module.name} completed")
+        log.info(f"Module {module.name} completed")
         try:
             menuModuleName = completion.nextModuleNameIfCompleted
             moduleNext = [module.get for module in menu if module.get.name == menuModuleName][0]
-            log.debug(f"Founded module: {module.name}")
+            log.info(f"Founded module: {module.name}")
 
         except:
-            log.debug(f"Error while finding module from completion")
+            log.info(f"Error while finding module from completion")
             moduleNext = menu.mainMenu.get
 
     # Emergency reboot
@@ -134,4 +135,30 @@ async def handleCallback(ctx: CallbackQuery):
     # ctxData = json.loads(ctx.data)
     ctxData = ctx.data
     print(ctxData)
-    storage.getUserInfo(ctx.from_user)
+
+    userTg = ctx.from_user
+    userInfo = storage.getUserInfo(userTg)
+    storage.logToUserHistory(userTg, event.callbackButtonDidTapped, ctxData)
+
+    await ctx.message.edit_reply_markup(InlineKeyboardMarkup())
+
+    module = None
+
+    if ctxData == "StartEveningReflection":
+        module = menu.eveningReflectionQuestions.get
+
+    ctx.message.chat.id
+
+    if module is not None:
+        completion: Completion = await module.handleModuleStart(
+            ctx=ctx,
+            msg=callbackMsg
+        )
+        menuState = {
+            "module": module.name,
+            "data": completion.moduleData 
+        }
+
+        userInfo["state"] = menuState
+        storage.updateUserData(userTg, userInfo)
+    

@@ -34,7 +34,7 @@ class MessageSender:
             nknownText,
             parse_mode=ParseMode.MARKDOWN
         )
-    
+
     async def sendPhoto(self, ctx: Message, url: str):
         await bot.send_photo(chat_id=ctx.chat.id, photo=url)
 
@@ -43,3 +43,33 @@ class MessageSender:
 
     async def sendVideo(self, ctx: Message, url: str):
         await bot.send_video(chat_id=ctx.chat.id, video=url)
+
+
+class CallbackMessageSender(MessageSender):
+
+    async def answer(self, ctx: Message, text: str, inlineMarkup: InlineKeyboardMarkup):
+
+        await bot.send_message(
+            chat_id=ctx.message.chat.id,
+            text=text,
+            parse_mode=ParseMode.MARKDOWN,
+            reply_markup=inlineMarkup
+        )
+
+    async def answer(self, ctx: Message, text: str, keyboardMarkup: ReplyKeyboardMarkup):
+        
+        await bot.send_message(
+            chat_id=ctx.message.chat.id,
+            text=text,
+            parse_mode=ParseMode.MARKDOWN,
+            reply_markup=keyboardMarkup
+        )
+
+    async def answerUnknown(self, ctx: Message):
+
+        nknownText = textConstant.unknownState.get
+        await bot.send_message(
+                chat_id=ctx.message.chat.id,
+                text=nknownText,
+                parse_mode=ParseMode.MARKDOWN
+            )
