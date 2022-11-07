@@ -36,13 +36,19 @@ class NotificationService:
         log.info(time)
         userIds = getAllUsersWith("morning", time)
         for userId in userIds:
-            await self.bot.send_message(userId, textConstant.notificationMorningText.get)
+            await self.bot.send_message(userId,
+             textConstant.notificationMorningText.get,
+             #TODO: Дописать reply_markup
+             )
 
     async def dayNotification(self, time: str):
         log.info(time)
         userIds = getAllUsersWith("day", time)
         for userId in userIds:
-            await self.bot.send_message(userId, textConstant.notificationDayText.get)
+            await self.bot.send_message(userId,
+             textConstant.notificationDayText.get,
+             #TODO: Дописать reply_markup
+             )
 
     async def eveningNotification(self, time: str):
         log.info(time)
@@ -52,7 +58,7 @@ class NotificationService:
                 userId, 
                 textConstant.notificationEveningText.get,
                 reply_markup=InlineKeyboardMarkup(
-                    # inline_keyboard=[[InlineKeyboardButton(text="Начать", callback_data='StartEveningReflection')]]
+                    inline_keyboard=[[InlineKeyboardButton(text="Начать", callback_data='StartEveningReflection')]]
                 )
             )
 

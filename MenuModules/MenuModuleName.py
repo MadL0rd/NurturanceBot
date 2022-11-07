@@ -9,6 +9,11 @@ class MenuModuleName(enum.Enum):
     relax: str = "relax"
     admin: str = "admin"
     notificationsSettings: str = "motificationsSettings"
+    otherHuman: str = "otherHuman"
+    otherHumanEnding: str = 'otherHumanEnding'
+    eveningReflectionQuestions: str = "eveningReflectionQuestions"
+    reflectionMenu: str = 'reflectionMenu'
+
 
     @property
     def get(self) -> str:

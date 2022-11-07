@@ -46,6 +46,13 @@ class UniqueMessagesKeys(enum.Enum):
     relaxStartMessage = "relaxStartMessage"
     relaxCompleteMessage = "relaxCompleteMessage"
 
+    reflectionMenuText = "reflectionMenuText"
+    reflectionMenuButtonFairytale = "reflectionMenuButtonFairytale"
+    reflectionMenuButtonOtherHuman = "reflectionMenuButtonOtherHuman"
+
+    otherHumanEnding = "otherHumanEnding"
+    otherHumanWhatsNext = "otherHumanWhatsNext"
+
     @property
     def get(self) -> str:
         messagesKeys = storage.getJsonData(storage.path.botContentUniqueMessages)

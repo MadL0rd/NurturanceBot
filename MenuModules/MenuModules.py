@@ -1,12 +1,16 @@
 import enum
+from MenuModules.EveningReflectionQuestions.EveningReflectionQuestions import EveningReflectionQuestions
 from MenuModules.NotificationsSettings.NotificationsSettings import NotificationsSettings
 from MenuModules.Onboarding.Onboarding import Onboarding
 from MenuModules.MainMenu.MainMenu import MainMenu
 from MenuModules.MenuModuleInterface import MenuModuleInterface
 from MenuModules.AdminMenu.AdminMenu import AdminMenu
+from MenuModules.OtherHuman.OtherHuman import OtherHuman
+# from MenuModules.OtherHuman.OtherHumanEnding import OtherHumanEnding
 from MenuModules.RandomNews.RandomNews import RandomNews
 from MenuModules.Exercises.Exercises import Exercises
 from MenuModules.Relax.Relax import Relax
+from MenuModules.ReflectionMenu.ReflectionMenu import ReflectionMenu
 
 class MenuModules(enum.Enum):
 
@@ -17,6 +21,10 @@ class MenuModules(enum.Enum):
     randomNews: MenuModuleInterface = RandomNews()
     relax: MenuModuleInterface = Relax()
     notificationsSettings: MenuModuleInterface = NotificationsSettings()
+    otherHuman: MenuModuleInterface = OtherHuman()
+    # otherHumanEnding: MenuModuleInterface = OtherHumanEnding()
+    eveningReflectionQuestions: MenuModuleInterface = EveningReflectionQuestions()
+    reflectionMenu: MenuModuleInterface = ReflectionMenu()
 
     @property
     def get(self) -> MenuModuleInterface:

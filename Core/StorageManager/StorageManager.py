@@ -24,6 +24,8 @@ class UserHistoryEvent(enum.Enum):
     startModuleMainMenu = "Перешел в главное меню" 
     startModuleNews =  "Запросил новость"
     startModuleExercises =  "Перешел к упражнениям"
+    startModuleEveningReflectionQuestions = "Приступил к вечерней рефлексии"
+    startModuleOtherHuman = "Перешел к проработке отношений с другим человеком"
     chooseExerciseEmotion =  "Начал прорабатывать эмоцию"
     chooseExerciseThought =  "Начал прорабатывать мысль"
     assessmentBefore = "Оценил до"
@@ -50,8 +52,9 @@ class PathConfig:
     botContentThoughts = botContentDir / "Thoughts.json"
     botContentQuestions = botContentDir / "Questions.json"
     botContentNotificationTimes = botContentDir / "NotificationTimes.json"
-    eveningReflectionQuestions = botContentDir / "EveningReflectionQuestions.json"
+    botContentEveningReflectionQuestions = botContentDir / "EveningReflectionQuestions.json"
     botContentFairytale = botContentDir / "Fairytale.json"
+    botContentOtherHuman = botContentDir / "OtherHuman.json"
 
     totalHistoryTableFile = baseDir / "TotalHistory.xlsx"
     statisticHistoryTableFile = baseDir / "StatisticalHistory.xlsx"
@@ -77,10 +80,8 @@ def getJsonData(filePath: Path):
 
 def writeJsonData(filePath: Path, content):
     # log.debug(content)
-    data = json.dumps(content, ensure_ascii=False, indent=2)
-    with filePath.open('w') as file:
-    # data = json.dumps(content, indent=2)
-    # with filePath.open('w', encoding= 'utf-8') as file:
+    data = json.dumps(content, indent=2)
+    with filePath.open('w', encoding= 'utf-8') as file:
         file.write(data)
 
 # =====================
