@@ -298,10 +298,11 @@ async def sendAssessmentMessage(ctx: Message, msg: MessageSender, text: str):
 
     keyboardMarkup=ReplyKeyboardMarkup(
         resize_keyboard=True
+    ).row(KeyboardButton("0️⃣")
     ).row(KeyboardButton("1️⃣"), KeyboardButton("2️⃣"), KeyboardButton("3️⃣")
     ).row(KeyboardButton("4️⃣"), KeyboardButton("5️⃣"), KeyboardButton("6️⃣")
     ).row(KeyboardButton("7️⃣"), KeyboardButton("8️⃣"), KeyboardButton("9️⃣")
-    ).row(KeyboardButton("🔟"), KeyboardButton("0️⃣"))
+    ).row(KeyboardButton("🔟"))
 
     await msg.answer(
         ctx=ctx,
