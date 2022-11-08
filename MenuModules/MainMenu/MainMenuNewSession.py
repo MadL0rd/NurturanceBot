@@ -10,9 +10,9 @@ from MenuModules.MenuModuleName import MenuModuleName
 from Core.StorageManager.UniqueMessagesKeys import textConstant
 from logger import logger as log
 
-class ExercisesEnding(MenuModuleInterface):
+class MainMenuNewSession(MenuModuleInterface):
 
-    namePrivate = MenuModuleName.exercisesEnding
+    namePrivate = MenuModuleName.mainMenuNewSession
 
     async def handleModuleStart(self, ctx: Message, msg: MessageSender) -> Completion:
 
@@ -20,11 +20,11 @@ class ExercisesEnding(MenuModuleInterface):
 
         endingkeyboardMarkup = ReplyKeyboardMarkup(
             resize_keyboard=True
-        ).add(KeyboardButton(textConstant.exercisesCompleteButtonText.get))
+        ).add(KeyboardButton(textConstant.menuButtonStartNewSession.get))
 
         await msg.answer(
             ctx = ctx,
-            text = textConstant.exercisesCompleteText.get,
+            text = textConstant.menuTextStartNewSession.get,
             keyboardMarkup = endingkeyboardMarkup
         )
 
@@ -39,7 +39,7 @@ class ExercisesEnding(MenuModuleInterface):
 
         log.debug(f"User: {ctx.from_user.id}")
 
-        if ctx.text == textConstant.exercisesCompleteButtonText.get:
+        if ctx.text == textConstant.menuButtonStartNewSession.get:
             return self.complete(nextModuleName=MenuModuleName.mainMenu.get)
         
         return self.canNotHandle(data)

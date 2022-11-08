@@ -257,7 +257,7 @@ class Exercises(MenuModuleInterface):
             )
 
         if ctx.text == textConstant.exercisesButtonSessionEnd.get:
-            return self.complete(nextModuleName=MenuModuleName.exercisesEnding.get)
+            return self.complete(nextModuleName=MenuModuleName.mainMenuNewSession.get)
         
         return self.canNotHandle(data)
         
