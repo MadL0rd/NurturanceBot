@@ -40,7 +40,10 @@ class Fairytale(MenuModuleInterface):
         return Completion(
             inProgress = True,
             didHandledUserInteraction=True,
-            moduleData={ "previousPageIndex" : pageIndex }
+            moduleData={ 
+                "previousPageIndex" : pageIndex,
+                "userMessages": []
+            }
         )
 
     async def handleUserMessage(self, ctx: Message, msg: MessageSender, data: dict) -> Completion:
@@ -54,30 +57,29 @@ class Fairytale(MenuModuleInterface):
 
         pageIndex += 1
         
-        FairytalePages = storage.getJsonData(storage.path.botContentFairytale)
+        fairytalePages = storage.getJsonData(storage.path.botContentFairytale)
 
-        if pageIndex == len(FairytalePages):
+        if len(ctx.text) > 0 and ctx.text != textConstant.fairytaleButtonStart.get:
+            data["userMessages"].append(ctx.text)
+
+        if pageIndex == len(fairytalePages):
+            fairytaleText = ""
+            for item in data["userMessages"]:
+                fairytaleText += f"{item}\n\n"
+            await msg.answer(ctx, fairytaleText, ReplyKeyboardMarkup())
             return self.complete(nextModuleName=MenuModuleName.fairytaleEnding.get)
-
-        page = FairytalePage(FairytalePages[pageIndex])
-        
-        if len(FairytalePages) == pageIndex:
-            return self.complete()
             
-        if ctx.text == ctx.text:
+        if len(ctx.text) > 0:
+            page = FairytalePage(fairytalePages[pageIndex])
             await sendFairytalePage(ctx, msg, page)
+        else:
+            return self.canNotHandle(data)
 
-# =====================
-# #ЭТО КОСТЫЛЬ, нужен для того чтобы переходить на otherHumanEnding
-# #Скорее всего можно проще, но я не осилил
-# ======================
-        # if pageIndex == len(otherHumanPages) - 1:
-        #     return self.complete(nextModuleName=MenuModuleName.otherHumanEnding.get)
-        
+        data["previousPageIndex"] = pageIndex
         return Completion(
-            inProgress = True,
-            didHandledUserInteraction = True,
-            moduleData = { "previousPageIndex" : pageIndex }
+            inProgress=True,
+            didHandledUserInteraction=True,
+            moduleData=data
         )
 
     async def handleCallback(self, ctx: CallbackQuery, data: dict, msg: MessageSender) -> Completion:
