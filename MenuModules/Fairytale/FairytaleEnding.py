@@ -42,7 +42,7 @@ class FairytaleEnding(MenuModuleInterface):
             return self.complete(nextModuleName=MenuModuleName.fairytale.get)
         
         if ctx.text == textConstant.fairytaleEndingButtonEndSession.get:
-            return self.complete(nextModuleName=MenuModuleName.mainMenu.get)      
+            return self.complete(nextModuleName=MenuModuleName.mainMenuNewSession.get)      
 
         if ctx.text == textConstant.fairytaleEndingButtonOtherPerson.get:
             return self.complete(nextModuleName=MenuModuleName.otherHuman.get)      

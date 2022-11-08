@@ -41,7 +41,7 @@ class OtherHumanEndingYes(MenuModuleInterface):
         log.debug(f"User: {ctx.from_user.id}")
 
         if ctx.text == textConstant.otherHumanButtonEndSession.get:
-            return self.complete(nextModuleName=MenuModuleName.mainMenu.get)
+            return self.complete(nextModuleName=MenuModuleName.mainMenuNewSession.get)
         
         if ctx.text == textConstant.otherHumanButtonWriteFairytale.get:
             return self.complete(nextModuleName=MenuModuleName.fairytale.get)      

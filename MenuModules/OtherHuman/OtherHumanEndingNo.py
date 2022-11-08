@@ -44,7 +44,7 @@ class OtherHumanEndingNo(MenuModuleInterface):
             return self.complete(nextModuleName=MenuModuleName.otherHuman.get)
         
         if ctx.text == textConstant.otherHumanButtonEndSession.get:
-            return self.complete(nextModuleName=MenuModuleName.mainMenu.get)      
+            return self.complete(nextModuleName=MenuModuleName.mainMenuNewSession.get)
 
         if ctx.text == textConstant.otherHumanButtonWriteFairytale.get:
             return self.complete(nextModuleName=MenuModuleName.fairytale.get)

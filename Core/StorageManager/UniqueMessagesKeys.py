@@ -13,6 +13,8 @@ class UniqueMessagesKeys(enum.Enum):
     menuButtonRandomNews = "menuButtonRandomNews"
     menuButtonRelax = "menuButtonRelax"
     menuButtonAdmin = "menuButtonAdmin"
+    menuButtonStartNewSession = "menuButtonStartNewSession"
+    menuTextStartNewSession = "menuTextStartNewSession"
     menuButtonNotifications = "menuButtonNotifications"
 
     adminMenuText = "adminMenuText"
@@ -35,11 +37,9 @@ class UniqueMessagesKeys(enum.Enum):
     exercisesThoughtScaleText = "exercisesThoughtScaleText"
     exercisesButtonComplete = "exercisesButtonComplete"
     exercisesScaleTextComplete = "exercisesScaleTextComplete"
-    exercisesCompleteText = "exercisesCompleteText"
     exercisesSessionCompleteText = "exercisesSessionCompleteText"
     exercisesButtonSessionReload = "exercisesButtonSessionReload"
     exercisesButtonSessionEnd = "exercisesButtonSessionEnd"
-    exercisesCompleteButtonText = "exercisesCompleteButtonText"
     
     notificationMorningText = "notificationMorningText"
     notificationDayText = "notificationDayText"
