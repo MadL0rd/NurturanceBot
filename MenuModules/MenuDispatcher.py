@@ -55,7 +55,7 @@ async def handleUserMessage(ctx: Message):
     except:
         log.info(f"Error while finding module")
 
-    if module is not None:
+    if module is not None and ctx.text != "/back_to_menu":
         data = menuState["data"]
         completion: Completion = await module.handleUserMessage(
             ctx=ctx,

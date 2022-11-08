@@ -9,7 +9,7 @@ from Core.NotificationService import NotificationService
 import MenuModules.MenuDispatcher as dispatcher
 
 # =====================
-# Version 1.1.4
+# Version 1.1.5
 # =====================
 
 # Initialize bot and dispatcher
