@@ -35,26 +35,44 @@ class NotificationService:
     async def morningNotification(self, time: str):
         log.info(time)
         userIds = getAllUsersWith("morning", time)
+
         for userId in userIds:
-            await self.bot.send_message(userId, textConstant.notificationMorningText.get)
+            log.info(f"Send notofication to user: {userId}")
+
+            try:
+                await self.bot.send_message(userId, textConstant.notificationMorningText.get)
+            except Exception as exception:
+                log.exception(exception)
 
     async def dayNotification(self, time: str):
         log.info(time)
         userIds = getAllUsersWith("day", time)
+
         for userId in userIds:
-            await self.bot.send_message(userId, textConstant.notificationDayText.get)
+            log.info(f"Send notofication to user: {userId}")
+
+            try:
+                await self.bot.send_message(userId, textConstant.notificationDayText.get)
+            except Exception as exception:
+                log.exception(exception)
 
     async def eveningNotification(self, time: str):
         log.info(time)
         userIds = getAllUsersWith("evening", time)
+
         for userId in userIds:
-            await self.bot.send_message(
-                userId, 
-                textConstant.notificationEveningText.get,
-                reply_markup=InlineKeyboardMarkup(
-                    inline_keyboard=[[InlineKeyboardButton(text="Начать", callback_data='StartEveningReflection')]]
+            log.info(f"Send notofication to user: {userId}")
+            
+            try:
+                await self.bot.send_message(
+                    userId, 
+                    textConstant.notificationEveningText.get,
+                    reply_markup=InlineKeyboardMarkup(
+                        inline_keyboard=[[InlineKeyboardButton(text="Начать", callback_data='StartEveningReflection')]]
+                    )
                 )
-            )
+            except Exception as exception:
+                log.exception(exception)
 
 def getAllUsersWith(type: str, time: str) -> list:
     userIds = []
