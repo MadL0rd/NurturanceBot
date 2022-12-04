@@ -8,6 +8,7 @@ import json
 import enum
 
 import Core.StorageManager.StorageManager as storage
+from Core.Utils.Utils import quantityOfVariants
 from logger import logger as log
 
 class PageNames(enum.Enum):
@@ -21,9 +22,12 @@ class PageNames(enum.Enum):
     notifications = 'ВечерняяРефлексияВопросы'
     fairytale = 'Сказка'
     otherHuman = 'РаботаСДругимЧеловеком'
+    quizDepression = "ОпросДепрессия"
+    quizDepressionResults = "ОпросРезультатДепрессия"
+    updateQuizAnxiety = "ОпросГТР"
+    updateQuizAnxietyResults = "ОпросРезультатГТР"
 
 pages = PageNames
-
 
 CREDENTIALS_FILE = 'creds.json'
 
@@ -319,5 +323,131 @@ def updateOhterHuman():
         
     storage.writeJsonData(
         storage.path.botContentOtherHuman, 
+        content
+    )
+        
+def updateQuizDepression():
+
+    values = getContent(pages.quizDepression, "A2:Z100")
+
+    content = []
+    for line in values:
+        question = {}
+        question["id"] = line[0]
+        del line[0]
+        question["title"] = line[0]
+        del line[0]
+        quantity = quantityOfVariants(line) # its a quantity of variants for THIS line 
+        buttons = []
+        for i in range(quantity+1):
+            text = line[0] # appending variant's text
+            del line[0]
+            score = line[0] # appending variant's score
+            del line[0]
+            buttons.append(
+                {
+                   "text": text,
+                   "score": score 
+                }
+            )
+        question["buttons"] = buttons
+
+        content.append(question)
+
+    storage.writeJsonData(
+        storage.path.botContentQuizDepression, 
+        content
+    )
+
+def updateQuizDepressionResults():
+
+    values = getContent(pages.quizDepressionResults, "A2:D100")
+
+    content = []
+    count = 1
+    for line in values:
+        result = {}
+        text = line[0]
+        del line[0]
+        lLimit = line[0]
+        del line[0]
+        rLimit = line[0]
+        del line[0]
+        button = line[0]
+        del line[0]
+        result = {
+                "text": text,
+                "lLimit": lLimit,
+                "rLimit": rLimit,
+                "button": button
+        }
+        count +=1
+        content.append(result)
+
+    storage.writeJsonData(
+        storage.path.botContentQuizDepressionResults, 
+        content
+    )
+
+def updateQuizAnxiety():
+
+    values = getContent(pages.updateQuizAnxiety, "A2:Z100")
+
+    content = []
+    for line in values:
+        question = {}
+        question["id"] = line[0]
+        del line[0]
+        question["title"] = line[0]
+        del line[0]
+        quantity = quantityOfVariants(line) # its a quantity of variants for THIS line 
+        buttons = []
+        for i in range(quantity+1):
+            text = line[0] # appending variant's text
+            del line[0]
+            score = line[0] # appending variant's score
+            del line[0]
+            buttons.append(
+                {
+                   "text": text,
+                   "score": score 
+                }
+            )
+        question["buttons"] = buttons
+
+        content.append(question)
+
+    storage.writeJsonData(
+        storage.path.botContentQuizAnxiety, 
+        content
+    )
+
+def updateQuizAnxietyResults():
+
+    values = getContent(pages.updateQuizAnxietyResults, "A2:D100")
+
+    content = []
+    count = 1
+    for line in values:
+        result = {}
+        text = line[0]
+        del line[0]
+        lLimit = line[0]
+        del line[0]
+        rLimit = line[0]
+        del line[0]
+        button = line[0]
+        del line[0]
+        result = {
+                "text": text,
+                "lLimit": lLimit,
+                "rLimit": rLimit,
+                "button": button
+        }
+        count +=1
+        content.append(result)
+
+    storage.writeJsonData(
+        storage.path.botContentQuizAnxietyResults, 
         content
     )

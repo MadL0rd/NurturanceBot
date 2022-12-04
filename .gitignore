@@ -127,3 +127,4 @@ dmypy.json
 logs.txt
 /DataStorage/Users
 *.xlsx
+DataStorage/BotContent
