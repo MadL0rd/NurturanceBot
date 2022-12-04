@@ -18,6 +18,9 @@ class MenuModuleName(enum.Enum):
     reflectionMenu: str = 'reflectionMenu'
     fairytale: str = 'fairytale'
     fairytaleEnding: str = 'fairytaleEnding'
+    quiz: str = "quiz"
+    quizDepression: str = "quizDepression"
+    quizAnxiety: str = "quizAnxiety"
 
 
     @property

@@ -7,6 +7,7 @@ from logger import logger as log
 
 from Core.NotificationService import NotificationService
 import MenuModules.MenuDispatcher as dispatcher
+from Core.GoogleSheetsServiseFunctions import functions as dataUpdateFunctions
 
 # =====================
 # Version 1.1.6
@@ -42,6 +43,8 @@ async def default_callback_handler(ctx: CallbackQuery):
     await dispatcher.handleCallback(ctx)
 
 async def on_startup(_):
+    for func in dataUpdateFunctions:
+        func()
     notifications = NotificationService(bot)
     notifications.configureNotifications()
     asyncio.create_task(notifications.threadedNotification())
