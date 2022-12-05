@@ -12,6 +12,10 @@ class UniqueMessagesKeys(enum.Enum):
     menuButtonExercises = "menuButtonExercises"
     menuButtonRandomNews = "menuButtonRandomNews"
     menuButtonRelax = "menuButtonRelax"
+    menuButtonTestMenu = "menuButtonTestMenu"
+    testMenuText = "testMenuText"
+    menuButtonQuizDepression = "menuButtonQuizDepression"
+    menuButtonQuizAnxiety = "menuButtonQuizAnxiety"
     menuButtonAdmin = "menuButtonAdmin"
     menuButtonStartNewSession = "menuButtonStartNewSession"
     menuTextStartNewSession = "menuTextStartNewSession"
@@ -48,7 +52,9 @@ class UniqueMessagesKeys(enum.Enum):
 
     relaxStartMessage = "relaxStartMessage"
     relaxCompleteMessage = "relaxCompleteMessage"
-
+  
+    quizDepressionStart = "quizDepressionStart"
+    quizAnxietyStart = "quizAnxietyStart"
     reflectionMenuText = "reflectionMenuText"
     reflectionMenuButtonFairytale = "reflectionMenuButtonFairytale"
     reflectionMenuButtonOtherHuman = "reflectionMenuButtonOtherHuman"

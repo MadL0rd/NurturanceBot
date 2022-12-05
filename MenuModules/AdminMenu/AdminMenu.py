@@ -12,6 +12,7 @@ from Core.StorageManager.UniqueMessagesKeys import textConstant
 
 from MenuModules.MenuModuleInterface import MenuModuleInterface, MenuModuleHandlerCompletion as Completion
 from MenuModules.MenuModuleName import MenuModuleName
+from Core.GoogleSheetsServiseFunctions import functions
 
 class AdminMenu(MenuModuleInterface):
 
@@ -65,31 +66,9 @@ class AdminMenu(MenuModuleInterface):
 
             message = await ctx.answer(updateStateReloadDataMessage(0))
 
-            sheets.updateUniqueMessages()
-            await message.edit_text(updateStateReloadDataMessage(1))
-
-            sheets.updateOnboarding()
-            await message.edit_text(updateStateReloadDataMessage(2))
-
-            sheets.updateNews()
-            await message.edit_text(updateStateReloadDataMessage(3))
-
-            sheets.updatetaskEmotions()
-            await message.edit_text(updateStateReloadDataMessage(4))
-
-            sheets.updatetaskThoughts()
-            await message.edit_text(updateStateReloadDataMessage(5))
-
-            sheets.updateQuestions()
-            await message.edit_text(updateStateReloadDataMessage(6))
-
-            sheets.updateEveningReflectionQuestions()
-            await message.edit_text(updateStateReloadDataMessage(7))
-
-            sheets.updateFairytale()
-            await message.edit_text(updateStateReloadDataMessage(8))
-
-            sheets.updateOhterHuman()
+            for index, func in enumerate(functions):
+                func()
+                await message.edit_text(updateStateReloadDataMessage(index + 1))
 
             await message.edit_text("❇️ Тексты обновлены")
 
@@ -137,15 +116,19 @@ def updateStateReloadDataMessage(stateIndex: int) -> str:
         "УникальныеСообщения",
         "Онбординг",
         "Новости",
-        'УпражненияЭмоции',
-        'УпражненияМысли',
-        'Вопросы',
-        'ВечерняяРефлексияВопросы',
-        'Сказка',
-        'Работа с другим человеком'
+        "УпражненияЭмоции",
+        "УпражненияМысли",
+        "Вопросы",
+        "ВечерняяРефлексияВопросы",
+        "Сказка",
+        "Работа с другим человеком",
+        "Квиз по депрессии",
+        "Результаты Квиза по депрессии",
+        "Квиз по тревожности",
+        "Результаты Квиза по тревожности"
     ]
     for index, value in enumerate(tablePageNames):
-        indicator = "🔴" if index > stateIndex else "🟢"
+        indicator = "🔴" if index >= stateIndex else "🟢"
         text += f"\n{indicator} {value}"
 
     return text
