@@ -1,3 +1,8 @@
+from aiogram.types import Message, CallbackQuery
+from main import bot
+import Core.StorageManager.StorageManager as storage
+from logger import logger as log
+import Core.GoogleSheetsService as sheets
 from aiogram.types import Message, CallbackQuery, ReplyKeyboardMarkup, KeyboardButton
 
 import Core.StorageManager.StorageManager as storage
@@ -7,15 +12,14 @@ from Core.StorageManager.UniqueMessagesKeys import textConstant
 
 from MenuModules.MenuModuleInterface import MenuModuleInterface, MenuModuleHandlerCompletion as Completion
 from MenuModules.MenuModuleName import MenuModuleName
-from logger import logger as log
 
-class TestMenu(MenuModuleInterface):
+class ContactPsychologist(MenuModuleInterface):
 
     # =====================
     # Interface implementation
     # =====================
 
-    namePrivate = MenuModuleName.testMenu
+    namePrivate = MenuModuleName.contactPsychologist
 
     # Use default implementation
     # def callbackData(self, data: dict, msg: MessageSender) -> str:
@@ -23,37 +27,31 @@ class TestMenu(MenuModuleInterface):
     async def handleModuleStart(self, ctx: Message, msg: MessageSender) -> Completion:
 
         log.debug(f"User: {ctx.from_user.id}")
-        storage.logToUserHistory(ctx.from_user, event.startModuleTestMenu, "")
 
         keyboardMarkup = ReplyKeyboardMarkup(
             resize_keyboard=True
-        )
-        for buttonText in self.menuDict:
-            keyboardMarkup.add(KeyboardButton(buttonText))
+        ).add(KeyboardButton(textConstant.menuButtonReturnToMainMenu.get))
 
         await msg.answer(
             ctx = ctx,
-            text = textConstant.testMenuText.get,
+            text = textConstant.contactPsychologistMessageText.get,
             keyboardMarkup = keyboardMarkup
         )
 
         return Completion(
-            inProgress=True,
+            inProgress = True,
             didHandledUserInteraction=True,
-            moduleData={ "testMenuMessageDidSent" : True }
+            moduleData={ "startMessageDidSent" : True }
         )
 
     async def handleUserMessage(self, ctx: Message, msg: MessageSender, data: dict) -> Completion:
 
         log.debug(f"User: {ctx.from_user.id}")
         
-        messageText = ctx.text
+        if ctx.text == textConstant.menuButtonReturnToMainMenu.get:
+            return self.complete(nextModuleName=MenuModuleName.mainMenu.get)        
 
-        if messageText not in self.menuDict:
-            return self.canNotHandle(data)
-
-        return self.complete(nextModuleName = self.menuDict[messageText])
-        
+        return self.canNotHandle(data)
 
     async def handleCallback(self, ctx: CallbackQuery, data: dict, msg: MessageSender) -> Completion:
 
@@ -63,12 +61,3 @@ class TestMenu(MenuModuleInterface):
     # =====================
     # Custom stuff
     # =====================
-
-    @property
-    def menuDict(self) -> dict:
-        # TODO: temporary module block
-        return {
-            textConstant.menuButtonQuizDepression.get: MenuModuleName.quizDepression.get,
-            textConstant.menuButtonQuizAnxiety.get: MenuModuleName.quizAnxiety.get,
-            textConstant.menuButtonReturnToMainMenu.get: MenuModuleName.mainMenu.get
-        }

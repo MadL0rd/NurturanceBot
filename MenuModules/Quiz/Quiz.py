@@ -103,7 +103,11 @@ class Quiz(MenuModuleInterface):
             )
 
         if data["final"] == True and data["finalButtonText"] and messageText == data["finalButtonText"]:
-            return self.complete(nextModuleName = MenuModuleName.mainMenu.get)
+            # TODO: implement data flag, not text constant !!!
+            if messageText == "Обратиться к психологу":
+                return self.complete(nextModuleName = MenuModuleName.contactPsychologist.get)
+            else:
+                return self.complete(nextModuleName = MenuModuleName.mainMenu.get)
 
         return self.canNotHandle(data)
        

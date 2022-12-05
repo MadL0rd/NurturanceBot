@@ -22,7 +22,7 @@ class MenuModuleName(enum.Enum):
     quiz: str = "quiz"
     quizDepression: str = "quizDepression"
     quizAnxiety: str = "quizAnxiety"
-
+    contactPsychologist: str = "contactPsychologist"
 
     @property
     def get(self) -> str:
