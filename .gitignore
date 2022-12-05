@@ -125,6 +125,7 @@ dmypy.json
 
 # Custom
 logs.txt
-/DataStorage/Users
+/DataStorage/Users/*.json
+/DataStorage/Users/*/*.json
 *.xlsx
-DataStorage/BotContent
+DataStorage/BotContent/*.json
