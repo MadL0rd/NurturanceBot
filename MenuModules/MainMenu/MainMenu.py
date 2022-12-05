@@ -58,7 +58,10 @@ class MainMenu(MenuModuleInterface):
         
         messageText = ctx.text
 
-        if messageText == textConstant.menuButtonAdmin.get:
+        userTg = ctx.from_user
+        userInfo = storage.getUserInfo(userTg)
+
+        if messageText == textConstant.menuButtonAdmin.get and "isAdmin" in userInfo and userInfo["isAdmin"] == True:
             return self.complete(nextModuleName = MenuModuleName.admin.get)
 
         if messageText not in self.menuDict:
@@ -84,5 +87,6 @@ class MainMenu(MenuModuleInterface):
             # textConstant.menuButtonRandomNews.get: MenuModuleName.randomNews.get,
             # textConstant.menuButtonRelax.get: MenuModuleName.relax.get,
             textConstant.menuButtonNotifications.get: MenuModuleName.notificationsSettings.get,
-            textConstant.menuButtonTestMenu.get: MenuModuleName.testMenu.get
+            textConstant.menuButtonTestMenu.get: MenuModuleName.testMenu.get,
+            textConstant.menuButtonPsychologist.get: MenuModuleName.contactPsychologist.get
         }
