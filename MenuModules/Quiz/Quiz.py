@@ -87,7 +87,7 @@ class Quiz(MenuModuleInterface):
             for result in pullResults:
                 if int(result["rLimit"]) >= data["sumOfScores"] and int(result["lLimit"]) <= data["sumOfScores"]:
                     text = result["text"]
-                    keyboardMarkup = ReplyKeyboardMarkup().add(KeyboardButton(result["button"]))
+                    keyboardMarkup = ReplyKeyboardMarkup(resize_keyboard=True).add(KeyboardButton(result["button"]))
                     foundResult = result
             await msg.answer(
                 ctx = ctx,
