@@ -11,6 +11,8 @@ from aiogram.types import User
 
 from logger import logger as log
 
+from Core.Utils import Utils as utils
+
 # =====================
 # Base
 # =====================
@@ -38,27 +40,35 @@ class UserHistoryEvent(enum.Enum):
     sessionReload = "Перезапустил сессию"
     sessionComplete = "Завершил сессию"
     notificationChooseTime = "Передвинул время уведомлений"
+    startModuleTestMenu = "Зашёл в меню выбора тестов"
+    startModuleQuiz = "Запустил тест"
     otherHumanSessionSuccessYes = "ПоработалСЧеловеком Удачно"
     otherHumanSessionSuccessNo = "ПоработалСЧеловеком Неудачно"
 
 class PathConfig:
 
     baseDir = Path("./DataStorage")
+        
+    internalDir = baseDir / "Internal"
+    botContentPrivateConfig = internalDir / "PrivateConfig.json"
+    botContentNotificationTimes = internalDir / "NotificationTimes.json"
 
     usersDir = baseDir / "Users"
 
     botContentDir = baseDir / "BotContent"
     botContentOnboarding = botContentDir/ "Onboarding.json"
     botContentUniqueMessages = botContentDir/ "UniqueTextMessages.json"
-    botContentPrivateConfig = botContentDir / "PrivateConfig.json"
     botContentNews = botContentDir / "News.json"
     botContentEmotions = botContentDir / "Emotions.json"
     botContentThoughts = botContentDir / "Thoughts.json"
     botContentQuestions = botContentDir / "Questions.json"
-    botContentNotificationTimes = botContentDir / "NotificationTimes.json"
     botContentEveningReflectionQuestions = botContentDir / "EveningReflectionQuestions.json"
     botContentFairytale = botContentDir / "Fairytale.json"
     botContentOtherHuman = botContentDir / "OtherHuman.json"
+    botContentQuizDepression = botContentDir / "QuizDepression.json"
+    botContentQuizDepressionResults = botContentDir / "QuizDepressionResults.json"
+    botContentQuizAnxiety = botContentDir / "QuizAnxiety.json"
+    botContentQuizAnxietyResults = botContentDir / "QuizAnxietyResults.json"
 
     totalHistoryTableFile = baseDir / "TotalHistory.xlsx"
     statisticHistoryTableFile = baseDir / "StatisticalHistory.xlsx"
@@ -83,12 +93,14 @@ def getJsonData(filePath: Path):
     return data
 
 def writeJsonData(filePath: Path, content):
-    # log.debug(content)
-    data = json.dumps(content, ensure_ascii=False, indent=2)
-    with filePath.open('w') as file:
-    # data = json.dumps(content, indent=2)
-    # with filePath.open('w', encoding= 'utf-8') as file:
-        file.write(data)
+    if utils.isWindows:
+        data = json.dumps(content, indent=2)
+        with filePath.open('w', encoding= 'utf-8') as file:
+            file.write(data)
+    else:
+        data = json.dumps(content, ensure_ascii=False, indent=2)
+        with filePath.open('w') as file:
+            file.write(data)
 
 # =====================
 # Public interaction

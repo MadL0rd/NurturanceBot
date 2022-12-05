@@ -12,9 +12,14 @@ class UniqueMessagesKeys(enum.Enum):
     menuButtonExercises = "menuButtonExercises"
     menuButtonRandomNews = "menuButtonRandomNews"
     menuButtonRelax = "menuButtonRelax"
+    menuButtonTestMenu = "menuButtonTestMenu"
+    testMenuText = "testMenuText"
+    menuButtonQuizDepression = "menuButtonQuizDepression"
+    menuButtonQuizAnxiety = "menuButtonQuizAnxiety"
     menuButtonAdmin = "menuButtonAdmin"
     menuButtonStartNewSession = "menuButtonStartNewSession"
     menuTextStartNewSession = "menuTextStartNewSession"
+    menuButtonPsychologist = "menuButtonPsychologist"
     menuButtonNotifications = "menuButtonNotifications"
 
     adminMenuText = "adminMenuText"
@@ -48,7 +53,9 @@ class UniqueMessagesKeys(enum.Enum):
 
     relaxStartMessage = "relaxStartMessage"
     relaxCompleteMessage = "relaxCompleteMessage"
-
+  
+    quizDepressionStart = "quizDepressionStart"
+    quizAnxietyStart = "quizAnxietyStart"
     reflectionMenuText = "reflectionMenuText"
     reflectionMenuButtonFairytale = "reflectionMenuButtonFairytale"
     reflectionMenuButtonOtherHuman = "reflectionMenuButtonOtherHuman"
@@ -67,6 +74,9 @@ class UniqueMessagesKeys(enum.Enum):
     fairytaleEndingButtonRestart = "fairytaleEndingButtonRestart"
     fairytaleEndingButtonEndSession = "fairytaleEndingButtonEndSession"
     fairytaleEndingButtonOtherPerson = "fairytaleEndingButtonOtherPerson"
+
+    contactPsychologistButtonText = "contactPsychologistButtonText"
+    contactPsychologistMessageText = "contactPsychologistMessageText"
 
     @property
     def get(self) -> str:
