@@ -12,6 +12,8 @@ class UniqueMessagesKeys(enum.Enum):
     menuButtonExercises = "menuButtonExercises"
     menuButtonRandomNews = "menuButtonRandomNews"
     menuButtonRelax = "menuButtonRelax"
+    menuButtonTestMenu = "menuButtonTestMenu"
+    testMenuText = "testMenuText"
     menuButtonQuizDepression = "menuButtonQuizDepression"
     menuButtonQuizAnxiety = "menuButtonQuizAnxiety"
     menuButtonAdmin = "menuButtonAdmin"

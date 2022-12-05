@@ -40,7 +40,8 @@ class UserHistoryEvent(enum.Enum):
     sessionReload = "Перезапустил сессию"
     sessionComplete = "Завершил сессию"
     notificationChooseTime = "Передвинул время уведомлений"
-    startModuleQuiz = "Запустил тест на депрессию"
+    startModuleTestMenu = "Зашёл в меню выбора тестов"
+    startModuleQuiz = "Запустил тест"
     otherHumanSessionSuccessYes = "ПоработалСЧеловеком Удачно"
     otherHumanSessionSuccessNo = "ПоработалСЧеловеком Неудачно"
 

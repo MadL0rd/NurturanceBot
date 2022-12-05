@@ -57,7 +57,7 @@ class Onboarding(MenuModuleInterface):
         
         pageIndex += 1
         if len(onboardingPages) == pageIndex:
-            return self.complete()
+            return self.complete(nextModuleName = MenuModuleName.testMenu.get)
         
         page = OnboardingPage(onboardingPages[pageIndex])
         await sendOnboardingPage(ctx, msg, page)
