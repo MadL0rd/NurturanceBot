@@ -84,9 +84,9 @@ class MainMenu(MenuModuleInterface):
         # TODO: temporary module block
         return {
             textConstant.menuButtonExercises.get: MenuModuleName.exercises.get,
+            textConstant.menuButtonPsychologist.get: MenuModuleName.contactPsychologist.get,
+            textConstant.menuButtonTestMenu.get: MenuModuleName.testMenu.get,
+            textConstant.menuButtonNotifications.get: MenuModuleName.notificationsSettings.get
             # textConstant.menuButtonRandomNews.get: MenuModuleName.randomNews.get,
             # textConstant.menuButtonRelax.get: MenuModuleName.relax.get,
-            textConstant.menuButtonNotifications.get: MenuModuleName.notificationsSettings.get,
-            textConstant.menuButtonTestMenu.get: MenuModuleName.testMenu.get,
-            textConstant.menuButtonPsychologist.get: MenuModuleName.contactPsychologist.get
         }
