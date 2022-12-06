@@ -12,10 +12,15 @@ from MenuModules.OtherHuman.OtherHuman import OtherHuman
 from MenuModules.OtherHuman.OtherHumanEnding import OtherHumanEnding
 from MenuModules.OtherHuman.OtherHumanEndingYes import OtherHumanEndingYes
 from MenuModules.OtherHuman.OtherHumanEndingNo import OtherHumanEndingNo
+from MenuModules.Quiz.Quiz import Quiz
+from MenuModules.Quiz.QuizAnxiety import QuizAnxiety
+from MenuModules.Quiz.QuizDepression import QuizDepression
 from MenuModules.RandomNews.RandomNews import RandomNews
 from MenuModules.Exercises.Exercises import Exercises
 from MenuModules.Relax.Relax import Relax
 from MenuModules.ReflectionMenu.ReflectionMenu import ReflectionMenu
+from MenuModules.TestMenu.TestMenu import TestMenu
+from MenuModules.ContactPsychologist.ContactPsychologist import ContactPsychologist
 
 class MenuModules(enum.Enum):
 
@@ -35,6 +40,11 @@ class MenuModules(enum.Enum):
     otherHumanEndingNo: MenuModuleInterface = OtherHumanEndingNo()
     fairytale: MenuModuleInterface = Fairytale()
     fairytaleEnding: MenuModuleInterface = FairytaleEnding()
+    quiz: MenuModuleInterface = Quiz()
+    quizDepression: MenuModuleInterface = QuizDepression()
+    quizAnxiety: MenuModuleInterface = QuizAnxiety()
+    testMenu: MenuModuleInterface = TestMenu()
+    contactPsychologist: MenuModuleInterface = ContactPsychologist()
     
     @property
     def get(self) -> MenuModuleInterface:

@@ -10,14 +10,15 @@ from MenuModules.MenuModuleInterface import MenuModuleInterface, MenuModuleHandl
 from MenuModules.MenuModuleName import MenuModuleName
 from logger import logger as log
 from random import choice
-from pathlib import Path
 
 class RandomNews(MenuModuleInterface):
 
-    keyboardMarkup = ReplyKeyboardMarkup(
-            resize_keyboard=True
-        ).add(KeyboardButton(textConstant.randomNewsButtonNews.get)
-        ).add(KeyboardButton(textConstant.menuButtonReturnToMainMenu.get))
+    @property 
+    def keyboardMarkup(self) -> ReplyKeyboardMarkup:
+        return ReplyKeyboardMarkup(
+                resize_keyboard=True
+            ).add(KeyboardButton(textConstant.randomNewsButtonNews.get)
+            ).add(KeyboardButton(textConstant.menuButtonReturnToMainMenu.get))
 
     # =====================
     # Interface implementation
@@ -115,20 +116,6 @@ class RandomNews(MenuModuleInterface):
             ctx= ctx,
             url= newsPicture
         )
-        #else:
-           # await msg.answer(
-            #    ctx = ctx,
-             #   text = "Какая-то ебучая новость",
-              #  keyboardMarkup = self.keyboardMarkup
-            #)
-        
-        # pageIndex = 0
-        # NewsPages = storage.getJsonData(storage.path.botContentNews)
-        # if len(NewsPages) > pageIndex:
-        #     page = NewsPage(NewsPages[pageIndex])
-        #     await sendNews(ctx, msg, page)
-        # else:
-        #     log.error("News is empty")
 
 class NewsPage:
 

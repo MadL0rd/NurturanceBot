@@ -11,6 +11,8 @@ from aiogram.types import User
 
 from logger import logger as log
 
+from Core.Utils import Utils as utils
+
 # =====================
 # Base
 # =====================
@@ -38,30 +40,43 @@ class UserHistoryEvent(enum.Enum):
     sessionReload = "Перезапустил сессию"
     sessionComplete = "Завершил сессию"
     notificationChooseTime = "Передвинул время уведомлений"
+    startModuleTestMenu = "Зашёл в меню выбора тестов"
+    startModuleQuiz = "Запустил тест"
     otherHumanSessionSuccessYes = "ПоработалСЧеловеком Удачно"
     otherHumanSessionSuccessNo = "ПоработалСЧеловеком Неудачно"
 
 class PathConfig:
 
     baseDir = Path("./DataStorage")
+        
+    internalDir = baseDir / "Internal"
+    botContentPrivateConfig = internalDir / "PrivateConfig.json"
+    botContentNotificationTimes = internalDir / "NotificationTimes.json"
 
     usersDir = baseDir / "Users"
 
     botContentDir = baseDir / "BotContent"
     botContentOnboarding = botContentDir/ "Onboarding.json"
     botContentUniqueMessages = botContentDir/ "UniqueTextMessages.json"
-    botContentPrivateConfig = botContentDir / "PrivateConfig.json"
     botContentNews = botContentDir / "News.json"
     botContentEmotions = botContentDir / "Emotions.json"
     botContentThoughts = botContentDir / "Thoughts.json"
     botContentQuestions = botContentDir / "Questions.json"
-    botContentNotificationTimes = botContentDir / "NotificationTimes.json"
     botContentEveningReflectionQuestions = botContentDir / "EveningReflectionQuestions.json"
     botContentFairytale = botContentDir / "Fairytale.json"
     botContentOtherHuman = botContentDir / "OtherHuman.json"
+    botContentQuizDepression = botContentDir / "QuizDepression.json"
+    botContentQuizDepressionResults = botContentDir / "QuizDepressionResults.json"
+    botContentQuizAnxiety = botContentDir / "QuizAnxiety.json"
+    botContentQuizAnxietyResults = botContentDir / "QuizAnxietyResults.json"
+    botContentauthorizationPassword = botContentDir / "AuthorizationPassword.json"
 
     totalHistoryTableFile = baseDir / "TotalHistory.xlsx"
     statisticHistoryTableFile = baseDir / "StatisticalHistory.xlsx"
+
+    @property
+    def userFoldersAll(self) -> list:
+        return [userFolder for userFolder in self.usersDir.iterdir() if userFolder.is_dir()]
 
     def userFolder(self, user: User):
         return self.usersDir / f"{user.id}"
@@ -83,12 +98,14 @@ def getJsonData(filePath: Path):
     return data
 
 def writeJsonData(filePath: Path, content):
-    # log.debug(content)
-    data = json.dumps(content, ensure_ascii=False, indent=2)
-    with filePath.open('w') as file:
-    # data = json.dumps(content, indent=2)
-    # with filePath.open('w', encoding= 'utf-8') as file:
-        file.write(data)
+    if utils.isWindows:
+        data = json.dumps(content, indent=2)
+        with filePath.open('w', encoding= 'utf-8') as file:
+            file.write(data)
+    else:
+        data = json.dumps(content, ensure_ascii=False, indent=2)
+        with filePath.open('w') as file:
+            file.write(data)
 
 # =====================
 # Public interaction
@@ -253,7 +270,7 @@ def generateStatisticPageForEvent(workbook: xlsxwriter.Workbook, eventName: stri
     col += 1
 
     usersCount = 0
-    for userFolder in path.usersDir.iterdir():
+    for userFolder in path.userFoldersAll:
         usersCount += 1
         row = startRow
         history = getJsonData(userFolder / "history.json")
@@ -296,7 +313,7 @@ def generateTotalTable():
     workbook = xlsxwriter.Workbook(path.totalHistoryTableFile)
     bold = workbook.add_format({'bold': True})
 
-    for userFolder in path.usersDir.iterdir():
+    for userFolder in path.userFoldersAll:
         sheetTitle = f"user{userFolder.name}"
         
         worksheet = workbook.add_worksheet(sheetTitle)
@@ -327,3 +344,8 @@ def generateTotalTable():
     workbook.close()
 
     log.info("Total table generation completed")
+
+def getAuthorisationPassword():
+    authorizationPasswordGet = getJsonData(PathConfig.botContentauthorizationPassword)
+    authorizationPassword = authorizationPasswordGet["password"]
+    return authorizationPassword

@@ -1,9 +1,10 @@
 import json
-from aiogram.types import Message, CallbackQuery, ReplyKeyboardMarkup, InlineKeyboardMarkup, ReplyKeyboardRemove
+from aiogram.types import Message, CallbackQuery, ReplyKeyboardMarkup, InlineKeyboardMarkup, ReplyKeyboardRemove, User
 
 from Core.MessageSender import MessageSender, CallbackMessageSender
+from Core.StorageManager.UniqueMessagesKeys import textConstant
 import Core.StorageManager.StorageManager as storage
-from Core.StorageManager.StorageManager import UserHistoryEvent as event
+from Core.StorageManager.StorageManager import UserHistoryEvent as event, updateUserData
 
 from MenuModules.MenuModuleInterface import MenuModuleInterface, MenuModuleHandlerCompletion as Completion
 from MenuModules.MenuModules import MenuModules as menu
@@ -13,13 +14,44 @@ from logger import logger as log
 msg = MessageSender()
 callbackMsg = CallbackMessageSender()
 
+def didUserAuthorized(userTg: User) -> bool:
+    userInfo = storage.getUserInfo(userTg)
+    return "authorized" in userInfo and userInfo["authorized"] == True
+    
+async def userAuthorization(ctx: Message) -> bool:
+    userTg = ctx.from_user
+    if didUserAuthorized(userTg):
+        return True
+
+    userInfo = storage.getUserInfo(userTg)
+    authorizationPassword = storage.getAuthorisationPassword()
+    if ctx.text == authorizationPassword:
+        userInfo["authorized"] = True
+        updateUserData(userTg, userInfo)
+        await msg.answer(
+            ctx=ctx, 
+            text= textConstant.passwordConfirm.get,
+            keyboardMarkup=ReplyKeyboardMarkup()
+        )
+        await handleUserStart(ctx)
+        return False
+
+    await msg.answer(
+        ctx=ctx, 
+        text=textConstant.needPassword.get,
+        keyboardMarkup=ReplyKeyboardMarkup()
+    )
+    return False
+
 async def handleUserStart(ctx: Message):
 
     userTg = ctx.from_user
     log.debug(f"Did handle User{userTg.id} start message {ctx.text}")
 
     userInfo = storage.getUserInfo(userTg)
-
+    if await userAuthorization(ctx) == False:
+        return
+    
     module: MenuModuleInterface = menu.onboarding.get
     log.debug(module.name)
     completion: Completion = await module.handleModuleStart(ctx, msg)
@@ -42,6 +74,9 @@ async def handleUserMessage(ctx: Message):
 
     storage.logToUserHistory(userTg, event.sendMessage, ctx.text)
     
+    if await userAuthorization(ctx) == False:
+        return 
+        
     # Try to find current menu module
     menuState = userInfo["state"]
     module: MenuModuleInterface = None

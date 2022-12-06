@@ -18,7 +18,11 @@ class MenuModuleName(enum.Enum):
     reflectionMenu: str = 'reflectionMenu'
     fairytale: str = 'fairytale'
     fairytaleEnding: str = 'fairytaleEnding'
-
+    testMenu: str = "testMenu"
+    quiz: str = "quiz"
+    quizDepression: str = "quizDepression"
+    quizAnxiety: str = "quizAnxiety"
+    contactPsychologist: str = "contactPsychologist"
 
     @property
     def get(self) -> str:

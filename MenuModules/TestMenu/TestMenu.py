@@ -9,13 +9,13 @@ from MenuModules.MenuModuleInterface import MenuModuleInterface, MenuModuleHandl
 from MenuModules.MenuModuleName import MenuModuleName
 from logger import logger as log
 
-class MainMenu(MenuModuleInterface):
+class TestMenu(MenuModuleInterface):
 
     # =====================
     # Interface implementation
     # =====================
 
-    namePrivate = MenuModuleName.mainMenu
+    namePrivate = MenuModuleName.testMenu
 
     # Use default implementation
     # def callbackData(self, data: dict, msg: MessageSender) -> str:
@@ -23,7 +23,7 @@ class MainMenu(MenuModuleInterface):
     async def handleModuleStart(self, ctx: Message, msg: MessageSender) -> Completion:
 
         log.debug(f"User: {ctx.from_user.id}")
-        storage.logToUserHistory(ctx.from_user, event.startModuleMainMenu, "")
+        storage.logToUserHistory(ctx.from_user, event.startModuleTestMenu, "")
 
         keyboardMarkup = ReplyKeyboardMarkup(
             resize_keyboard=True
@@ -31,38 +31,23 @@ class MainMenu(MenuModuleInterface):
         for buttonText in self.menuDict:
             keyboardMarkup.add(KeyboardButton(buttonText))
 
-        userTg = ctx.from_user
-        userInfo = storage.getUserInfo(userTg)
-
-        if "isAdmin" in userInfo and userInfo["isAdmin"] == True:
-            keyboardMarkup.add(KeyboardButton(textConstant.menuButtonAdmin.get))
-
         await msg.answer(
             ctx = ctx,
-            text = textConstant.mainMenuText.get,
+            text = textConstant.testMenuText.get,
             keyboardMarkup = keyboardMarkup
         )
 
         return Completion(
             inProgress=True,
             didHandledUserInteraction=True,
-            moduleData={ "startMessageDidSent" : True }
+            moduleData={ "testMenuMessageDidSent" : True }
         )
 
     async def handleUserMessage(self, ctx: Message, msg: MessageSender, data: dict) -> Completion:
 
         log.debug(f"User: {ctx.from_user.id}")
-
-        if "startMessageDidSent" not in data or data["startMessageDidSent"] != True:
-            return self.handleModuleStart(ctx, msg)
         
         messageText = ctx.text
-
-        userTg = ctx.from_user
-        userInfo = storage.getUserInfo(userTg)
-
-        if messageText == textConstant.menuButtonAdmin.get and "isAdmin" in userInfo and userInfo["isAdmin"] == True:
-            return self.complete(nextModuleName = MenuModuleName.admin.get)
 
         if messageText not in self.menuDict:
             return self.canNotHandle(data)
@@ -83,10 +68,7 @@ class MainMenu(MenuModuleInterface):
     def menuDict(self) -> dict:
         # TODO: temporary module block
         return {
-            textConstant.menuButtonExercises.get: MenuModuleName.exercises.get,
-            textConstant.menuButtonPsychologist.get: MenuModuleName.contactPsychologist.get,
-            textConstant.menuButtonTestMenu.get: MenuModuleName.testMenu.get,
-            textConstant.menuButtonNotifications.get: MenuModuleName.notificationsSettings.get
-            # textConstant.menuButtonRandomNews.get: MenuModuleName.randomNews.get,
-            # textConstant.menuButtonRelax.get: MenuModuleName.relax.get,
+            textConstant.menuButtonQuizDepression.get: MenuModuleName.quizDepression.get,
+            textConstant.menuButtonQuizAnxiety.get: MenuModuleName.quizAnxiety.get,
+            textConstant.menuButtonReturnToMainMenu.get: MenuModuleName.mainMenu.get
         }
