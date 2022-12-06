@@ -73,6 +73,10 @@ class PathConfig:
     totalHistoryTableFile = baseDir / "TotalHistory.xlsx"
     statisticHistoryTableFile = baseDir / "StatisticalHistory.xlsx"
 
+    @property
+    def userFoldersAll(self) -> list:
+        return [userFolder for userFolder in self.usersDir.iterdir() if userFolder.is_dir()]
+
     def userFolder(self, user: User):
         return self.usersDir / f"{user.id}"
 
@@ -265,7 +269,7 @@ def generateStatisticPageForEvent(workbook: xlsxwriter.Workbook, eventName: stri
     col += 1
 
     usersCount = 0
-    for userFolder in path.usersDir.iterdir():
+    for userFolder in path.userFoldersAll:
         usersCount += 1
         row = startRow
         history = getJsonData(userFolder / "history.json")
@@ -308,7 +312,7 @@ def generateTotalTable():
     workbook = xlsxwriter.Workbook(path.totalHistoryTableFile)
     bold = workbook.add_format({'bold': True})
 
-    for userFolder in path.usersDir.iterdir():
+    for userFolder in path.userFoldersAll:
         sheetTitle = f"user{userFolder.name}"
         
         worksheet = workbook.add_worksheet(sheetTitle)
