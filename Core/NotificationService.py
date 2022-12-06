@@ -77,7 +77,7 @@ class NotificationService:
 def getAllUsersWith(type: str, time: str) -> list:
     userIds = []
 
-    for userFolder in storage.path.usersDir.iterdir():
+    for userFolder in storage.path.userFoldersAll:
         userInfo = storage.getJsonData(userFolder / "info.json")
         if userInfo["notifications"][type] == time:
             userIds.append(userInfo["info"]["id"])
