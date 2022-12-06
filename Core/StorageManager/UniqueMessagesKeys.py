@@ -8,6 +8,9 @@ class UniqueMessagesKeys(enum.Enum):
 
     menuButtonReturnToMainMenu = "menuButtonReturnToMainMenu"
 
+    needPassword = "needPassword"
+    passwordConfirm = "passwordConfirm"
+
     mainMenuText = "mainMenuText"
     menuButtonExercises = "menuButtonExercises"
     menuButtonRandomNews = "menuButtonRandomNews"
