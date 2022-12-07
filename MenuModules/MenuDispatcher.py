@@ -19,13 +19,18 @@ def didUserAuthorized(userTg: User) -> bool:
     return "authorized" in userInfo and userInfo["authorized"] == True
     
 async def userAuthorization(ctx: Message) -> bool:
+    
     userTg = ctx.from_user
     if didUserAuthorized(userTg):
         return True
 
-    userInfo = storage.getUserInfo(userTg)
     authorizationPassword = storage.getAuthorisationPassword()
+
+    if authorizationPassword == None or authorizationPassword == "":
+        return True
+
     if ctx.text == authorizationPassword:
+        userInfo = storage.getUserInfo(userTg)
         userInfo["authorized"] = True
         updateUserData(userTg, userInfo)
         await msg.answer(
