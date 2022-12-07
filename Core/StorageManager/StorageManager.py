@@ -69,7 +69,7 @@ class PathConfig:
     botContentQuizDepressionResults = botContentDir / "QuizDepressionResults.json"
     botContentQuizAnxiety = botContentDir / "QuizAnxiety.json"
     botContentQuizAnxietyResults = botContentDir / "QuizAnxietyResults.json"
-    botContentauthorizationPassword = botContentDir / "AuthorizationPassword.json"
+    botContentAuthorizationPassword = botContentDir / "AuthorizationPassword.json"
 
     totalHistoryTableFile = baseDir / "TotalHistory.xlsx"
     statisticHistoryTableFile = baseDir / "StatisticalHistory.xlsx"
@@ -345,7 +345,20 @@ def generateTotalTable():
 
     log.info("Total table generation completed")
 
-def getAuthorisationPassword():
-    authorizationPasswordGet = getJsonData(PathConfig.botContentauthorizationPassword)
-    authorizationPassword = authorizationPasswordGet["password"]
-    return authorizationPassword
+def getAuthorisationPassword() -> str:
+    try:
+        authorizationPasswordGet = getJsonData(PathConfig.botContentAuthorizationPassword)
+        authorizationPassword = authorizationPasswordGet["password"]
+        return authorizationPassword
+    except:
+        setAuthorisationPassword("")
+        return ""
+   
+
+def setAuthorisationPassword(password: str):
+    writeJsonData(
+        filePath=path.botContentAuthorizationPassword,
+        content= {
+            "password": password
+        }
+    )
