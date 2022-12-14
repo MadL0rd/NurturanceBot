@@ -73,6 +73,7 @@ class PathConfig:
 
     totalHistoryTableFile = baseDir / "TotalHistory.xlsx"
     statisticHistoryTableFile = baseDir / "StatisticalHistory.xlsx"
+    specHistoryTableFile = baseDir / "SpecHistory.xlsx"
 
     @property
     def userFoldersAll(self) -> list:
@@ -344,6 +345,75 @@ def generateTotalTable():
     workbook.close()
 
     log.info("Total table generation completed")
+
+def generateSpecTable():
+    log.info("Spec table generation start")
+
+    # Lits for necessary events in Special Table
+    if utils.isWindows == True:
+        # Because we have some problems with encoding on Windows
+        specEventList = [
+            "\u041f\u0435\u0440\u0435\u0448\u0435\u043b \u043a \u0443\u043f\u0440\u0430\u0436\u043d\u0435\u043d\u0438\u044f\u043c",
+            "\u041f\u0440\u0438\u0441\u0442\u0443\u043f\u0438\u043b \u043a \u0432\u0435\u0447\u0435\u0440\u043d\u0435\u0439 \u0440\u0435\u0444\u043b\u0435\u043a\u0441\u0438\u0438",
+            "\u041d\u0430\u0447\u0430\u043b \u043f\u0440\u043e\u0440\u0430\u0431\u0430\u0442\u044b\u0432\u0430\u0442\u044c \u044d\u043c\u043e\u0446\u0438\u044e",
+            "\u041d\u0430\u0447\u0430\u043b \u043f\u0440\u043e\u0440\u0430\u0431\u0430\u0442\u044b\u0432\u0430\u0442\u044c \u043c\u044b\u0441\u043b\u044c",
+            "\u041e\u0446\u0435\u043d\u0438\u043b \u0434\u043e",
+            "\u041e\u0446\u0435\u043d\u0438\u043b \u043f\u043e\u0441\u043b\u0435",
+            "\u0420\u0430\u0437\u043d\u0438\u0446\u0430 \u043e\u0446\u0435\u043d\u043e\u043a \u0434\u043e \u0438 \u043f\u043e\u0441\u043b\u0435"
+        ]
+    else:
+        specEventList = [
+            UserHistoryEvent.startModuleExercises,
+            UserHistoryEvent.startModuleEveningReflectionQuestions,
+            UserHistoryEvent.chooseExerciseEmotion,
+            UserHistoryEvent.chooseExerciseThought,
+            UserHistoryEvent.assessmentBefore,
+            UserHistoryEvent.assessmentAfter,
+            UserHistoryEvent.assessmentDelta
+        ]
+
+    workbook = xlsxwriter.Workbook(path.specHistoryTableFile) # workbook creation
+    bold = workbook.add_format({'bold': True})
+    sheetTitle = "Page"
+    worksheet = workbook.add_worksheet(sheetTitle)
+    row = 1
+
+    titles = ["Дата", "Время", "Неделя", "Событие", "Описание", "id пользователя"] # column naming
+    for col, title in enumerate(titles):
+        worksheet.write(row, col, title, bold)
+        worksheet.set_column(col, col, len(title))
+    worksheet.set_column(4, 4, 50)
+    row += 1
+
+    eventList = [] # empty list for necessary events
+    for userFolder in path.userFoldersAll:
+        history = getJsonData(userFolder / "history.json")
+        for event in history:
+            if event["event"] in specEventList:
+                event["userId"] = userFolder.name # adding id to the event dict
+                eventList.append(event)
+
+    sortedEventList = sorted(eventList, key= lambda d: (d["timestamp"]["date"], d["timestamp"]["time"])) # sorting by date and time
+
+    for event in sortedEventList: # table writing
+        if event["event"] in specEventList:
+            col = 0
+            worksheet.write(row, col, event["timestamp"]["date"])
+            col += 1
+            worksheet.write(row, col, event["timestamp"]["time"])
+            col += 1
+            worksheet.write(row, col, event["timestamp"]["week"])
+            col += 1
+            worksheet.write(row, col, event["event"])
+            col += 1
+            worksheet.write(row, col, event["content"])
+            col += 1
+            worksheet.write(row, col, event["userId"])
+            row += 1
+
+    workbook.close()
+
+    log.info("Spec table generation completed")
 
 def getAuthorisationPassword() -> str:
     try:
