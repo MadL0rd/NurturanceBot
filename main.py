@@ -10,7 +10,7 @@ import MenuModules.MenuDispatcher as dispatcher
 from Core.GoogleSheetsServiseFunctions import functions as dataUpdateFunctions
 
 # =====================
-# Version 1.2.3
+# Version 1.2.4
 # =====================
 
 # Initialize bot and dispatcher
