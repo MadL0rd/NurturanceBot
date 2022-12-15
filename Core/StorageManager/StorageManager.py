@@ -73,7 +73,7 @@ class PathConfig:
 
     totalHistoryTableFile = baseDir / "TotalHistory.xlsx"
     statisticHistoryTableFile = baseDir / "StatisticalHistory.xlsx"
-    specHistoryTableFile = baseDir / "SpecHistory.xlsx"
+    specHistoryTableFile = baseDir / "SpecialTotalHistory.xlsx"
 
     @property
     def userFoldersAll(self) -> list:
@@ -350,33 +350,21 @@ def generateSpecTable():
     log.info("Spec table generation start")
 
     # Lits for necessary events in Special Table
-    if utils.isWindows == True:
-        # Because we have some problems with encoding on Windows
-        specEventList = [
-            "\u041f\u0435\u0440\u0435\u0448\u0435\u043b \u043a \u0443\u043f\u0440\u0430\u0436\u043d\u0435\u043d\u0438\u044f\u043c",
-            "\u041f\u0440\u0438\u0441\u0442\u0443\u043f\u0438\u043b \u043a \u0432\u0435\u0447\u0435\u0440\u043d\u0435\u0439 \u0440\u0435\u0444\u043b\u0435\u043a\u0441\u0438\u0438",
-            "\u041d\u0430\u0447\u0430\u043b \u043f\u0440\u043e\u0440\u0430\u0431\u0430\u0442\u044b\u0432\u0430\u0442\u044c \u044d\u043c\u043e\u0446\u0438\u044e",
-            "\u041d\u0430\u0447\u0430\u043b \u043f\u0440\u043e\u0440\u0430\u0431\u0430\u0442\u044b\u0432\u0430\u0442\u044c \u043c\u044b\u0441\u043b\u044c",
-            "\u041e\u0446\u0435\u043d\u0438\u043b \u0434\u043e",
-            "\u041e\u0446\u0435\u043d\u0438\u043b \u043f\u043e\u0441\u043b\u0435",
-            "\u0420\u0430\u0437\u043d\u0438\u0446\u0430 \u043e\u0446\u0435\u043d\u043e\u043a \u0434\u043e \u0438 \u043f\u043e\u0441\u043b\u0435"
-        ]
-    else:
-        specEventList = [
-            UserHistoryEvent.startModuleExercises,
-            UserHistoryEvent.startModuleEveningReflectionQuestions,
-            UserHistoryEvent.chooseExerciseEmotion,
-            UserHistoryEvent.chooseExerciseThought,
-            UserHistoryEvent.assessmentBefore,
-            UserHistoryEvent.assessmentAfter,
-            UserHistoryEvent.assessmentDelta
-        ]
+    specEventList = [
+        UserHistoryEvent.startModuleExercises.value,
+        UserHistoryEvent.startModuleEveningReflectionQuestions.value,
+        UserHistoryEvent.chooseExerciseEmotion.value,
+        UserHistoryEvent.chooseExerciseThought.value,
+        UserHistoryEvent.assessmentBefore.value,
+        UserHistoryEvent.assessmentAfter.value,
+        UserHistoryEvent.assessmentDelta.value
+    ]
 
     workbook = xlsxwriter.Workbook(path.specHistoryTableFile) # workbook creation
     bold = workbook.add_format({'bold': True})
     sheetTitle = "Page"
     worksheet = workbook.add_worksheet(sheetTitle)
-    row = 1
+    row = 0
 
     titles = ["Дата", "Время", "Неделя", "Событие", "Описание", "id пользователя"] # column naming
     for col, title in enumerate(titles):
