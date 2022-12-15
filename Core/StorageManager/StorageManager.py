@@ -73,6 +73,7 @@ class PathConfig:
 
     totalHistoryTableFile = baseDir / "TotalHistory.xlsx"
     statisticHistoryTableFile = baseDir / "StatisticalHistory.xlsx"
+    specHistoryTableFile = baseDir / "SpecialTotalHistory.xlsx"
 
     @property
     def userFoldersAll(self) -> list:
@@ -344,6 +345,63 @@ def generateTotalTable():
     workbook.close()
 
     log.info("Total table generation completed")
+
+def generateSpecTable():
+    log.info("Spec table generation start")
+
+    # Lits for necessary events in Special Table
+    specEventList = [
+        UserHistoryEvent.startModuleExercises.value,
+        UserHistoryEvent.startModuleEveningReflectionQuestions.value,
+        UserHistoryEvent.chooseExerciseEmotion.value,
+        UserHistoryEvent.chooseExerciseThought.value,
+        UserHistoryEvent.assessmentBefore.value,
+        UserHistoryEvent.assessmentAfter.value,
+        UserHistoryEvent.assessmentDelta.value
+    ]
+
+    workbook = xlsxwriter.Workbook(path.specHistoryTableFile) # workbook creation
+    bold = workbook.add_format({'bold': True})
+    sheetTitle = "Page"
+    worksheet = workbook.add_worksheet(sheetTitle)
+    row = 0
+
+    titles = ["Дата", "Время", "Неделя", "Событие", "Описание", "id пользователя"] # column naming
+    for col, title in enumerate(titles):
+        worksheet.write(row, col, title, bold)
+        worksheet.set_column(col, col, len(title))
+    worksheet.set_column(4, 4, 50)
+    row += 1
+
+    eventList = [] # empty list for necessary events
+    for userFolder in path.userFoldersAll:
+        history = getJsonData(userFolder / "history.json")
+        for event in history:
+            if event["event"] in specEventList:
+                event["userId"] = userFolder.name # adding id to the event dict
+                eventList.append(event)
+
+    sortedEventList = sorted(eventList, key= lambda d: (d["timestamp"]["date"], d["timestamp"]["time"])) # sorting by date and time
+
+    for event in sortedEventList: # table writing
+        if event["event"] in specEventList:
+            col = 0
+            worksheet.write(row, col, event["timestamp"]["date"])
+            col += 1
+            worksheet.write(row, col, event["timestamp"]["time"])
+            col += 1
+            worksheet.write(row, col, event["timestamp"]["week"])
+            col += 1
+            worksheet.write(row, col, event["event"])
+            col += 1
+            worksheet.write(row, col, event["content"])
+            col += 1
+            worksheet.write(row, col, event["userId"])
+            row += 1
+
+    workbook.close()
+
+    log.info("Spec table generation completed")
 
 def getAuthorisationPassword() -> str:
     try:
